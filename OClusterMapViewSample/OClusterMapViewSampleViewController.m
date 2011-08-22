@@ -82,7 +82,7 @@
 
 - (IBAction)addButtonTouchUpInside:(id)sender {
     [mapView removeOverlays:mapView.overlays];
-    NSArray *randomLocations = [[NSArray alloc] initWithArray:[self randomCoordinatesGenerator:100]];
+    NSArray *randomLocations = [[NSArray alloc] initWithArray:[self randomCoordinatesGenerator:1000]];
     NSMutableSet *annotationsToAdd = [[NSMutableSet alloc] init];
     
     for (CLLocation *loc in randomLocations) {
