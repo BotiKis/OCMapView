@@ -1,0 +1,375 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		88098240142FBF04002AD1BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8809823F142FBF04002AD1BD /* UIKit.framework */; };
+		88098242142FBF04002AD1BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88098241142FBF04002AD1BD /* Foundation.framework */; };
+		88098244142FBF04002AD1BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88098243142FBF04002AD1BD /* CoreGraphics.framework */; };
+		8809824A142FBF04002AD1BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88098248142FBF04002AD1BD /* InfoPlist.strings */; };
+		8809824C142FBF04002AD1BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8809824B142FBF04002AD1BD /* main.m */; };
+		88098250142FBF04002AD1BD /* OClusterMapView_SampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8809824F142FBF04002AD1BD /* OClusterMapView_SampleAppDelegate.m */; };
+		88098256142FBF04002AD1BD /* OClusterMapView_SampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88098255142FBF04002AD1BD /* OClusterMapView_SampleViewController.m */; };
+		88098264142FBF9B002AD1BD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88098263142FBF9B002AD1BD /* MapKit.framework */; };
+		88098266142FBFA2002AD1BD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88098265142FBFA2002AD1BD /* CoreLocation.framework */; };
+		88098270142FC02A002AD1BD /* OCAlgorithms.m in Sources */ = {isa = PBXBuildFile; fileRef = 88098269142FC02A002AD1BD /* OCAlgorithms.m */; };
+		88098271142FC02A002AD1BD /* OCAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8809826B142FC02A002AD1BD /* OCAnnotation.m */; };
+		88098272142FC02A002AD1BD /* OCDistance.m in Sources */ = {isa = PBXBuildFile; fileRef = 8809826D142FC02A002AD1BD /* OCDistance.m */; };
+		88098273142FC02A002AD1BD /* OCMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8809826F142FC02A002AD1BD /* OCMapView.m */; };
+		88098276142FC058002AD1BD /* OCMapViewSampleHelpAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 88098275142FC058002AD1BD /* OCMapViewSampleHelpAnnotation.m */; };
+		88098279142FC11E002AD1BD /* OClusterMapView_SampleViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88098277142FC11E002AD1BD /* OClusterMapView_SampleViewController-iPad.xib */; };
+		8878B48D142FC6DD00F5AC6A /* ocmapview_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8878B48C142FC6DD00F5AC6A /* ocmapview_logo.png */; };
+		8878B48F142FC6E100F5AC6A /* ocmapview_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8878B48E142FC6E100F5AC6A /* ocmapview_logo@2x.png */; };
+		8878B491142FC6E700F5AC6A /* ocmapview_logo~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8878B490142FC6E700F5AC6A /* ocmapview_logo~ipad.png */; };
+		8890D05A142FC4EC000F6905 /* OClusterMapView_SampleViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8890D058142FC4EB000F6905 /* OClusterMapView_SampleViewController-iPhone.xib */; };
+		8890D05D142FC559000F6905 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8890D05B142FC559000F6905 /* MainWindow.xib */; };
+		8890D060142FC560000F6905 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8890D05E142FC560000F6905 /* MainWindow-iPad.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8809823B142FBF04002AD1BD /* OClusterMapView+Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OClusterMapView+Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8809823F142FBF04002AD1BD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		88098241142FBF04002AD1BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		88098243142FBF04002AD1BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		88098247142FBF04002AD1BD /* OClusterMapView+Sample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OClusterMapView+Sample-Info.plist"; sourceTree = "<group>"; };
+		88098249142FBF04002AD1BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8809824B142FBF04002AD1BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8809824D142FBF04002AD1BD /* OClusterMapView+Sample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OClusterMapView+Sample-Prefix.pch"; sourceTree = "<group>"; };
+		8809824E142FBF04002AD1BD /* OClusterMapView_SampleAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OClusterMapView_SampleAppDelegate.h; sourceTree = "<group>"; };
+		8809824F142FBF04002AD1BD /* OClusterMapView_SampleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OClusterMapView_SampleAppDelegate.m; sourceTree = "<group>"; };
+		88098254142FBF04002AD1BD /* OClusterMapView_SampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OClusterMapView_SampleViewController.h; sourceTree = "<group>"; };
+		88098255142FBF04002AD1BD /* OClusterMapView_SampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OClusterMapView_SampleViewController.m; sourceTree = "<group>"; };
+		88098263142FBF9B002AD1BD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		88098265142FBFA2002AD1BD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		88098268142FC02A002AD1BD /* OCAlgorithms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCAlgorithms.h; sourceTree = "<group>"; };
+		88098269142FC02A002AD1BD /* OCAlgorithms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCAlgorithms.m; sourceTree = "<group>"; };
+		8809826A142FC02A002AD1BD /* OCAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCAnnotation.h; sourceTree = "<group>"; };
+		8809826B142FC02A002AD1BD /* OCAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCAnnotation.m; sourceTree = "<group>"; };
+		8809826C142FC02A002AD1BD /* OCDistance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDistance.h; sourceTree = "<group>"; };
+		8809826D142FC02A002AD1BD /* OCDistance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDistance.m; sourceTree = "<group>"; };
+		8809826E142FC02A002AD1BD /* OCMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMapView.h; sourceTree = "<group>"; };
+		8809826F142FC02A002AD1BD /* OCMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMapView.m; sourceTree = "<group>"; };
+		88098274142FC058002AD1BD /* OCMapViewSampleHelpAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMapViewSampleHelpAnnotation.h; sourceTree = "<group>"; };
+		88098275142FC058002AD1BD /* OCMapViewSampleHelpAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMapViewSampleHelpAnnotation.m; sourceTree = "<group>"; };
+		88098278142FC11E002AD1BD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/OClusterMapView_SampleViewController-iPad.xib"; sourceTree = "<group>"; };
+		8878B48C142FC6DD00F5AC6A /* ocmapview_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ocmapview_logo.png; path = ../ocmapview_logo.png; sourceTree = "<group>"; };
+		8878B48E142FC6E100F5AC6A /* ocmapview_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ocmapview_logo@2x.png"; path = "../ocmapview_logo@2x.png"; sourceTree = "<group>"; };
+		8878B490142FC6E700F5AC6A /* ocmapview_logo~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ocmapview_logo~ipad.png"; path = "../ocmapview_logo~ipad.png"; sourceTree = "<group>"; };
+		8890D059142FC4EB000F6905 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/OClusterMapView_SampleViewController-iPhone.xib"; sourceTree = "<group>"; };
+		8890D05C142FC559000F6905 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		8890D05F142FC560000F6905 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		88098238142FBF04002AD1BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88098266142FBFA2002AD1BD /* CoreLocation.framework in Frameworks */,
+				88098264142FBF9B002AD1BD /* MapKit.framework in Frameworks */,
+				88098240142FBF04002AD1BD /* UIKit.framework in Frameworks */,
+				88098242142FBF04002AD1BD /* Foundation.framework in Frameworks */,
+				88098244142FBF04002AD1BD /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		88098230142FBF04002AD1BD = {
+			isa = PBXGroup;
+			children = (
+				88098245142FBF04002AD1BD /* OClusterMapView+Sample */,
+				8809823E142FBF04002AD1BD /* Frameworks */,
+				8809823C142FBF04002AD1BD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8809823C142FBF04002AD1BD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8809823B142FBF04002AD1BD /* OClusterMapView+Sample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8809823E142FBF04002AD1BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				88098265142FBFA2002AD1BD /* CoreLocation.framework */,
+				88098263142FBF9B002AD1BD /* MapKit.framework */,
+				8809823F142FBF04002AD1BD /* UIKit.framework */,
+				88098241142FBF04002AD1BD /* Foundation.framework */,
+				88098243142FBF04002AD1BD /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		88098245142FBF04002AD1BD /* OClusterMapView+Sample */ = {
+			isa = PBXGroup;
+			children = (
+				8809824E142FBF04002AD1BD /* OClusterMapView_SampleAppDelegate.h */,
+				8809824F142FBF04002AD1BD /* OClusterMapView_SampleAppDelegate.m */,
+				8890D05B142FC559000F6905 /* MainWindow.xib */,
+				8890D05E142FC560000F6905 /* MainWindow-iPad.xib */,
+				88098254142FBF04002AD1BD /* OClusterMapView_SampleViewController.h */,
+				88098255142FBF04002AD1BD /* OClusterMapView_SampleViewController.m */,
+				8890D058142FC4EB000F6905 /* OClusterMapView_SampleViewController-iPhone.xib */,
+				88098277142FC11E002AD1BD /* OClusterMapView_SampleViewController-iPad.xib */,
+				88098274142FC058002AD1BD /* OCMapViewSampleHelpAnnotation.h */,
+				88098275142FC058002AD1BD /* OCMapViewSampleHelpAnnotation.m */,
+				8878B490142FC6E700F5AC6A /* ocmapview_logo~ipad.png */,
+				8878B48E142FC6E100F5AC6A /* ocmapview_logo@2x.png */,
+				8878B48C142FC6DD00F5AC6A /* ocmapview_logo.png */,
+				88098246142FBF04002AD1BD /* Supporting Files */,
+				88098267142FC02A002AD1BD /* OCMapView */,
+			);
+			path = "OClusterMapView+Sample";
+			sourceTree = "<group>";
+		};
+		88098246142FBF04002AD1BD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				88098247142FBF04002AD1BD /* OClusterMapView+Sample-Info.plist */,
+				88098248142FBF04002AD1BD /* InfoPlist.strings */,
+				8809824B142FBF04002AD1BD /* main.m */,
+				8809824D142FBF04002AD1BD /* OClusterMapView+Sample-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		88098267142FC02A002AD1BD /* OCMapView */ = {
+			isa = PBXGroup;
+			children = (
+				88098268142FC02A002AD1BD /* OCAlgorithms.h */,
+				88098269142FC02A002AD1BD /* OCAlgorithms.m */,
+				8809826A142FC02A002AD1BD /* OCAnnotation.h */,
+				8809826B142FC02A002AD1BD /* OCAnnotation.m */,
+				8809826C142FC02A002AD1BD /* OCDistance.h */,
+				8809826D142FC02A002AD1BD /* OCDistance.m */,
+				8809826E142FC02A002AD1BD /* OCMapView.h */,
+				8809826F142FC02A002AD1BD /* OCMapView.m */,
+			);
+			path = OCMapView;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8809823A142FBF04002AD1BD /* OClusterMapView+Sample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8809825C142FBF04002AD1BD /* Build configuration list for PBXNativeTarget "OClusterMapView+Sample" */;
+			buildPhases = (
+				88098237142FBF04002AD1BD /* Sources */,
+				88098238142FBF04002AD1BD /* Frameworks */,
+				88098239142FBF04002AD1BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "OClusterMapView+Sample";
+			productName = "OClusterMapView+Sample";
+			productReference = 8809823B142FBF04002AD1BD /* OClusterMapView+Sample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		88098232142FBF04002AD1BD /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 88098235142FBF04002AD1BD /* Build configuration list for PBXProject "OClusterMapView+Sample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 88098230142FBF04002AD1BD;
+			productRefGroup = 8809823C142FBF04002AD1BD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8809823A142FBF04002AD1BD /* OClusterMapView+Sample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		88098239142FBF04002AD1BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8809824A142FBF04002AD1BD /* InfoPlist.strings in Resources */,
+				88098279142FC11E002AD1BD /* OClusterMapView_SampleViewController-iPad.xib in Resources */,
+				8890D05A142FC4EC000F6905 /* OClusterMapView_SampleViewController-iPhone.xib in Resources */,
+				8890D05D142FC559000F6905 /* MainWindow.xib in Resources */,
+				8890D060142FC560000F6905 /* MainWindow-iPad.xib in Resources */,
+				8878B48D142FC6DD00F5AC6A /* ocmapview_logo.png in Resources */,
+				8878B48F142FC6E100F5AC6A /* ocmapview_logo@2x.png in Resources */,
+				8878B491142FC6E700F5AC6A /* ocmapview_logo~ipad.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		88098237142FBF04002AD1BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8809824C142FBF04002AD1BD /* main.m in Sources */,
+				88098250142FBF04002AD1BD /* OClusterMapView_SampleAppDelegate.m in Sources */,
+				88098256142FBF04002AD1BD /* OClusterMapView_SampleViewController.m in Sources */,
+				88098270142FC02A002AD1BD /* OCAlgorithms.m in Sources */,
+				88098271142FC02A002AD1BD /* OCAnnotation.m in Sources */,
+				88098272142FC02A002AD1BD /* OCDistance.m in Sources */,
+				88098273142FC02A002AD1BD /* OCMapView.m in Sources */,
+				88098276142FC058002AD1BD /* OCMapViewSampleHelpAnnotation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		88098248142FBF04002AD1BD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88098249142FBF04002AD1BD /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		88098277142FC11E002AD1BD /* OClusterMapView_SampleViewController-iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88098278142FC11E002AD1BD /* en */,
+			);
+			name = "OClusterMapView_SampleViewController-iPad.xib";
+			sourceTree = "<group>";
+		};
+		8890D058142FC4EB000F6905 /* OClusterMapView_SampleViewController-iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8890D059142FC4EB000F6905 /* en */,
+			);
+			name = "OClusterMapView_SampleViewController-iPhone.xib";
+			sourceTree = "<group>";
+		};
+		8890D05B142FC559000F6905 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8890D05C142FC559000F6905 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		8890D05E142FC560000F6905 /* MainWindow-iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8890D05F142FC560000F6905 /* en */,
+			);
+			name = "MainWindow-iPad.xib";
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8809825A142FBF04002AD1BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8809825B142FBF04002AD1BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8809825D142FBF04002AD1BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OClusterMapView+Sample/OClusterMapView+Sample-Prefix.pch";
+				INFOPLIST_FILE = "OClusterMapView+Sample/OClusterMapView+Sample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		8809825E142FBF04002AD1BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OClusterMapView+Sample/OClusterMapView+Sample-Prefix.pch";
+				INFOPLIST_FILE = "OClusterMapView+Sample/OClusterMapView+Sample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		88098235142FBF04002AD1BD /* Build configuration list for PBXProject "OClusterMapView+Sample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8809825A142FBF04002AD1BD /* Debug */,
+				8809825B142FBF04002AD1BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8809825C142FBF04002AD1BD /* Build configuration list for PBXNativeTarget "OClusterMapView+Sample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8809825D142FBF04002AD1BD /* Debug */,
+				8809825E142FBF04002AD1BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 88098232142FBF04002AD1BD /* Project object */;
+}
