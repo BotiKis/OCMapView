@@ -21,7 +21,7 @@
     [annotationsToCluster retain];
     
     // return array
-    NSMutableArray *clusteredAnnotations = [[NSMutableArray alloc] initWithCapacity:[annotationsToCluster count]];
+    NSMutableArray *clusteredAnnotations = [[NSMutableArray alloc] init];
     
 	// Clustering
 	for (id <MKAnnotation> annotation in annotationsToCluster) {
@@ -53,10 +53,23 @@
 		}
 	}
     
+    NSMutableArray *returnArray = [[NSMutableArray alloc] init];
+    
+    // whipe all empty or single annotations
+    for (OCAnnotation *anAnnotation in clusteredAnnotations) {
+        if ([anAnnotation.annotationsInCluster count] <= 1) {
+            [returnArray addObject:[anAnnotation.annotationsInCluster lastObject]];
+        }
+        else{
+            [returnArray addObject:anAnnotation];
+        }
+    }
+    
     // memory
     [annotationsToCluster release];
+    [clusteredAnnotations release];
     
-    return [clusteredAnnotations autorelease];
+    return [returnArray autorelease];
 }
 
 
@@ -67,7 +80,7 @@
     [annotationsToCluster retain];
     
     // return array
-    NSMutableDictionary *clusteredAnnotations = [[NSMutableDictionary alloc] initWithCapacity:[annotationsToCluster count]];
+    NSMutableDictionary *clusteredAnnotations = [[NSMutableDictionary alloc] init];
     
     // iterate through all annotations
 	for (id <MKAnnotation> annotation in annotationsToCluster) {
@@ -99,7 +112,17 @@
 	}
     
     // return array
-    NSArray *returnArray = [[NSArray alloc] initWithArray: [clusteredAnnotations allValues]];
+    NSMutableArray *returnArray = [[NSMutableArray alloc] init];
+    
+    // whipe all empty or single annotations
+    for (OCAnnotation *anAnnotation in [clusteredAnnotations allValues]) {
+        if ([anAnnotation.annotationsInCluster count] <= 1) {
+            [returnArray addObject:[anAnnotation.annotationsInCluster lastObject]];
+        }
+        else{
+            [returnArray addObject:anAnnotation];
+        }
+    }
     
     // memory
     [annotationsToCluster release];
