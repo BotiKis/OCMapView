@@ -14,8 +14,8 @@ CLLocationDistance getDistance(CLLocationCoordinate2D firstLocation, CLLocationC
     // Calculate differences of the to annotations
     CLLocationDistance distance;
     
-    CLLocationDistance deltaLat = fabs(firstLocation.latitude - secondLocation.latitude);
-    CLLocationDistance deltaLon = fabs(firstLocation.longitude - secondLocation.longitude);
+    CLLocationDistance deltaLat = firstLocation.latitude - secondLocation.latitude;
+    CLLocationDistance deltaLon = firstLocation.longitude - secondLocation.longitude;
     distance = sqrt(deltaLat*deltaLat + deltaLon*deltaLon);
     
     return distance;
