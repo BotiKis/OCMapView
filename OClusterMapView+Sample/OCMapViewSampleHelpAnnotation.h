@@ -10,14 +10,18 @@
 
 @interface OCMapViewSampleHelpAnnotation : NSObject <MKAnnotation>{
     CLLocationCoordinate2D coordinate;
+    NSString *title;
+    NSString *subtitle;
 }
 - (id)initWithCoordinate:(CLLocationCoordinate2D)aCoordinate;
 
 //
 // protocoll implementation
 - (NSString *)title;
+- (void)setTitle:(NSString *)text;
 
 - (NSString *)subtitle;
+- (void)setSubtitle:(NSString *)text;
 
 - (CLLocationCoordinate2D)coordinate;
 
