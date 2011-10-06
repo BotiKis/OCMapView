@@ -61,7 +61,6 @@
 - (void)addAnnotation:(id < MKAnnotation >)annotation{
     // Add annotation to the cluster
     [annotationsInCluster addObject:annotation];
-    self.title = [NSString stringWithFormat:@"%d", [annotationsInCluster count]];
 }
 
 - (void)addAnnotations:(NSArray *)annotations{
@@ -75,7 +74,6 @@
 - (void)removeAnnotation:(id < MKAnnotation >)annotation{
     // Remove annotation from cluster
     [annotationsInCluster removeObject:annotation];
-    self.title = [NSString stringWithFormat:@"%d", [annotationsInCluster count]];
 }
 
 - (void)removeAnnotations:(NSArray *)annotations{

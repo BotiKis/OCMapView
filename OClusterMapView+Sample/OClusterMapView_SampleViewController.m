@@ -175,6 +175,9 @@
         MKCircle *circleLine = [MKCircle circleWithCenterCoordinate:clusterAnnotation.coordinate radius:clusterRadius * cos([annotation coordinate].latitude * M_PI / 180.0)];
         [circleLine setTitle:@"line"];
         [mapView addOverlay:circleLine];
+        
+        // set title
+        clusterAnnotation.title = [NSString stringWithFormat:@"%d", [clusterAnnotation.annotationsInCluster count]];
     }
     else{
         annotationView = (MKPinAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:@"annotationView"];
