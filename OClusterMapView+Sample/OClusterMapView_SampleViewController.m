@@ -177,16 +177,18 @@
         [mapView addOverlay:circleLine];
         
         // set title
-        clusterAnnotation.title = [NSString stringWithFormat:@"%d", [clusterAnnotation.annotationsInCluster count]];
+        clusterAnnotation.title = @"Cluster";
+        clusterAnnotation.subtitle = [NSString stringWithFormat:@"Containing annotations: %d", [clusterAnnotation.annotationsInCluster count]];
     }
     else{
-        annotationView = (MKPinAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:@"annotationView"];
+        annotationView = (MKPinAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:@"singleAnnotationView"];
         [annotationView retain];
         if (!annotationView) {
-            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annotationView"];
-            annotationView.canShowCallout = NO;
+            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:clusterAnnotation reuseIdentifier:@"singleAnnotationView"];
+            annotationView.canShowCallout = YES;
             annotationView.pinColor = MKPinAnnotationColorGreen;
         }
+        clusterAnnotation.title = @"Single annotation";
     }        
     
     return [annotationView autorelease];
