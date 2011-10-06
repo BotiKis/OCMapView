@@ -16,7 +16,7 @@
 {
     self = [super init];
     if (self) {
-        title = subtitle = @"";
+        title = subtitle = [[NSString stringWithFormat:@""] retain];
         coordinate = CLLocationCoordinate2DMake(0.0, 0.0);
         annotationsInCluster = [[NSMutableArray alloc] init];
     }
@@ -31,6 +31,9 @@
     coordinate = [annotation coordinate];
     [annotationsInCluster addObject:annotation];
     
+    title = [annotation.title retain];
+    subtitle = [annotation.title retain];
+    
     [annotation release];
     
     return self;
@@ -38,6 +41,10 @@
 
 - (void)dealloc {
     [annotationsInCluster release];
+    
+    [title release];
+    [subtitle release];
+    
     [super dealloc];
 }
 
