@@ -152,10 +152,12 @@
 #pragma mark - map delegate
 - (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id <MKAnnotation>)annotation{
     MKPinAnnotationView *annotationView;
-    OCAnnotation *clusterAnnotation = (OCAnnotation *)annotation;
     
     // if it's a cluster
-    if ([annotation isKindOfClass:[OCAnnotation class]] && [clusterAnnotation.annotationsInCluster count] > 1) {
+    if ([annotation isKindOfClass:[OCAnnotation class]]) {
+        
+        OCAnnotation *clusterAnnotation = (OCAnnotation *)annotation;
+        
         annotationView = (MKPinAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:@"ClusterView"];
         [annotationView retain];
         if (!annotationView) {
@@ -180,16 +182,28 @@
         clusterAnnotation.title = @"Cluster";
         clusterAnnotation.subtitle = [NSString stringWithFormat:@"Containing annotations: %d", [clusterAnnotation.annotationsInCluster count]];
     }
-    else{
+    // If it's a single annotation
+    else if([annotation isKindOfClass:[OCMapViewSampleHelpAnnotation class]]){
+        OCMapViewSampleHelpAnnotation *singleAnnotation = (OCMapViewSampleHelpAnnotation *)annotation;
         annotationView = (MKPinAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:@"singleAnnotationView"];
         [annotationView retain];
         if (!annotationView) {
-            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:clusterAnnotation reuseIdentifier:@"singleAnnotationView"];
+            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:singleAnnotation reuseIdentifier:@"singleAnnotationView"];
             annotationView.canShowCallout = YES;
             annotationView.pinColor = MKPinAnnotationColorGreen;
         }
-        clusterAnnotation.title = @"Single annotation";
-    }        
+        singleAnnotation.title = @"Single annotation";
+    }
+    // Error
+    else{
+        annotationView = (MKPinAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:@"errorAnnotationView"];
+        [annotationView retain];
+        if (!annotationView) {
+            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"errorAnnotationView"];
+            annotationView.canShowCallout = NO;
+            annotationView.pinColor = MKPinAnnotationColorRed;
+        }
+    }
     
     return [annotationView autorelease];
 }
