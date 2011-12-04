@@ -143,16 +143,19 @@
     // Clear map but leave Userlcoation
     NSMutableArray *annotationsToRemove = [[NSMutableArray alloc] initWithArray:self.displayedAnnotations];
     [annotationsToRemove removeObject:self.userLocation];
-    [super removeAnnotations:annotationsToRemove];
-    [annotationsToRemove release];
-
+    
     // add clustered and ignored annotations to map
     [super addAnnotations: clusteredAnnotations];
     [super addAnnotations: [annotationsToIgnore allObjects]];
     
+    // fix for flickering
+    [annotationsToRemove removeObjectsInArray: clusteredAnnotations];
+    [super removeAnnotations:annotationsToRemove];
+    
     // memory
     [clusteredAnnotations release];
     [annotationsToCluster release];
+    [annotationsToRemove release];
 }
 
 // ======================================
