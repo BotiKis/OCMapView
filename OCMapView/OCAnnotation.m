@@ -102,7 +102,7 @@
 
 - (void)setSubtitle:(NSString *)text{
     [text retain];
-    [title release];
+    [subtitle release];
     subtitle = text;
 }
 
