@@ -1,14 +1,13 @@
 #What is OCMapView?
-![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/open_clsuter_mapview_off.png "OpenClusterMapView Turned off") **->**
-![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/open_clsuter_mapview_on.png "OpenClusterMapView Turned on")
-
 **OpenClusterMapView** is a simple and easy to use extension of the `MKMapView` for iOS.
 If you have trouble to display a lot of annotations on the map, this class is for you.
 It is written in Objective-C and C and works in all iOS applications.  
 
-The sample project is generated with Xcode 4.1 and written for iOS +4.0.
 
-![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/ocmapview_logo_small.png "OpenClusterMapView Logo")
+![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/open_cluster_mapview_off.png "OpenClusterMapView Turned off")
+![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/open_cluster_mapview_on.png "OpenClusterMapView Turned on")  
+
+The sample project is generated with Xcode 4.1 and written for iOS +4.0.
 ##Set up:
 **OCMapView** automatically handles annotations and combines them to clusters for you. Just add the **OCMapView** folder to your project and you are good to go. Set the class of your `MapView` in the Interface Builder/Storyboard from **MKMapView** to **OCMapView** or create it manually in code like a regular `MKMapView`. Don't forget to link the `MapKit` and `CoreLocation` frameworks to your project and import `OCMapView.h` into the viewController you are working on.
 
@@ -23,5 +22,8 @@ Use it just like a normal `MKMapView` by adding the annotations you want to disp
 - Customize behavior like cluster size.
 - Manage clusters yourself by providing an ignore list of annotations.
 
-#Contribute:
+#Contribute:  
+
+
+![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/ocmapview_logo_small.png "OpenClusterMapView Logo")
 If you are using OCMapView and want to contribute, please contact me to add your app to a upcoming list of supporting apps!
