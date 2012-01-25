@@ -3,8 +3,7 @@
 If you have trouble to display a lot of annotations on the map, this class is for you.
 It is written in Objective-C and C and works in all iOS applications.  
 
-
-![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/open_cluster_mapview_off.png "OpenClusterMapView Turned off")
+![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/open_cluster_mapview_off.png "OpenClusterMapView Turned off") 
 ![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/open_cluster_mapview_on.png "OpenClusterMapView Turned on")  
 
 The sample project is generated with Xcode 4.1 and written for iOS +4.0.
@@ -22,8 +21,6 @@ Use it just like a normal `MKMapView` by adding the annotations you want to disp
 - Customize behavior like cluster size.
 - Manage clusters yourself by providing an ignore list of annotations.
 
-#Contribute:  
-
-
-![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/ocmapview_logo_small.png "OpenClusterMapView Logo")
+#Contribute:
 If you are using OCMapView and want to contribute, please contact me to add your app to a upcoming list of supporting apps!
+![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/ocmapview_logo_small.png "OpenClusterMapView Logo")
