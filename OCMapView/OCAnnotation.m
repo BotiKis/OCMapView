@@ -27,13 +27,15 @@
 - (id)initWithAnnotation:(id <MKAnnotation>) annotation{
     [annotation retain];
     
-    self = [self init];
-    coordinate = [annotation coordinate];
-    [annotationsInCluster addObject:annotation];
+    self = [super init];
+    if (self) {
+        coordinate = [annotation coordinate];
+        annotationsInCluster = [[NSMutableArray alloc] init];
+        [annotationsInCluster addObject:annotation];
     
-    title = [annotation.title retain];
-    subtitle = [annotation.title retain];
-    
+        title = [annotation.title retain];
+        subtitle = [annotation.title retain];
+    }
     [annotation release];
     
     return self;
@@ -59,8 +61,11 @@
 //
 // manipulate cluster
 - (void)addAnnotation:(id < MKAnnotation >)annotation{
+    [annotation retain];
+    
     // Add annotation to the cluster
     [annotationsInCluster addObject:annotation];
+    [annotation release];
 }
 
 - (void)addAnnotations:(NSArray *)annotations{
@@ -72,8 +77,12 @@
 }
 
 - (void)removeAnnotation:(id < MKAnnotation >)annotation{
+    [annotation retain];
+    
     // Remove annotation from cluster
     [annotationsInCluster removeObject:annotation];
+    
+    [annotation release];
 }
 
 - (void)removeAnnotations:(NSArray *)annotations{
