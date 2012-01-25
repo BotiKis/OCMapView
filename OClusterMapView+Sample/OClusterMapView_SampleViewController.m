@@ -85,6 +85,7 @@
     for (CLLocation *loc in randomLocations) {
         OCMapViewSampleHelpAnnotation *annotation = [[OCMapViewSampleHelpAnnotation alloc] initWithCoordinate:loc.coordinate];
         [annotationsToAdd addObject:annotation];
+        [annotation release];
     }
     
     [mapView addAnnotations:[annotationsToAdd allObjects]];
