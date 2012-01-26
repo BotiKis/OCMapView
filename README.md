@@ -25,7 +25,8 @@ Use it just like a regular `MKMapView` by adding the annotations you want to dis
 
 The `MKAnnotationView` handling stays completely the same so you can use custom Views for your annotations and clusters. The `viewForAnnotation` delegate method will return `OCAnnotation` objects when it generates clusters. So you can provide your custom view:  
 
-`- (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id <MKAnnotation>)annotation{
+`
+- (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id <MKAnnotation>)annotation{
     // if it's a cluster
     if ([annotation isKindOfClass:[OCAnnotation class]]) {
         // create your custom cluster annotationView here!
@@ -34,9 +35,9 @@ The `MKAnnotationView` handling stays completely the same so you can use custom 
     else if([annotation isKindOfClass:[Your_Annotation class]]){
         // create your custom annotationView  as regular here!  
     }
-    
     return Your_annotationView;
-}`  
+}
+`  
 
 You can customize the behavior of the clusters by setting specific attributes. For more information take a look at the sample project or the [documentation](http://www.unet.univie.ac.at/~a0846794/OCMapView/ "OpenClusterMapView Documentation").
 
