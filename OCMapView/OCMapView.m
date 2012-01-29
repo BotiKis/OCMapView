@@ -173,14 +173,13 @@
     NSMutableArray *filteredAnnotations = [[NSMutableArray alloc] initWithCapacity:[annotationsToFilter count]];
     
     // border calculation
-    CLLocationDistance maxLat = self.centerCoordinate.latitude + self.region.span.latitudeDelta/2.0;
-    CLLocationDistance minLat = self.centerCoordinate.latitude - self.region.span.latitudeDelta/2.0;
-    CLLocationDistance maxLon = self.centerCoordinate.longitude + self.region.span.longitudeDelta/2.0;
-    CLLocationDistance minLon = self.centerCoordinate.longitude - self.region.span.longitudeDelta/2.0;
+    CLLocationDistance a = self.region.span.latitudeDelta/2.0;
+    CLLocationDistance b = self.region.span.longitudeDelta /2.0;
+    CLLocationDistance radius = sqrt(a*a + b*b);
     
     for (id<MKAnnotation> annotation in annotationsToFilter) {
         // if annotation is not inside the coordinates, kick it
-        if ([annotation coordinate].latitude < maxLat && [annotation coordinate].latitude > minLat && [annotation coordinate].longitude < maxLon && [annotation coordinate].longitude > minLon) {
+        if (isLocationNearToOtherLocation(annotation.coordinate, self.centerCoordinate, radius)) {
             [filteredAnnotations addObject:annotation];
         }
     }
