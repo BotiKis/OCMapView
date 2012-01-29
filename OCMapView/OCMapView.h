@@ -11,6 +11,8 @@
 #import "OCAnnotation.h"
 #import "OCAlgorithms.h"
 
+#import <dispatch/dispatch.h>
+
 /// MapView which should be used instead of MKMapView
 /** OCMapView works like the standard MKMapView but creates clusters form its containing Annotations.*/
 @interface OCMapView : MKMapView{
@@ -24,6 +26,9 @@
     OCClusteringMethod clusteringMethod;
     CLLocationDistance clusterSize;
     CLLocationDegrees minLongitudeDeltaToCluster;
+    
+    // Backround Clustering
+    dispatch_queue_t backgroundClusterQueue;
 }
 
 // ======================================
