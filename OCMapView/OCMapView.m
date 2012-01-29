@@ -7,6 +7,10 @@
 
 #import "OCMapView.h"
 
+@interface OCMapView (private)
+- (void)initSetUp;
+@end
+
 @implementation OCMapView
 @synthesize clusteringEnabled;
 @synthesize annotationsToIgnore;
@@ -18,12 +22,8 @@
 {
     self = [super init];
     if (self) {
-        allAnnotations = [[NSMutableSet alloc] init];
-        annotationsToIgnore = [[NSMutableSet alloc] init];
-        clusteringMethod = OCClusteringMethodBubble;
-        clusterSize = 0.2;
-        minLongitudeDeltaToCluster = 0.0;
-        clusteringEnabled = YES;
+        // call acutal constructor
+        [self initSetUp];
     }
     
     return self;
@@ -32,14 +32,21 @@
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];    
     if (self) {
-        allAnnotations = [[NSMutableSet alloc] init];
-        annotationsToIgnore = [[NSMutableSet alloc] init];
-        clusteringMethod = OCClusteringMethodBubble;
-        clusterSize = 0.2;
-        minLongitudeDeltaToCluster = 0.0;
-        clusteringEnabled = YES;
+        // call acutal constructor
+        [self initSetUp];
     }
     return self;
+}
+
+- (void)initSetUp{
+    allAnnotations = [[NSMutableSet alloc] init];
+    annotationsToIgnore = [[NSMutableSet alloc] init];
+    clusteringMethod = OCClusteringMethodBubble;
+    clusterSize = 0.2;
+    minLongitudeDeltaToCluster = 0.0;
+    clusteringEnabled = YES;
+    backgroundClusterQueue = dispatch_queue_create("com.OCMapView.clustering", NULL);  
+    
 }
 
 - (void)dealloc{
