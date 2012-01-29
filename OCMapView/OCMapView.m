@@ -46,12 +46,12 @@
     minLongitudeDeltaToCluster = 0.0;
     clusteringEnabled = YES;
     backgroundClusterQueue = dispatch_queue_create("com.OCMapView.clustering", NULL);  
-    
 }
 
 - (void)dealloc{
     [allAnnotations release];
     [annotationsToIgnore release];
+    dispatch_release(backgroundClusterQueue);
     
     [super dealloc];
 }
