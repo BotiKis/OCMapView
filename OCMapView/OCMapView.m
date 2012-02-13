@@ -16,6 +16,7 @@
 @synthesize annotationsToIgnore;
 @synthesize clusteringMethod;
 @synthesize clusterSize;
+@synthesize clusterByGroupTag;
 @synthesize minLongitudeDeltaToCluster;
 
 - (id)init
@@ -45,6 +46,7 @@
     clusterSize = 0.2;
     minLongitudeDeltaToCluster = 0.0;
     clusteringEnabled = YES;
+    clusterByGroupTag = NO;
     backgroundClusterQueue = dispatch_queue_create("com.OCMapView.clustering", NULL);  
 }
 

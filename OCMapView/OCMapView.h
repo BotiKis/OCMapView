@@ -24,7 +24,8 @@
     // read properties for explanation
     BOOL clusteringEnabled;
     OCClusteringMethod clusteringMethod;
-    CLLocationDistance clusterSize;
+    CLLocationDistance clusterSize;    
+    BOOL clusterByGroupTag;
     CLLocationDegrees minLongitudeDeltaToCluster;
     
     // Backround Clustering
@@ -94,6 +95,12 @@
 /** eg. clusterSize 0.5 is the half of the map.
 default: 0.2*/
 @property(nonatomic, assign) CLLocationDistance clusterSize;
+
+//
+/// Enables multiple Clusters
+/** If enabled, tha mapview will generate different clusters for Tags implemented by the OCGrouping protocol.
+ default: NO*/
+@property(nonatomic, assign) BOOL clusterByGroupTag;
 
 //
 /// Defines the "zoom" from where the map should start clustering.
