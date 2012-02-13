@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>OCMapView: /Users/Boti/Desktop/OClusterMapView+Sample/OCMapView/OCAnnotation.h Source File</title>
+<title>OCMapView: /Users/Boti/Documents/coding/iPhone Development/OCMapView+Sample/OCMapView/OCAnnotation.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -30,7 +30,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -53,12 +53,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">/Users/Boti/Desktop/OClusterMapView+Sample/OCMapView/OCAnnotation.h</div>  </div>
+<div class="title">/Users/Boti/Documents/coding/iPhone Development/OCMapView+Sample/OCMapView/OCAnnotation.h</div>  </div>
 </div>
 <div class="contents">
 <a href="_o_c_annotation_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">//</span>
@@ -70,57 +70,60 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00007"></a>00007 
 <a name="l00008"></a>00008 <span class="preprocessor">#import &lt;UIKit/UIKit.h&gt;</span>
 <a name="l00009"></a>00009 <span class="preprocessor">#import &lt;MapKit/MapKit.h&gt;</span>
-<a name="l00010"></a>00010 
+<a name="l00010"></a>00010 <span class="preprocessor">#import &quot;<a class="code" href="_o_c_grouping_8h.html">OCGrouping.h</a>&quot;</span>
 <a name="l00011"></a>00011 
 <a name="l00013"></a>00013 
-<a name="l00017"></a><a class="code" href="interface_o_c_annotation.html">00017</a> <span class="keyword">@interface </span><a class="code" href="interface_o_c_annotation.html" title="Annotation class which represents a Cluster.">OCAnnotation</a> : NSObject &lt;MKAnnotation&gt;{
-<a name="l00018"></a><a class="code" href="interface_o_c_annotation.html#a2e9d8607cce8764664a387959a4b7cf9">00018</a>     NSMutableArray *<a class="code" href="interface_o_c_annotation.html#a2e9d8607cce8764664a387959a4b7cf9">annotationsInCluster</a>;
-<a name="l00019"></a><a class="code" href="interface_o_c_annotation.html#ac662e0cec0ed1043f652716153449e11">00019</a>     NSString *<a class="code" href="interface_o_c_annotation.html#ac662e0cec0ed1043f652716153449e11">title</a>;
-<a name="l00020"></a><a class="code" href="interface_o_c_annotation.html#a82e06ae9bd5fbdcb9019a73eb9027864">00020</a>     NSString *<a class="code" href="interface_o_c_annotation.html#a82e06ae9bd5fbdcb9019a73eb9027864">subtitle</a>;
-<a name="l00021"></a><a class="code" href="interface_o_c_annotation.html#a06da4420d4fe081b9775fd4f0961cda4">00021</a>     CLLocationCoordinate2D <a class="code" href="interface_o_c_annotation.html#a06da4420d4fe081b9775fd4f0961cda4">coordinate</a>;
-<a name="l00022"></a>00022 }
-<a name="l00023"></a>00023 <span class="comment">//</span>
-<a name="l00024"></a>00024 <span class="comment">// Constructors</span>
-<a name="l00026"></a>00026 <span class="comment"></span>- (id)init;
-<a name="l00027"></a>00027 
-<a name="l00029"></a>00029 
-<a name="l00030"></a>00030 - (id)initWithAnnotation:(<span class="keywordtype">id</span> &lt;MKAnnotation&gt;) annotation;
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032 <span class="comment">//</span>
-<a name="l00034"></a>00034 <span class="comment"></span>
-<a name="l00037"></a><a class="code" href="interface_o_c_annotation.html#ab44267f9f966b9d9c86fcd335c895fcd">00037</a> <span class="keyword">@property</span>(nonatomic, readonly) NSArray *annotationsInCluster;
-<a name="l00038"></a>00038 <span class="comment">//</span>
-<a name="l00040"></a>00040 <span class="comment"></span>
-<a name="l00041"></a>00041 - (NSArray *)annotationsInCluster;
-<a name="l00042"></a>00042 
-<a name="l00043"></a>00043 <span class="comment">//</span>
-<a name="l00044"></a>00044 <span class="comment">// manipulate cluster</span>
-<a name="l00046"></a>00046 <span class="comment"></span>
-<a name="l00047"></a>00047 - (void)addAnnotation:(<span class="keywordtype">id</span> &lt; MKAnnotation &gt;)annotation;
-<a name="l00048"></a>00048 
-<a name="l00050"></a>00050 
-<a name="l00052"></a>00052 - (void)addAnnotations:(NSArray *)annotations;
-<a name="l00053"></a>00053 
-<a name="l00055"></a>00055 
-<a name="l00056"></a>00056 - (void)removeAnnotation:(<span class="keywordtype">id</span> &lt; MKAnnotation &gt;)annotation;
-<a name="l00057"></a>00057 
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060 - (void)removeAnnotations:(NSArray *)annotations;
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062 <span class="comment">//</span>
-<a name="l00063"></a>00063 <span class="comment">// protocoll implementation</span>
-<a name="l00065"></a>00065 <span class="comment"></span>- (NSString *)title;
-<a name="l00067"></a>00067 - (void)setTitle:(NSString *)text;
-<a name="l00068"></a>00068 
+<a name="l00017"></a><a class="code" href="interface_o_c_annotation.html">00017</a> <span class="keyword">@interface </span><a class="code" href="interface_o_c_annotation.html" title="Annotation class which represents a Cluster.">OCAnnotation</a> : NSObject &lt;MKAnnotation, <a class="code" href="protocol_o_c_grouping-p.html" title="Protocol which is needed to use different groups of clusters.">OCGrouping</a>&gt;{
+<a name="l00018"></a><a class="code" href="interface_o_c_annotation.html#ad9449e4c93edf0863c7c557256e2927b">00018</a>     NSMutableArray *<a class="code" href="interface_o_c_annotation.html#ad9449e4c93edf0863c7c557256e2927b">annotationsInCluster</a>;
+<a name="l00019"></a><a class="code" href="interface_o_c_annotation.html#a6782f341812fcbe7fc1add57a80edc5c">00019</a>     NSString *<a class="code" href="interface_o_c_annotation.html#a6782f341812fcbe7fc1add57a80edc5c">title</a>;
+<a name="l00020"></a><a class="code" href="interface_o_c_annotation.html#a917db584ad932e6663677b38b5887bd8">00020</a>     NSString *<a class="code" href="interface_o_c_annotation.html#a917db584ad932e6663677b38b5887bd8">subtitle</a>;
+<a name="l00021"></a><a class="code" href="interface_o_c_annotation.html#a5f95391c4e2ec90c4122a5fde9d29e85">00021</a>     NSString *<a class="code" href="interface_o_c_annotation.html#a5f95391c4e2ec90c4122a5fde9d29e85">_groupTag</a>;
+<a name="l00022"></a><a class="code" href="interface_o_c_annotation.html#aa284dfc828e69ed8a933afa71bcd119d">00022</a>     CLLocationCoordinate2D <a class="code" href="interface_o_c_annotation.html#aa284dfc828e69ed8a933afa71bcd119d">coordinate</a>;
+<a name="l00023"></a>00023 }
+<a name="l00024"></a>00024 <span class="comment">//</span>
+<a name="l00025"></a>00025 <span class="comment">// Constructors</span>
+<a name="l00027"></a>00027 <span class="comment"></span>- (id)init;
+<a name="l00028"></a>00028 
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031 - (id)initWithAnnotation:(<span class="keywordtype">id</span> &lt;MKAnnotation&gt;) annotation;
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 <span class="comment">//</span>
+<a name="l00035"></a>00035 <span class="comment"></span>
+<a name="l00038"></a><a class="code" href="interface_o_c_annotation.html#a20afdd82c3c2a07249518649250d4877">00038</a> <span class="keyword">@property</span>(nonatomic, readonly) NSArray *annotationsInCluster;
+<a name="l00039"></a>00039 <span class="comment">//</span>
+<a name="l00041"></a>00041 <span class="comment"></span>
+<a name="l00042"></a>00042 - (NSArray *)annotationsInCluster;
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044 <span class="comment">//</span>
+<a name="l00045"></a>00045 <span class="comment">// manipulate cluster</span>
+<a name="l00047"></a>00047 <span class="comment"></span>
+<a name="l00048"></a>00048 - (void)addAnnotation:(<span class="keywordtype">id</span> &lt; MKAnnotation &gt;)annotation;
+<a name="l00049"></a>00049 
+<a name="l00051"></a>00051 
+<a name="l00053"></a>00053 - (void)addAnnotations:(NSArray *)annotations;
+<a name="l00054"></a>00054 
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057 - (void)removeAnnotation:(<span class="keywordtype">id</span> &lt; MKAnnotation &gt;)annotation;
+<a name="l00058"></a>00058 
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061 - (void)removeAnnotations:(NSArray *)annotations;
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 <span class="comment">//</span>
+<a name="l00064"></a>00064 <span class="comment">// protocol implementation</span>
+<a name="l00066"></a>00066 <span class="comment"></span>- (NSString *)title;
+<a name="l00068"></a>00068 - (void)setTitle:(NSString *)text;
 <a name="l00069"></a>00069 
-<a name="l00071"></a>00071 - (NSString *)subtitle;
-<a name="l00073"></a>00073 - (void)setSubtitle:(NSString *)text;
-<a name="l00074"></a>00074 
+<a name="l00070"></a>00070 
+<a name="l00072"></a>00072 - (NSString *)subtitle;
+<a name="l00074"></a>00074 - (void)setSubtitle:(NSString *)text;
 <a name="l00075"></a>00075 
-<a name="l00077"></a>00077 - (CLLocationCoordinate2D)coordinate;
-<a name="l00079"></a>00079 - (void)setCoordinate:(CLLocationCoordinate2D)coord;
+<a name="l00077"></a>00077 - (NSString *)groupTag;
+<a name="l00079"></a>00079 - (void)setGroupTag:(NSString *)tag;
 <a name="l00080"></a>00080 
-<a name="l00081"></a>00081 <span class="keyword">@end</span>
+<a name="l00082"></a>00082 - (CLLocationCoordinate2D)coordinate;
+<a name="l00084"></a>00084 - (void)setCoordinate:(CLLocationCoordinate2D)coord;
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086 <span class="keyword">@end</span>
 </pre></div></div>
 </div>
 <!-- window showing the filter options -->
@@ -128,7 +131,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -137,7 +140,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Jul 21 2011 21:18:34 for OCMapView by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 13 2012 22:25:28 for OCMapView by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
 </body>

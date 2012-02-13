@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>OCMapView: /Users/Boti/Desktop/OClusterMapView+Sample/OCMapView/OCAlgorithms.h Source File</title>
+<title>OCMapView: /Users/Boti/Documents/coding/iPhone Development/OCMapView+Sample/OCMapView/OCAlgorithms.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -30,7 +30,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -53,12 +53,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">/Users/Boti/Desktop/OClusterMapView+Sample/OCMapView/OCAlgorithms.h</div>  </div>
+<div class="title">/Users/Boti/Documents/coding/iPhone Development/OCMapView+Sample/OCMapView/OCAlgorithms.h</div>  </div>
 </div>
 <div class="contents">
 <a href="_o_c_algorithms_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">//</span>
@@ -81,25 +81,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00020"></a>00020 
 <a name="l00022"></a><a class="code" href="protocol_o_c_algorithm_delegate-p.html">00022</a> <span class="keyword">@protocol </span><a class="code" href="protocol_o_c_algorithm_delegate-p.html" title="Protocol for notifying on Cluster events. NOT in use yet.">OCAlgorithmDelegate</a> &lt;NSObject&gt;
 <a name="l00023"></a>00023 <span class="keyword">@required</span>
-<a name="l00025"></a>00025 - (NSArray *)<a class="code" href="protocol_o_c_algorithm_delegate-p.html#a140ab364a712c9fe5bd0efe1f007b2a4" title="Called when an algorithm finishes a block of calculations.">algorithmClusteredPartially</a>;
+<a name="l00025"></a>00025 - (NSArray *)<a class="code" href="protocol_o_c_algorithm_delegate-p.html#a9a32707d3b9d7bb5898ddf1f98b77f78" title="Called when an algorithm finishes a block of calculations.">algorithmClusteredPartially</a>;
 <a name="l00026"></a>00026 <span class="keyword">@optional</span>
-<a name="l00028"></a>00028 - (void)<a class="code" href="protocol_o_c_algorithm_delegate-p.html#a63d0fc732a3609aa46bb4dd123262b44" title="Called when algorithm starts calculating.">algorithmDidBeganClustering</a>;
-<a name="l00030"></a>00030 - (void)<a class="code" href="protocol_o_c_algorithm_delegate-p.html#a21bfcac7d4166fc586913f315cb37276" title="Called when algorithm finishes calculating.">algorithmDidFinishClustering</a>;
+<a name="l00028"></a>00028 - (void)<a class="code" href="protocol_o_c_algorithm_delegate-p.html#a7533a1ccc48862f5fbd4e12f9f907bbf" title="Called when algorithm starts calculating.">algorithmDidBeganClustering</a>;
+<a name="l00030"></a>00030 - (void)<a class="code" href="protocol_o_c_algorithm_delegate-p.html#ab9842667badf87c6c3e051a8135b8b3c" title="Called when algorithm finishes calculating.">algorithmDidFinishClustering</a>;
 <a name="l00031"></a>00031 <span class="keyword">@end</span>
 <a name="l00032"></a>00032 
 <a name="l00034"></a>00034 
-<a name="l00043"></a><a class="code" href="interface_o_c_algorithms.html">00043</a> <span class="keyword">@interface </span><a class="code" href="interface_o_c_algorithms.html" title="Class containing clustering algorithms.">OCAlgorithms</a>{
+<a name="l00043"></a><a class="code" href="interface_o_c_algorithms.html">00043</a> <span class="keyword">@interface </span><a class="code" href="interface_o_c_algorithms.html" title="Class containing clustering algorithms.">OCAlgorithms</a> : NSObject{
 <a name="l00045"></a>00045 
-<a name="l00047"></a><a class="code" href="interface_o_c_algorithms.html#aab2c2e3ec951bc9e0ed31490d404219e">00047</a>     id &lt;OCAlgorithmDelegate&gt; <a class="code" href="interface_o_c_algorithms.html#aab2c2e3ec951bc9e0ed31490d404219e" title="Delegate for notifying on finished tasks.">delegate</a>;
+<a name="l00047"></a><a class="code" href="interface_o_c_algorithms.html#a91c431a18dc0a5cbd12b6a6bac6a9630">00047</a>     id &lt;OCAlgorithmDelegate&gt; <a class="code" href="interface_o_c_algorithms.html#a91c431a18dc0a5cbd12b6a6bac6a9630" title="Delegate for notifying on finished tasks.">delegate</a>;
 <a name="l00048"></a>00048 }
 <a name="l00049"></a>00049 
 <a name="l00051"></a>00051 
-<a name="l00058"></a>00058 + (NSArray*) bubbleClusteringWithAnnotations:(NSArray *) annotationsToCluster andClusterRadius:(CLLocationDistance)radius;
+<a name="l00058"></a>00058 + (NSArray*) bubbleClusteringWithAnnotations:(NSArray *) annotationsToCluster andClusterRadius:(CLLocationDistance)radius grouped:(BOOL) grouped;
 <a name="l00059"></a>00059 
 <a name="l00060"></a>00060 
 <a name="l00061"></a>00061 
 <a name="l00063"></a>00063 
-<a name="l00069"></a>00069 + (NSArray*) gridClusteringWithAnnotations:(NSArray *) annotationsToCluster andClusterRect:(MKCoordinateSpan)tileRect;
+<a name="l00069"></a>00069 + (NSArray*) gridClusteringWithAnnotations:(NSArray *) annotationsToCluster andClusterRect:(MKCoordinateSpan)tileRect grouped:(BOOL) grouped;
 <a name="l00070"></a>00070 
 <a name="l00071"></a>00071 <span class="keyword">@end</span>
 </pre></div></div>
@@ -109,7 +109,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -118,7 +118,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Jul 21 2011 21:18:34 for OCMapView by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 13 2012 22:25:28 for OCMapView by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
 </body>

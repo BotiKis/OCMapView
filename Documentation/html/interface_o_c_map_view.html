@@ -30,7 +30,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -52,9 +52,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
-      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
+      <li><a href="classes.html"><span>Data&#160;Structure&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Data&#160;Fields</span></a></li>
     </ul>
   </div>
 </div>
@@ -72,53 +73,55 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  <a href="interface_o_c_map_view.html#details">More...</a></p>
 
 <p><code>#import &lt;<a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>&gt;</code></p>
-
-<p><a href="class_o_c_map_view-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#a5890c9cff87b536d77da538bf6bc578c">addAnnotation:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the specified annotation to the map view.  <a href="#a5890c9cff87b536d77da538bf6bc578c"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#a73fa6a358c387bc91e30b1cdd3b1dc70">addAnnotations:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an array of annotations to the map view.  <a href="#a73fa6a358c387bc91e30b1cdd3b1dc70"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#ade47220006a5c023cc62414033f305ea">removeAnnotation:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the specified annotation object from the map view.  <a href="#ade47220006a5c023cc62414033f305ea"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#a5e2d7160d714192f774fbeb638a4a762">removeAnnotations:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the specified annotation objects from the map view.  <a href="#a5e2d7160d714192f774fbeb638a4a762"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#a80b637f6f4e638582abfa6ac901667a3">annotations</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#a4398ebf5e301a19d510bdf59a89a248f">displayedAnnotations</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#ad3a04456c2b1050bcff83de1a6998a01">setClusteringEnabled:</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#af6d304cdf0e336c20a22512723a1ac6e">doClustering</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the clustering of annotations.  <a href="#af6d304cdf0e336c20a22512723a1ac6e"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#ab9a7bfb6f3d1d194d5e358a5ae0851f0">filterAnnotationsForVisibleMap:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters annotations for visibleMapRect.  <a href="#ab9a7bfb6f3d1d194d5e358a5ae0851f0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#a4d581dca4cf2505d4d460bd31ea77860">addAnnotation:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the specified annotation to the map view.  <a href="#a4d581dca4cf2505d4d460bd31ea77860"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#a67ec128e2c51e0df6d964b53f900489a">addAnnotations:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an array of annotations to the map view.  <a href="#a67ec128e2c51e0df6d964b53f900489a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#a51f07c18b989bfba93033dc15bbfa886">removeAnnotation:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the specified annotation object from the map view.  <a href="#a51f07c18b989bfba93033dc15bbfa886"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#abceec438d66243cacdace1d11a910eb2">removeAnnotations:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the specified annotation objects from the map view.  <a href="#abceec438d66243cacdace1d11a910eb2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#a6f28278c9aff5249d634e5fd3d9f0a39">annotations</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#ab12ac89b42132c7e72fb8d7fc2fdf061">displayedAnnotations</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#a9e1c528abf0c86d0d4894acc67c0fd2f">setClusteringEnabled:</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#a8d3377eca354a856ea7c0308bede7ad4">doClustering</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the clustering of annotations.  <a href="#a8d3377eca354a856ea7c0308bede7ad4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#a1dd4e9f7f0c9030bbbf3f812609b488d">filterAnnotationsForVisibleMap:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters annotations for visibleMapRect.  <a href="#a1dd4e9f7f0c9030bbbf3f812609b488d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_map_view.html#a08b14dc93787d96335f9be9146aa7752">initSetUp</a></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">NSMutableSet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_map_view.html#a3b3cffc99df3b15d1d5a32883efc6596">allAnnotations</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">NSMutableSet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_map_view.html#adadb36904f1ee3a57c09067cb6202cd9">allAnnotations</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">dispatch_queue_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_map_view.html#a3e785fc8662bb3814ecb3bcd58dc4ee5">backgroundClusterQueue</a></td></tr>
 <tr><td colspan="2"><h2><a name="properties"></a>
 Properties</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_map_view.html#ab4dac3318b07b3cea335bd34a1dad3b2">annotations</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The complete list of annotations associated with the receiver. (read-only)  <a href="#ab4dac3318b07b3cea335bd34a1dad3b2"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">NSMutableSet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_map_view.html#aa5504698c05fab8b27f38626e686a7cb">annotationsToIgnore</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">List of annotations which will be ignored by the clustering algorithm.  <a href="#aa5504698c05fab8b27f38626e686a7cb"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_map_view.html#a213d42457160e50e61b93e02efbec1c3">displayedAnnotations</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The complete list of annotations displayed on the map including clusters (read-only).  <a href="#a213d42457160e50e61b93e02efbec1c3"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_map_view.html#ab85cea6cbf085f01c01041534d890bf2">clusteringEnabled</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">enables or disables clustering.  <a href="#ab85cea6cbf085f01c01041534d890bf2"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_o_c_algorithms_8h.html#abe72aeeda45ff785db4d9193dd8f337c">OCClusteringMethod</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_map_view.html#a71cca9db26878dc1eaec14c8284ad3e5">clusteringMethod</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the clustering algorithm which should be used.  <a href="#a71cca9db26878dc1eaec14c8284ad3e5"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">CLLocationDistance&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_map_view.html#a334db0e1ea9543611ed1018336be8bdf">clusterSize</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the cluster size in units of the map width.  <a href="#a334db0e1ea9543611ed1018336be8bdf"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">CLLocationDegrees&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_map_view.html#a4fef04dcc1bf960fb79a0c2a27795621">minLongitudeDeltaToCluster</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the "zoom" from where the map should start clustering.  <a href="#a4fef04dcc1bf960fb79a0c2a27795621"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_map_view.html#a654acca9d6d98620c7135e73e01c314c">annotations</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The complete list of annotations associated with the receiver. (read-only)  <a href="#a654acca9d6d98620c7135e73e01c314c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">NSMutableSet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_map_view.html#a685d404c082069cd0011c57c25e69c62">annotationsToIgnore</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">List of annotations which will be ignored by the clustering algorithm.  <a href="#a685d404c082069cd0011c57c25e69c62"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_map_view.html#aeddd7da35ff8fb6209813a84aef7dd26">displayedAnnotations</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The complete list of annotations displayed on the map including clusters (read-only).  <a href="#aeddd7da35ff8fb6209813a84aef7dd26"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_map_view.html#a18dcc38d00becc477d6a19cd5724960e">clusteringEnabled</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">enables or disables clustering.  <a href="#a18dcc38d00becc477d6a19cd5724960e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_o_c_algorithms_8h.html#abe72aeeda45ff785db4d9193dd8f337c">OCClusteringMethod</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_map_view.html#a9a3446cb72c4b4b4f4e2b6a44948e4b6">clusteringMethod</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the clustering algorithm which should be used.  <a href="#a9a3446cb72c4b4b4f4e2b6a44948e4b6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">CLLocationDistance&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_map_view.html#a2e2bc53230717c10b535623bfefa5971">clusterSize</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the cluster size in units of the map width.  <a href="#a2e2bc53230717c10b535623bfefa5971"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_map_view.html#ad9a83feeb0ec3a7c05943fad09abee5d">clusterByGroupTag</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables multiple Clusters.  <a href="#ad9a83feeb0ec3a7c05943fad09abee5d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">CLLocationDegrees&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_map_view.html#a6ffc1eb2a131bf28e5e3ac29c59208d4">minLongitudeDeltaToCluster</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the "zoom" from where the map should start clustering.  <a href="#a6ffc1eb2a131bf28e5e3ac29c59208d4"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>MapView which should be used instead of MKMapView. </p>
 <p><a class="el" href="interface_o_c_map_view.html" title="MapView which should be used instead of MKMapView.">OCMapView</a> works like the standard MKMapView but creates clusters form its containing Annotations. </p>
 
-<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00016">16</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00018">18</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
 </div><hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a5890c9cff87b536d77da538bf6bc578c"></a><!-- doxytag: member="OCMapView::addAnnotation:" ref="a5890c9cff87b536d77da538bf6bc578c" args="(id&lt; MKAnnotation &gt; annotation)" -->
+<a class="anchor" id="a4d581dca4cf2505d4d460bd31ea77860"></a><!-- doxytag: member="OCMapView::addAnnotation:" ref="a4d581dca4cf2505d4d460bd31ea77860" args="(id&lt; MKAnnotation &gt; annotation)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -136,11 +139,11 @@ Properties</h2></td></tr>
 <p>Adds the specified annotation to the map view. </p>
 <p>The annotation object to add to the receiver. This object must conform to the MKAnnotation protocol. </p>
 
-<p>Definition at line <a class="el" href="_o_c_map_view_8m_source.html#l00048">48</a> of file <a class="el" href="_o_c_map_view_8m_source.html">OCMapView.m</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_map_view_8m_source.html#l00064">64</a> of file <a class="el" href="_o_c_map_view_8m_source.html">OCMapView.m</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a73fa6a358c387bc91e30b1cdd3b1dc70"></a><!-- doxytag: member="OCMapView::addAnnotations:" ref="a73fa6a358c387bc91e30b1cdd3b1dc70" args="(NSArray *annotations)" -->
+<a class="anchor" id="a67ec128e2c51e0df6d964b53f900489a"></a><!-- doxytag: member="OCMapView::addAnnotations:" ref="a67ec128e2c51e0df6d964b53f900489a" args="(NSArray *annotations)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -158,11 +161,11 @@ Properties</h2></td></tr>
 <p>Adds an array of annotations to the map view. </p>
 <p>An array of annotation objects. Each object in the array must conform to the MKAnnotation protocol. </p>
 
-<p>Definition at line <a class="el" href="_o_c_map_view_8m_source.html#l00053">53</a> of file <a class="el" href="_o_c_map_view_8m_source.html">OCMapView.m</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_map_view_8m_source.html#l00069">69</a> of file <a class="el" href="_o_c_map_view_8m_source.html">OCMapView.m</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a80b637f6f4e638582abfa6ac901667a3"></a><!-- doxytag: member="OCMapView::annotations" ref="a80b637f6f4e638582abfa6ac901667a3" args="()" -->
+<a class="anchor" id="a6f28278c9aff5249d634e5fd3d9f0a39"></a><!-- doxytag: member="OCMapView::annotations" ref="a6f28278c9aff5249d634e5fd3d9f0a39" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -178,7 +181,7 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a4398ebf5e301a19d510bdf59a89a248f"></a><!-- doxytag: member="OCMapView::displayedAnnotations" ref="a4398ebf5e301a19d510bdf59a89a248f" args="()" -->
+<a class="anchor" id="ab12ac89b42132c7e72fb8d7fc2fdf061"></a><!-- doxytag: member="OCMapView::displayedAnnotations" ref="ab12ac89b42132c7e72fb8d7fc2fdf061" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -194,7 +197,7 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af6d304cdf0e336c20a22512723a1ac6e"></a><!-- doxytag: member="OCMapView::doClustering" ref="af6d304cdf0e336c20a22512723a1ac6e" args="()" -->
+<a class="anchor" id="a8d3377eca354a856ea7c0308bede7ad4"></a><!-- doxytag: member="OCMapView::doClustering" ref="a8d3377eca354a856ea7c0308bede7ad4" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -211,11 +214,11 @@ Properties</h2></td></tr>
 <p>Start the clustering of annotations. </p>
 <p>Handles the ignoreList of annotations, calls the defined clustering algorithm and adds the clustered annotations to the map. </p>
 
-<p>Definition at line <a class="el" href="_o_c_map_view_8m_source.html#l00096">96</a> of file <a class="el" href="_o_c_map_view_8m_source.html">OCMapView.m</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_map_view_8m_source.html#l00114">114</a> of file <a class="el" href="_o_c_map_view_8m_source.html">OCMapView.m</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ab9a7bfb6f3d1d194d5e358a5ae0851f0"></a><!-- doxytag: member="OCMapView::filterAnnotationsForVisibleMap:" ref="ab9a7bfb6f3d1d194d5e358a5ae0851f0" args="(NSArray *annotationsToFilter)" -->
+<a class="anchor" id="a1dd4e9f7f0c9030bbbf3f812609b488d"></a><!-- doxytag: member="OCMapView::filterAnnotationsForVisibleMap:" ref="a1dd4e9f7f0c9030bbbf3f812609b488d" args="(NSArray *annotationsToFilter)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -233,11 +236,27 @@ Properties</h2></td></tr>
 <p>Filters annotations for visibleMapRect. </p>
 <p>This method filters the annotations for the visibleMapRect. </p>
 
-<p>Definition at line <a class="el" href="_o_c_map_view_8m_source.html#l00147">147</a> of file <a class="el" href="_o_c_map_view_8m_source.html">OCMapView.m</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_map_view_8m_source.html#l00173">173</a> of file <a class="el" href="_o_c_map_view_8m_source.html">OCMapView.m</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ade47220006a5c023cc62414033f305ea"></a><!-- doxytag: member="OCMapView::removeAnnotation:" ref="ade47220006a5c023cc62414033f305ea" args="(id&lt; MKAnnotation &gt; annotation)" -->
+<a class="anchor" id="a08b14dc93787d96335f9be9146aa7752"></a><!-- doxytag: member="OCMapView::initSetUp" ref="a08b14dc93787d96335f9be9146aa7752" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) initSetUp </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a51f07c18b989bfba93033dc15bbfa886"></a><!-- doxytag: member="OCMapView::removeAnnotation:" ref="a51f07c18b989bfba93033dc15bbfa886" args="(id&lt; MKAnnotation &gt; annotation)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -255,11 +274,11 @@ Properties</h2></td></tr>
 <p>Removes the specified annotation object from the map view. </p>
 <p>The annotation object to remove. This object must conform to the MKAnnotation protocol. </p>
 
-<p>Definition at line <a class="el" href="_o_c_map_view_8m_source.html#l00058">58</a> of file <a class="el" href="_o_c_map_view_8m_source.html">OCMapView.m</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_map_view_8m_source.html#l00074">74</a> of file <a class="el" href="_o_c_map_view_8m_source.html">OCMapView.m</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a5e2d7160d714192f774fbeb638a4a762"></a><!-- doxytag: member="OCMapView::removeAnnotations:" ref="a5e2d7160d714192f774fbeb638a4a762" args="(NSArray *annotations)" -->
+<a class="anchor" id="abceec438d66243cacdace1d11a910eb2"></a><!-- doxytag: member="OCMapView::removeAnnotations:" ref="abceec438d66243cacdace1d11a910eb2" args="(NSArray *annotations)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -277,11 +296,11 @@ Properties</h2></td></tr>
 <p>Removes the specified annotation objects from the map view. </p>
 <p>The array of annotations to remove. Objects in the array must conform to the MKAnnotation protocol. </p>
 
-<p>Definition at line <a class="el" href="_o_c_map_view_8m_source.html#l00063">63</a> of file <a class="el" href="_o_c_map_view_8m_source.html">OCMapView.m</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_map_view_8m_source.html#l00079">79</a> of file <a class="el" href="_o_c_map_view_8m_source.html">OCMapView.m</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ad3a04456c2b1050bcff83de1a6998a01"></a><!-- doxytag: member="OCMapView::setClusteringEnabled:" ref="ad3a04456c2b1050bcff83de1a6998a01" args="(BOOL enabled)" -->
+<a class="anchor" id="a9e1c528abf0c86d0d4894acc67c0fd2f"></a><!-- doxytag: member="OCMapView::setClusteringEnabled:" ref="a9e1c528abf0c86d0d4894acc67c0fd2f" args="(BOOL enabled)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -296,28 +315,43 @@ Properties</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_o_c_map_view_8m_source.html#l00088">88</a> of file <a class="el" href="_o_c_map_view_8m_source.html">OCMapView.m</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_map_view_8m_source.html#l00106">106</a> of file <a class="el" href="_o_c_map_view_8m_source.html">OCMapView.m</a>.</p>
 
 </div>
 </div>
-<hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a3b3cffc99df3b15d1d5a32883efc6596"></a><!-- doxytag: member="OCMapView::allAnnotations" ref="a3b3cffc99df3b15d1d5a32883efc6596" args="" -->
+<hr/><h2>Field Documentation</h2>
+<a class="anchor" id="adadb36904f1ee3a57c09067cb6202cd9"></a><!-- doxytag: member="OCMapView::allAnnotations" ref="adadb36904f1ee3a57c09067cb6202cd9" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (NSMutableSet*) <a class="el" href="interface_o_c_map_view.html#a3b3cffc99df3b15d1d5a32883efc6596">allAnnotations</a><code> [protected]</code></td>
+          <td class="memname">- (NSMutableSet*) <a class="el" href="interface_o_c_map_view.html#adadb36904f1ee3a57c09067cb6202cd9">allAnnotations</a><code> [protected]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00018">18</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00020">20</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3e785fc8662bb3814ecb3bcd58dc4ee5"></a><!-- doxytag: member="OCMapView::backgroundClusterQueue" ref="a3e785fc8662bb3814ecb3bcd58dc4ee5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (dispatch_queue_t) <a class="el" href="interface_o_c_map_view.html#a3e785fc8662bb3814ecb3bcd58dc4ee5">backgroundClusterQueue</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00032">32</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Property Documentation</h2>
-<a class="anchor" id="ab4dac3318b07b3cea335bd34a1dad3b2"></a><!-- doxytag: member="OCMapView::annotations" ref="ab4dac3318b07b3cea335bd34a1dad3b2" args="" -->
+<a class="anchor" id="a654acca9d6d98620c7135e73e01c314c"></a><!-- doxytag: member="OCMapView::annotations" ref="a654acca9d6d98620c7135e73e01c314c" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -330,18 +364,18 @@ Properties</h2></td></tr>
 
 <p>The complete list of annotations associated with the receiver. (read-only) </p>
 <p>The objects in this array must adopt the </p>
-<dl class="see"><dt><b>See also:</b></dt><dd>MKAnnotation protocol. If no <a class="el" href="interface_o_c_map_view.html#ab4dac3318b07b3cea335bd34a1dad3b2" title="The complete list of annotations associated with the receiver. (read-only)">annotations</a> are associated with the map view, the value of this property is nil. </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd>MKAnnotation protocol. If no <a class="el" href="interface_o_c_map_view.html#a654acca9d6d98620c7135e73e01c314c" title="The complete list of annotations associated with the receiver. (read-only)">annotations</a> are associated with the map view, the value of this property is nil. </dd></dl>
 
-<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00055">55</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00061">61</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aa5504698c05fab8b27f38626e686a7cb"></a><!-- doxytag: member="OCMapView::annotationsToIgnore" ref="aa5504698c05fab8b27f38626e686a7cb" args="" -->
+<a class="anchor" id="a685d404c082069cd0011c57c25e69c62"></a><!-- doxytag: member="OCMapView::annotationsToIgnore" ref="a685d404c082069cd0011c57c25e69c62" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (NSMutableSet *) annotationsToIgnore<code> [read, write, assign]</code></td>
+          <td class="memname">- (NSMutableSet *) annotationsToIgnore<code> [read, write, retain]</code></td>
         </tr>
       </table>
 </div>
@@ -349,13 +383,31 @@ Properties</h2></td></tr>
 
 <p>List of annotations which will be ignored by the clustering algorithm. </p>
 <p>The objects in this array must adopt the </p>
-<dl class="see"><dt><b>See also:</b></dt><dd>MKAnnotation protocol. The clustering algorithms will automatically ignore this <a class="el" href="interface_o_c_map_view.html#ab4dac3318b07b3cea335bd34a1dad3b2" title="The complete list of annotations associated with the receiver. (read-only)">annotations</a>. </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd>MKAnnotation protocol. The clustering algorithms will automatically ignore this <a class="el" href="interface_o_c_map_view.html#a654acca9d6d98620c7135e73e01c314c" title="The complete list of annotations associated with the receiver. (read-only)">annotations</a>. </dd></dl>
 
-<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00019">19</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00021">21</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ab85cea6cbf085f01c01041534d890bf2"></a><!-- doxytag: member="OCMapView::clusteringEnabled" ref="ab85cea6cbf085f01c01041534d890bf2" args="" -->
+<a class="anchor" id="ad9a83feeb0ec3a7c05943fad09abee5d"></a><!-- doxytag: member="OCMapView::clusterByGroupTag" ref="ad9a83feeb0ec3a7c05943fad09abee5d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (BOOL) clusterByGroupTag<code> [read, write, assign]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Enables multiple Clusters. </p>
+<p>If enabled, tha mapview will generate different clusters for Tags implemented by the <a class="el" href="protocol_o_c_grouping-p.html" title="Protocol which is needed to use different groups of clusters.">OCGrouping</a> protocol. default: NO </p>
+
+<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00028">28</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a18dcc38d00becc477d6a19cd5724960e"></a><!-- doxytag: member="OCMapView::clusteringEnabled" ref="a18dcc38d00becc477d6a19cd5724960e" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -368,14 +420,14 @@ Properties</h2></td></tr>
 
 <p>enables or disables clustering. </p>
 <p>Setting this property will automatical call doClustering </p>
-<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="interface_o_c_map_view.html#af6d304cdf0e336c20a22512723a1ac6e" title="Start the clustering of annotations.">- doClustering</a>.</dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="interface_o_c_map_view.html#a8d3377eca354a856ea7c0308bede7ad4" title="Start the clustering of annotations.">- doClustering</a>.</dd></dl>
 <p>default: YES </p>
 
-<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00023">23</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00025">25</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a71cca9db26878dc1eaec14c8284ad3e5"></a><!-- doxytag: member="OCMapView::clusteringMethod" ref="a71cca9db26878dc1eaec14c8284ad3e5" args="" -->
+<a class="anchor" id="a9a3446cb72c4b4b4f4e2b6a44948e4b6"></a><!-- doxytag: member="OCMapView::clusteringMethod" ref="a9a3446cb72c4b4b4f4e2b6a44948e4b6" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -390,11 +442,11 @@ Properties</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="_o_c_algorithms_8h.html#abe72aeeda45ff785db4d9193dd8f337c" title="Enumaration for the clustering methods.">OCClusteringMethod</a> for more information</dd></dl>
 <p>default: OCClusteringMethodBubble </p>
 
-<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00024">24</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00026">26</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a334db0e1ea9543611ed1018336be8bdf"></a><!-- doxytag: member="OCMapView::clusterSize" ref="a334db0e1ea9543611ed1018336be8bdf" args="" -->
+<a class="anchor" id="a2e2bc53230717c10b535623bfefa5971"></a><!-- doxytag: member="OCMapView::clusterSize" ref="a2e2bc53230717c10b535623bfefa5971" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -408,11 +460,11 @@ Properties</h2></td></tr>
 <p>Defines the cluster size in units of the map width. </p>
 <p>eg. clusterSize 0.5 is the half of the map. default: 0.2 </p>
 
-<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00025">25</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00027">27</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a213d42457160e50e61b93e02efbec1c3"></a><!-- doxytag: member="OCMapView::displayedAnnotations" ref="a213d42457160e50e61b93e02efbec1c3" args="" -->
+<a class="anchor" id="aeddd7da35ff8fb6209813a84aef7dd26"></a><!-- doxytag: member="OCMapView::displayedAnnotations" ref="aeddd7da35ff8fb6209813a84aef7dd26" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -425,13 +477,13 @@ Properties</h2></td></tr>
 
 <p>The complete list of annotations displayed on the map including clusters (read-only). </p>
 <p>The objects in this array must adopt the </p>
-<dl class="see"><dt><b>See also:</b></dt><dd>MKAnnotation protocol. It contains all <a class="el" href="interface_o_c_map_view.html#ab4dac3318b07b3cea335bd34a1dad3b2" title="The complete list of annotations associated with the receiver. (read-only)">annotations</a> as they are on the MapView. </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd>MKAnnotation protocol. It contains all <a class="el" href="interface_o_c_map_view.html#a654acca9d6d98620c7135e73e01c314c" title="The complete list of annotations associated with the receiver. (read-only)">annotations</a> as they are on the MapView. </dd></dl>
 
-<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00067">67</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00073">73</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a4fef04dcc1bf960fb79a0c2a27795621"></a><!-- doxytag: member="OCMapView::minLongitudeDeltaToCluster" ref="a4fef04dcc1bf960fb79a0c2a27795621" args="" -->
+<a class="anchor" id="a6ffc1eb2a131bf28e5e3ac29c59208d4"></a><!-- doxytag: member="OCMapView::minLongitudeDeltaToCluster" ref="a6ffc1eb2a131bf28e5e3ac29c59208d4" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -445,13 +497,13 @@ Properties</h2></td></tr>
 <p>Defines the "zoom" from where the map should start clustering. </p>
 <p>If the map is zoomed below this value it won't cluster. default: 0.0 (no min. zoom) </p>
 
-<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00026">26</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_map_view_8h_source.html#l00029">29</a> of file <a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/Users/Boti/Desktop/OClusterMapView+Sample/OCMapView/<a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a></li>
-<li>/Users/Boti/Desktop/OClusterMapView+Sample/OCMapView/<a class="el" href="_o_c_map_view_8m_source.html">OCMapView.m</a></li>
+<li>/Users/Boti/Documents/coding/iPhone Development/OCMapView+Sample/OCMapView/<a class="el" href="_o_c_map_view_8h_source.html">OCMapView.h</a></li>
+<li>/Users/Boti/Documents/coding/iPhone Development/OCMapView+Sample/OCMapView/<a class="el" href="_o_c_map_view_8m_source.html">OCMapView.m</a></li>
 </ul>
 </div>
 <!-- window showing the filter options -->
@@ -459,7 +511,7 @@ Properties</h2></td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -468,7 +520,7 @@ Properties</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Jul 21 2011 21:18:34 for OCMapView by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 13 2012 22:25:28 for OCMapView by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
 </body>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>OCMapView: /Users/Boti/Desktop/OClusterMapView+Sample/OCMapView/OCAnnotation.m Source File</title>
+<title>OCMapView: /Users/Boti/Documents/coding/iPhone Development/OCMapView+Sample/OCMapView/OCAnnotation.m Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -30,7 +30,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -53,12 +53,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">/Users/Boti/Desktop/OClusterMapView+Sample/OCMapView/OCAnnotation.m</div>  </div>
+<div class="title">/Users/Boti/Documents/coding/iPhone Development/OCMapView+Sample/OCMapView/OCAnnotation.m</div>  </div>
 </div>
 <div class="contents">
 <a href="_o_c_annotation_8m.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">//</span>
@@ -71,89 +71,134 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00008"></a>00008 <span class="preprocessor">#import &quot;<a class="code" href="_o_c_annotation_8h.html">OCAnnotation.h</a>&quot;</span>
 <a name="l00009"></a>00009 
 <a name="l00010"></a>00010 <span class="keyword">@implementation </span><a class="code" href="interface_o_c_annotation.html" title="Annotation class which represents a Cluster.">OCAnnotation</a>
-<a name="l00011"></a>00011 <span class="keyword">@synthesize</span> <a class="code" href="interface_o_c_annotation.html#a77a4843fde8e33c7acc73957d66010d0" title="Get the coordinate of the cluster.">coordinate</a>;
+<a name="l00011"></a>00011 <span class="keyword">@synthesize</span> <a class="code" href="interface_o_c_annotation.html#a377c9caa829a929c4e50424510dc1a9a" title="Get the coordinate of the cluster.">coordinate</a>;
 <a name="l00012"></a>00012 
-<a name="l00013"></a><a class="code" href="interface_o_c_annotation.html#a57ad2fd0acc7f81a31f4ddb709653418">00013</a> - (id)<a class="code" href="interface_o_c_annotation.html#a57ad2fd0acc7f81a31f4ddb709653418" title="Standard initializer.">init</a>
-<a name="l00014"></a>00014 {
-<a name="l00015"></a>00015     <span class="keyword">self</span> = [<span class="keyword">super</span> init];
-<a name="l00016"></a>00016     <span class="keywordflow">if</span> (<span class="keyword">self</span>) {
-<a name="l00017"></a>00017         <a class="code" href="interface_o_c_annotation.html#a18b600e17cdc551dbe3274fff97dc26b" title="Get the Title of the cluster.">title</a> = <a class="code" href="interface_o_c_annotation.html#ae33485fa8be0fa811c5463b66d95e776" title="Get the Subtitle of the cluster.">subtitle</a> = <span class="stringliteral">@&quot;&quot;</span>;
-<a name="l00018"></a>00018         <a class="code" href="interface_o_c_annotation.html#a77a4843fde8e33c7acc73957d66010d0" title="Get the coordinate of the cluster.">coordinate</a> = CLLocationCoordinate2DMake(0.0, 0.0);
-<a name="l00019"></a>00019         <a class="code" href="interface_o_c_annotation.html#a1801f4f5f66d45be7f79deb84d888bda" title="List of annotations in the cluster.">annotationsInCluster</a> = [[NSMutableArray alloc] init];
-<a name="l00020"></a>00020     }
-<a name="l00021"></a>00021     
-<a name="l00022"></a>00022     <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00023"></a>00023 }
-<a name="l00024"></a>00024 
-<a name="l00025"></a><a class="code" href="interface_o_c_annotation.html#a3b2fcbe6872b025f27bbfc0703804fc4">00025</a> - (id)initWithAnnotation:(<span class="keywordtype">id</span> &lt;MKAnnotation&gt;) annotation{
-<a name="l00026"></a>00026     <span class="keyword">self</span> = [<span class="keyword">self</span> <a class="code" href="interface_o_c_annotation.html#a57ad2fd0acc7f81a31f4ddb709653418" title="Standard initializer.">init</a>];
-<a name="l00027"></a>00027     <a class="code" href="interface_o_c_annotation.html#a77a4843fde8e33c7acc73957d66010d0" title="Get the coordinate of the cluster.">coordinate</a> = [annotation coordinate];
-<a name="l00028"></a>00028     [<a class="code" href="interface_o_c_annotation.html#a2e9d8607cce8764664a387959a4b7cf9">annotationsInCluster</a> addObject:annotation];
+<a name="l00013"></a>00013 
+<a name="l00014"></a>00014 <span class="comment">// Memory</span>
+<a name="l00015"></a><a class="code" href="interface_o_c_annotation.html#a4213bb26f5207ee3f402fe463badc691">00015</a> - (id)<a class="code" href="interface_o_c_annotation.html#a4213bb26f5207ee3f402fe463badc691" title="Standard initializer.">init</a>
+<a name="l00016"></a>00016 {
+<a name="l00017"></a>00017     <span class="keyword">self</span> = [<span class="keyword">super</span> init];
+<a name="l00018"></a>00018     <span class="keywordflow">if</span> (<span class="keyword">self</span>) {
+<a name="l00019"></a>00019         <a class="code" href="interface_o_c_annotation.html#a5f95391c4e2ec90c4122a5fde9d29e85">_groupTag</a> = <a class="code" href="interface_o_c_annotation.html#a6a39015256ae82e8a3110f254f86c7b0" title="Get the Title of the cluster.">title</a> = <a class="code" href="interface_o_c_annotation.html#af6f703c067b8d6c8725c94a4977ecf50" title="Get the Subtitle of the cluster.">subtitle</a> = [[NSString stringWithFormat:@&quot;&quot;] retain];
+<a name="l00020"></a>00020         <a class="code" href="interface_o_c_annotation.html#a377c9caa829a929c4e50424510dc1a9a" title="Get the coordinate of the cluster.">coordinate</a> = CLLocationCoordinate2DMake(0.0, 0.0);
+<a name="l00021"></a>00021         <a class="code" href="interface_o_c_annotation.html#afca7d4a7ccde1c7f27239c7ee7591975" title="List of annotations in the cluster.">annotationsInCluster</a> = [[NSMutableArray alloc] init];
+<a name="l00022"></a>00022     }
+<a name="l00023"></a>00023     
+<a name="l00024"></a>00024     <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00025"></a>00025 }
+<a name="l00026"></a>00026 
+<a name="l00027"></a><a class="code" href="interface_o_c_annotation.html#ae512d98b7ecb301de4d73d9ca8c82e46">00027</a> - (id)initWithAnnotation:(<span class="keywordtype">id</span> &lt;MKAnnotation&gt;) annotation{
+<a name="l00028"></a>00028     [annotation retain];
 <a name="l00029"></a>00029     
-<a name="l00030"></a>00030     <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00031"></a>00031 }
-<a name="l00032"></a>00032 
-<a name="l00033"></a>00033 <span class="comment">//</span>
-<a name="l00034"></a>00034 <span class="comment">// List of annotations in the cluster</span>
-<a name="l00035"></a>00035 <span class="comment">// read only</span>
-<a name="l00036"></a>00036 - (NSArray *)<a class="code" href="interface_o_c_annotation.html#a1801f4f5f66d45be7f79deb84d888bda" title="List of annotations in the cluster.">annotationsInCluster</a>{
-<a name="l00037"></a>00037     <span class="keywordflow">return</span> <a class="code" href="interface_o_c_annotation.html#a1801f4f5f66d45be7f79deb84d888bda" title="List of annotations in the cluster.">annotationsInCluster</a>;
-<a name="l00038"></a>00038 }
-<a name="l00039"></a>00039 
-<a name="l00040"></a>00040 
-<a name="l00041"></a>00041 <span class="comment">//</span>
-<a name="l00042"></a>00042 <span class="comment">// manipulate cluster</span>
-<a name="l00043"></a><a class="code" href="interface_o_c_annotation.html#a0aa61447a4de69adfc8d55bfb32dca9d">00043</a> - (void)addAnnotation:(<span class="keywordtype">id</span> &lt; MKAnnotation &gt;)annotation{
-<a name="l00044"></a>00044     <span class="comment">// Add annotation to the cluster</span>
-<a name="l00045"></a>00045     [<a class="code" href="interface_o_c_annotation.html#a2e9d8607cce8764664a387959a4b7cf9">annotationsInCluster</a> addObject:annotation];
-<a name="l00046"></a>00046     <span class="keyword">self</span>.title = [NSString stringWithFormat:@&quot;%d&quot;, [<a class="code" href="interface_o_c_annotation.html#a2e9d8607cce8764664a387959a4b7cf9">annotationsInCluster</a> count]];
-<a name="l00047"></a>00047 }
-<a name="l00048"></a>00048 
-<a name="l00049"></a><a class="code" href="interface_o_c_annotation.html#a80a833f6358fa16f040ef0e00aef8227">00049</a> - (void)addAnnotations:(NSArray *)annotations{
-<a name="l00050"></a>00050     <span class="keywordflow">for</span> (id&lt;MKAnnotation&gt; annotation in annotations) {
-<a name="l00051"></a>00051         [<span class="keyword">self</span> <a class="code" href="interface_o_c_annotation.html#a0aa61447a4de69adfc8d55bfb32dca9d" title="Adds a single annotation to the cluster.">addAnnotation</a>: annotation];
-<a name="l00052"></a>00052     }
+<a name="l00030"></a>00030     <span class="keyword">self</span> = [<span class="keyword">super</span> init];
+<a name="l00031"></a>00031     <span class="keywordflow">if</span> (<span class="keyword">self</span>) {
+<a name="l00032"></a>00032         <a class="code" href="interface_o_c_annotation.html#a377c9caa829a929c4e50424510dc1a9a" title="Get the coordinate of the cluster.">coordinate</a> = [annotation coordinate];
+<a name="l00033"></a>00033         <a class="code" href="interface_o_c_annotation.html#afca7d4a7ccde1c7f27239c7ee7591975" title="List of annotations in the cluster.">annotationsInCluster</a> = [[NSMutableArray alloc] init];
+<a name="l00034"></a>00034         [<a class="code" href="interface_o_c_annotation.html#ad9449e4c93edf0863c7c557256e2927b">annotationsInCluster</a> addObject:annotation];
+<a name="l00035"></a>00035         
+<a name="l00036"></a>00036         <a class="code" href="interface_o_c_annotation.html#a6a39015256ae82e8a3110f254f86c7b0" title="Get the Title of the cluster.">title</a> = [annotation.title retain];
+<a name="l00037"></a>00037         <a class="code" href="interface_o_c_annotation.html#af6f703c067b8d6c8725c94a4977ecf50" title="Get the Subtitle of the cluster.">subtitle</a> = [annotation.title retain];
+<a name="l00038"></a>00038         <a class="code" href="interface_o_c_annotation.html#a5f95391c4e2ec90c4122a5fde9d29e85">_groupTag</a> = [[NSString stringWithFormat:@&quot;&quot;] retain];
+<a name="l00039"></a>00039     }
+<a name="l00040"></a>00040     [annotation release];
+<a name="l00041"></a>00041     
+<a name="l00042"></a>00042     <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00043"></a>00043 }
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045 - (void)dealloc {
+<a name="l00046"></a>00046     [annotationsInCluster release];
+<a name="l00047"></a>00047     
+<a name="l00048"></a>00048     [title release];
+<a name="l00049"></a>00049     [subtitle release];
+<a name="l00050"></a>00050     [_groupTag release];
+<a name="l00051"></a>00051     
+<a name="l00052"></a>00052     [<span class="keyword">super</span> dealloc];
 <a name="l00053"></a>00053 }
 <a name="l00054"></a>00054 
-<a name="l00055"></a><a class="code" href="interface_o_c_annotation.html#a1b369229c5d6b6a767271d83b700bdaf">00055</a> - (void)removeAnnotation:(<span class="keywordtype">id</span> &lt; MKAnnotation &gt;)annotation{
-<a name="l00056"></a>00056     <span class="comment">// Remove annotation from cluster</span>
-<a name="l00057"></a>00057     [<a class="code" href="interface_o_c_annotation.html#a2e9d8607cce8764664a387959a4b7cf9">annotationsInCluster</a> removeObject:annotation];
-<a name="l00058"></a>00058     <span class="keyword">self</span>.title = [NSString stringWithFormat:@&quot;%d&quot;, [<a class="code" href="interface_o_c_annotation.html#a2e9d8607cce8764664a387959a4b7cf9">annotationsInCluster</a> count]];
-<a name="l00059"></a>00059 }
-<a name="l00060"></a>00060 
-<a name="l00061"></a><a class="code" href="interface_o_c_annotation.html#ae87819fe57fff257bc17c0b5e3c8b0e0">00061</a> - (void)removeAnnotations:(NSArray *)annotations{
-<a name="l00062"></a>00062     <span class="keywordflow">for</span> (id&lt;MKAnnotation&gt; annotation in annotations) {
-<a name="l00063"></a>00063         [<span class="keyword">self</span> <a class="code" href="interface_o_c_annotation.html#a1b369229c5d6b6a767271d83b700bdaf" title="Removes a single annotation from the Cluster.">removeAnnotation</a>: annotation];
-<a name="l00064"></a>00064     }
-<a name="l00065"></a>00065 }
-<a name="l00066"></a>00066 
-<a name="l00067"></a>00067 <span class="comment">//</span>
-<a name="l00068"></a>00068 <span class="comment">// protocoll implementation</span>
-<a name="l00069"></a>00069 - (NSString *)<a class="code" href="interface_o_c_annotation.html#a18b600e17cdc551dbe3274fff97dc26b" title="Get the Title of the cluster.">title</a>{
-<a name="l00070"></a>00070     <span class="keywordflow">return</span> <a class="code" href="interface_o_c_annotation.html#a18b600e17cdc551dbe3274fff97dc26b" title="Get the Title of the cluster.">title</a>;
+<a name="l00055"></a>00055 <span class="comment">//</span>
+<a name="l00056"></a>00056 <span class="comment">// List of annotations in the cluster</span>
+<a name="l00057"></a>00057 <span class="comment">// read only</span>
+<a name="l00058"></a>00058 - (NSArray *)<a class="code" href="interface_o_c_annotation.html#afca7d4a7ccde1c7f27239c7ee7591975" title="List of annotations in the cluster.">annotationsInCluster</a>{
+<a name="l00059"></a>00059     <span class="keywordflow">return</span> <a class="code" href="interface_o_c_annotation.html#afca7d4a7ccde1c7f27239c7ee7591975" title="List of annotations in the cluster.">annotationsInCluster</a>;
+<a name="l00060"></a>00060 }
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 <span class="comment">//</span>
+<a name="l00064"></a>00064 <span class="comment">// manipulate cluster</span>
+<a name="l00065"></a><a class="code" href="interface_o_c_annotation.html#a4d581dca4cf2505d4d460bd31ea77860">00065</a> - (void)addAnnotation:(<span class="keywordtype">id</span> &lt; MKAnnotation &gt;)annotation{
+<a name="l00066"></a>00066     [annotation retain];
+<a name="l00067"></a>00067     
+<a name="l00068"></a>00068     <span class="comment">// Add annotation to the cluster</span>
+<a name="l00069"></a>00069     [<a class="code" href="interface_o_c_annotation.html#ad9449e4c93edf0863c7c557256e2927b">annotationsInCluster</a> addObject:annotation];
+<a name="l00070"></a>00070     [annotation release];
 <a name="l00071"></a>00071 }
 <a name="l00072"></a>00072 
-<a name="l00073"></a><a class="code" href="interface_o_c_annotation.html#a7a440b67aff9d27d2de227eae594d42a">00073</a> - (void)setTitle:(NSString *)text{
-<a name="l00074"></a>00074     <a class="code" href="interface_o_c_annotation.html#a18b600e17cdc551dbe3274fff97dc26b" title="Get the Title of the cluster.">title</a> = text;
-<a name="l00075"></a>00075 }
-<a name="l00076"></a>00076 
-<a name="l00077"></a>00077 - (NSString *)<a class="code" href="interface_o_c_annotation.html#ae33485fa8be0fa811c5463b66d95e776" title="Get the Subtitle of the cluster.">subtitle</a>{
-<a name="l00078"></a>00078     <span class="keywordflow">return</span> <a class="code" href="interface_o_c_annotation.html#ae33485fa8be0fa811c5463b66d95e776" title="Get the Subtitle of the cluster.">subtitle</a>;
+<a name="l00073"></a><a class="code" href="interface_o_c_annotation.html#a67ec128e2c51e0df6d964b53f900489a">00073</a> - (void)addAnnotations:(NSArray *)annotations{
+<a name="l00074"></a>00074     [annotations retain];
+<a name="l00075"></a>00075     <span class="keywordflow">for</span> (id&lt;MKAnnotation&gt; annotation in annotations) {
+<a name="l00076"></a>00076         [<span class="keyword">self</span> <a class="code" href="interface_o_c_annotation.html#a4d581dca4cf2505d4d460bd31ea77860" title="Adds a single annotation to the cluster.">addAnnotation</a>: annotation];
+<a name="l00077"></a>00077     }
+<a name="l00078"></a>00078     [annotations release];
 <a name="l00079"></a>00079 }
 <a name="l00080"></a>00080 
-<a name="l00081"></a><a class="code" href="interface_o_c_annotation.html#a19e5f07dd4f6e49a5f904ef1b5f41aa9">00081</a> - (void)setSubtitle:(NSString *)text{
-<a name="l00082"></a>00082     <a class="code" href="interface_o_c_annotation.html#ae33485fa8be0fa811c5463b66d95e776" title="Get the Subtitle of the cluster.">subtitle</a> = text;
-<a name="l00083"></a>00083 }
-<a name="l00084"></a>00084 
-<a name="l00085"></a>00085 - (CLLocationCoordinate2D)<a class="code" href="interface_o_c_annotation.html#a77a4843fde8e33c7acc73957d66010d0" title="Get the coordinate of the cluster.">coordinate</a>{
-<a name="l00086"></a>00086     <span class="keywordflow">return</span> <a class="code" href="interface_o_c_annotation.html#a77a4843fde8e33c7acc73957d66010d0" title="Get the coordinate of the cluster.">coordinate</a>;
-<a name="l00087"></a>00087 }
-<a name="l00088"></a>00088 
-<a name="l00089"></a><a class="code" href="interface_o_c_annotation.html#a6b57763947990587254c4e3322b6ecb7">00089</a> - (void)setCoordinate:(CLLocationCoordinate2D)coord{
-<a name="l00090"></a>00090     <a class="code" href="interface_o_c_annotation.html#a77a4843fde8e33c7acc73957d66010d0" title="Get the coordinate of the cluster.">coordinate</a> = coord;
-<a name="l00091"></a>00091 }
-<a name="l00092"></a>00092 
-<a name="l00093"></a>00093 <span class="keyword">@end</span>
+<a name="l00081"></a><a class="code" href="interface_o_c_annotation.html#a51f07c18b989bfba93033dc15bbfa886">00081</a> - (void)removeAnnotation:(<span class="keywordtype">id</span> &lt; MKAnnotation &gt;)annotation{
+<a name="l00082"></a>00082     [annotation retain];
+<a name="l00083"></a>00083     
+<a name="l00084"></a>00084     <span class="comment">// Remove annotation from cluster</span>
+<a name="l00085"></a>00085     [<a class="code" href="interface_o_c_annotation.html#ad9449e4c93edf0863c7c557256e2927b">annotationsInCluster</a> removeObject:annotation];
+<a name="l00086"></a>00086     
+<a name="l00087"></a>00087     [annotation release];
+<a name="l00088"></a>00088 }
+<a name="l00089"></a>00089 
+<a name="l00090"></a><a class="code" href="interface_o_c_annotation.html#abceec438d66243cacdace1d11a910eb2">00090</a> - (void)removeAnnotations:(NSArray *)annotations{
+<a name="l00091"></a>00091     [annotations retain];
+<a name="l00092"></a>00092     <span class="keywordflow">for</span> (id&lt;MKAnnotation&gt; annotation in annotations) {
+<a name="l00093"></a>00093         [<span class="keyword">self</span> <a class="code" href="interface_o_c_annotation.html#a51f07c18b989bfba93033dc15bbfa886" title="Removes a single annotation from the Cluster.">removeAnnotation</a>: annotation];
+<a name="l00094"></a>00094     }
+<a name="l00095"></a>00095     [annotations release];
+<a name="l00096"></a>00096 }
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 <span class="comment">//</span>
+<a name="l00099"></a>00099 <span class="comment">// protocoll implementation</span>
+<a name="l00100"></a>00100 - (NSString *)<a class="code" href="interface_o_c_annotation.html#a6a39015256ae82e8a3110f254f86c7b0" title="Get the Title of the cluster.">title</a>{
+<a name="l00101"></a>00101     <span class="keywordflow">return</span> <a class="code" href="interface_o_c_annotation.html#a6a39015256ae82e8a3110f254f86c7b0" title="Get the Title of the cluster.">title</a>;
+<a name="l00102"></a>00102 }
+<a name="l00103"></a>00103 
+<a name="l00104"></a><a class="code" href="interface_o_c_annotation.html#abb57e105050062adad3b1112f2b46feb">00104</a> - (void)setTitle:(NSString *)text{
+<a name="l00105"></a>00105     [text retain];
+<a name="l00106"></a>00106     [<a class="code" href="interface_o_c_annotation.html#a6782f341812fcbe7fc1add57a80edc5c">title</a> release];
+<a name="l00107"></a>00107     <a class="code" href="interface_o_c_annotation.html#a6a39015256ae82e8a3110f254f86c7b0" title="Get the Title of the cluster.">title</a> = text;
+<a name="l00108"></a>00108 }
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110 - (NSString *)<a class="code" href="interface_o_c_annotation.html#af6f703c067b8d6c8725c94a4977ecf50" title="Get the Subtitle of the cluster.">subtitle</a>{
+<a name="l00111"></a>00111     <span class="keywordflow">return</span> <a class="code" href="interface_o_c_annotation.html#af6f703c067b8d6c8725c94a4977ecf50" title="Get the Subtitle of the cluster.">subtitle</a>;
+<a name="l00112"></a>00112 }
+<a name="l00113"></a>00113 
+<a name="l00114"></a><a class="code" href="interface_o_c_annotation.html#acacc0fcf8870abd79523394504b89e2f">00114</a> - (void)setSubtitle:(NSString *)text{
+<a name="l00115"></a>00115     [text retain];
+<a name="l00116"></a>00116     [<a class="code" href="interface_o_c_annotation.html#a917db584ad932e6663677b38b5887bd8">subtitle</a> release];
+<a name="l00117"></a>00117     <a class="code" href="interface_o_c_annotation.html#af6f703c067b8d6c8725c94a4977ecf50" title="Get the Subtitle of the cluster.">subtitle</a> = text;
+<a name="l00118"></a>00118 }
+<a name="l00119"></a>00119 
+<a name="l00120"></a><a class="code" href="interface_o_c_annotation.html#a57678709759abcc7d87b12e77db94c8c">00120</a> - (NSString *)<a class="code" href="interface_o_c_annotation.html#a57678709759abcc7d87b12e77db94c8c" title="Get the GroupTag of the cluster.">groupTag</a>{
+<a name="l00121"></a>00121     <span class="keywordflow">return</span> <a class="code" href="interface_o_c_annotation.html#a5f95391c4e2ec90c4122a5fde9d29e85">_groupTag</a>;
+<a name="l00122"></a>00122 }
+<a name="l00123"></a>00123 
+<a name="l00124"></a><a class="code" href="interface_o_c_annotation.html#a0129e7c0120a543b9a68a3058646ae09">00124</a> - (void)setGroupTag:(NSString *)tag{
+<a name="l00125"></a>00125     [tag retain];
+<a name="l00126"></a>00126     [<a class="code" href="interface_o_c_annotation.html#a5f95391c4e2ec90c4122a5fde9d29e85">_groupTag</a> release];
+<a name="l00127"></a>00127     <a class="code" href="interface_o_c_annotation.html#a5f95391c4e2ec90c4122a5fde9d29e85">_groupTag</a> = tag;
+<a name="l00128"></a>00128 }
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130 - (CLLocationCoordinate2D)<a class="code" href="interface_o_c_annotation.html#a377c9caa829a929c4e50424510dc1a9a" title="Get the coordinate of the cluster.">coordinate</a>{
+<a name="l00131"></a>00131     <span class="keywordflow">return</span> <a class="code" href="interface_o_c_annotation.html#a377c9caa829a929c4e50424510dc1a9a" title="Get the coordinate of the cluster.">coordinate</a>;
+<a name="l00132"></a>00132 }
+<a name="l00133"></a>00133 
+<a name="l00134"></a><a class="code" href="interface_o_c_annotation.html#a72b5f43455b16055b2d52c0e2c4be854">00134</a> - (void)setCoordinate:(CLLocationCoordinate2D)coord{
+<a name="l00135"></a>00135     <a class="code" href="interface_o_c_annotation.html#a377c9caa829a929c4e50424510dc1a9a" title="Get the coordinate of the cluster.">coordinate</a> = coord;
+<a name="l00136"></a>00136 }
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138 <span class="keyword">@end</span>
 </pre></div></div>
 </div>
 <!-- window showing the filter options -->
@@ -161,7 +206,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -170,7 +215,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Jul 21 2011 21:18:34 for OCMapView by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 13 2012 22:25:28 for OCMapView by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
 </body>

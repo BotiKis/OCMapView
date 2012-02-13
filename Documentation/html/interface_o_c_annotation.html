@@ -30,7 +30,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -52,9 +52,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
-      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
+      <li><a href="classes.html"><span>Data&#160;Structure&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Data&#160;Fields</span></a></li>
     </ul>
   </div>
 </div>
@@ -67,52 +68,64 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">OCAnnotation Class Reference</div>  </div>
 </div>
 <div class="contents">
-<!-- doxytag: class="OCAnnotation" -->
+<!-- doxytag: class="OCAnnotation" --><!-- doxytag: inherits="OCGrouping-p" -->
 <p>Annotation class which represents a Cluster.  
  <a href="interface_o_c_annotation.html#details">More...</a></p>
 
 <p><code>#import &lt;<a class="el" href="_o_c_annotation_8h_source.html">OCAnnotation.h</a>&gt;</code></p>
-
-<p><a href="class_o_c_annotation-members.html">List of all members.</a></p>
+<div class="dynheader">
+Inheritance diagram for OCAnnotation:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="interface_o_c_annotation.png" usemap="#OCAnnotation_map" alt=""/>
+  <map id="OCAnnotation_map" name="OCAnnotation_map">
+<area href="protocol_o_c_grouping-p.html" title="Protocol which is needed to use different groups of clusters." alt="&lt;OCGrouping&gt;" shape="rect" coords="0,0,97,24"/>
+</map>
+ </div></div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a57ad2fd0acc7f81a31f4ddb709653418">init</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard initializer.  <a href="#a57ad2fd0acc7f81a31f4ddb709653418"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a3b2fcbe6872b025f27bbfc0703804fc4">initWithAnnotation:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Init with annotations.  <a href="#a3b2fcbe6872b025f27bbfc0703804fc4"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a1801f4f5f66d45be7f79deb84d888bda">annotationsInCluster</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">List of annotations in the cluster.  <a href="#a1801f4f5f66d45be7f79deb84d888bda"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a0aa61447a4de69adfc8d55bfb32dca9d">addAnnotation:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a single annotation to the cluster.  <a href="#a0aa61447a4de69adfc8d55bfb32dca9d"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a80a833f6358fa16f040ef0e00aef8227">addAnnotations:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds multiple annotations to the Cluster.  <a href="#a80a833f6358fa16f040ef0e00aef8227"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a1b369229c5d6b6a767271d83b700bdaf">removeAnnotation:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a single annotation from the Cluster.  <a href="#a1b369229c5d6b6a767271d83b700bdaf"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#ae87819fe57fff257bc17c0b5e3c8b0e0">removeAnnotations:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes multiple annotations from the Cluster.  <a href="#ae87819fe57fff257bc17c0b5e3c8b0e0"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(NSString *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a18b600e17cdc551dbe3274fff97dc26b">title</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Title of the cluster.  <a href="#a18b600e17cdc551dbe3274fff97dc26b"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a7a440b67aff9d27d2de227eae594d42a">setTitle:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Title of the cluster.  <a href="#a7a440b67aff9d27d2de227eae594d42a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(NSString *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#ae33485fa8be0fa811c5463b66d95e776">subtitle</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Subtitle of the cluster.  <a href="#ae33485fa8be0fa811c5463b66d95e776"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a19e5f07dd4f6e49a5f904ef1b5f41aa9">setSubtitle:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Subitle of the cluster.  <a href="#a19e5f07dd4f6e49a5f904ef1b5f41aa9"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(CLLocationCoordinate2D)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a77a4843fde8e33c7acc73957d66010d0">coordinate</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the coordinate of the cluster.  <a href="#a77a4843fde8e33c7acc73957d66010d0"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a6b57763947990587254c4e3322b6ecb7">setCoordinate:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the coordinate of the cluster.  <a href="#a6b57763947990587254c4e3322b6ecb7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a4213bb26f5207ee3f402fe463badc691">init</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard initializer.  <a href="#a4213bb26f5207ee3f402fe463badc691"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#ae512d98b7ecb301de4d73d9ca8c82e46">initWithAnnotation:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Init with annotations.  <a href="#ae512d98b7ecb301de4d73d9ca8c82e46"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#afca7d4a7ccde1c7f27239c7ee7591975">annotationsInCluster</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">List of annotations in the cluster.  <a href="#afca7d4a7ccde1c7f27239c7ee7591975"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a4d581dca4cf2505d4d460bd31ea77860">addAnnotation:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a single annotation to the cluster.  <a href="#a4d581dca4cf2505d4d460bd31ea77860"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a67ec128e2c51e0df6d964b53f900489a">addAnnotations:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds multiple annotations to the Cluster.  <a href="#a67ec128e2c51e0df6d964b53f900489a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a51f07c18b989bfba93033dc15bbfa886">removeAnnotation:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a single annotation from the Cluster.  <a href="#a51f07c18b989bfba93033dc15bbfa886"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#abceec438d66243cacdace1d11a910eb2">removeAnnotations:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes multiple annotations from the Cluster.  <a href="#abceec438d66243cacdace1d11a910eb2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(NSString *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a6a39015256ae82e8a3110f254f86c7b0">title</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Title of the cluster.  <a href="#a6a39015256ae82e8a3110f254f86c7b0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#abb57e105050062adad3b1112f2b46feb">setTitle:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Title of the cluster.  <a href="#abb57e105050062adad3b1112f2b46feb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(NSString *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#af6f703c067b8d6c8725c94a4977ecf50">subtitle</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Subtitle of the cluster.  <a href="#af6f703c067b8d6c8725c94a4977ecf50"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#acacc0fcf8870abd79523394504b89e2f">setSubtitle:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Subitle of the cluster.  <a href="#acacc0fcf8870abd79523394504b89e2f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(NSString *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a57678709759abcc7d87b12e77db94c8c">groupTag</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the GroupTag of the cluster.  <a href="#a57678709759abcc7d87b12e77db94c8c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a0129e7c0120a543b9a68a3058646ae09">setGroupTag:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the GroupTag of the cluster.  <a href="#a0129e7c0120a543b9a68a3058646ae09"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(CLLocationCoordinate2D)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a377c9caa829a929c4e50424510dc1a9a">coordinate</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the coordinate of the cluster.  <a href="#a377c9caa829a929c4e50424510dc1a9a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_o_c_annotation.html#a72b5f43455b16055b2d52c0e2c4be854">setCoordinate:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the coordinate of the cluster.  <a href="#a72b5f43455b16055b2d52c0e2c4be854"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">NSMutableArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_annotation.html#a2e9d8607cce8764664a387959a4b7cf9">annotationsInCluster</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_annotation.html#ac662e0cec0ed1043f652716153449e11">title</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_annotation.html#a82e06ae9bd5fbdcb9019a73eb9027864">subtitle</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">CLLocationCoordinate2D&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_annotation.html#a06da4420d4fe081b9775fd4f0961cda4">coordinate</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">NSMutableArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_annotation.html#ad9449e4c93edf0863c7c557256e2927b">annotationsInCluster</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_annotation.html#a6782f341812fcbe7fc1add57a80edc5c">title</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_annotation.html#a917db584ad932e6663677b38b5887bd8">subtitle</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_annotation.html#a5f95391c4e2ec90c4122a5fde9d29e85">_groupTag</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">CLLocationCoordinate2D&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_annotation.html#aa284dfc828e69ed8a933afa71bcd119d">coordinate</a></td></tr>
 <tr><td colspan="2"><h2><a name="properties"></a>
 Properties</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_annotation.html#ab44267f9f966b9d9c86fcd335c895fcd">annotationsInCluster</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">List of annotations in the cluster.  <a href="#ab44267f9f966b9d9c86fcd335c895fcd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_o_c_annotation.html#a20afdd82c3c2a07249518649250d4877">annotationsInCluster</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">List of annotations in the cluster.  <a href="#a20afdd82c3c2a07249518649250d4877"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Annotation class which represents a Cluster. </p>
@@ -120,7 +133,7 @@ Properties</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_o_c_annotation_8h_source.html#l00017">17</a> of file <a class="el" href="_o_c_annotation_8h_source.html">OCAnnotation.h</a>.</p>
 </div><hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a0aa61447a4de69adfc8d55bfb32dca9d"></a><!-- doxytag: member="OCAnnotation::addAnnotation:" ref="a0aa61447a4de69adfc8d55bfb32dca9d" args="(id&lt; MKAnnotation &gt; annotation)" -->
+<a class="anchor" id="a4d581dca4cf2505d4d460bd31ea77860"></a><!-- doxytag: member="OCAnnotation::addAnnotation:" ref="a4d581dca4cf2505d4d460bd31ea77860" args="(id&lt; MKAnnotation &gt; annotation)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -138,11 +151,11 @@ Properties</h2></td></tr>
 <p>Adds a single annotation to the cluster. </p>
 <p>Adds a given annotation to the cluster and sets the title to the number of containing annotations. </p>
 
-<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00043">43</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00065">65</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a80a833f6358fa16f040ef0e00aef8227"></a><!-- doxytag: member="OCAnnotation::addAnnotations:" ref="a80a833f6358fa16f040ef0e00aef8227" args="(NSArray *annotations)" -->
+<a class="anchor" id="a67ec128e2c51e0df6d964b53f900489a"></a><!-- doxytag: member="OCAnnotation::addAnnotations:" ref="a67ec128e2c51e0df6d964b53f900489a" args="(NSArray *annotations)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -160,16 +173,16 @@ Properties</h2></td></tr>
 <p>Adds multiple annotations to the Cluster. </p>
 <p>Adds multiple annotations to the cluster and sets the title to the number of containing annotations. Calls addAnnotation in a loop. </p>
 
-<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00049">49</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00073">73</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a1801f4f5f66d45be7f79deb84d888bda"></a><!-- doxytag: member="OCAnnotation::annotationsInCluster" ref="a1801f4f5f66d45be7f79deb84d888bda" args="()" -->
+<a class="anchor" id="afca7d4a7ccde1c7f27239c7ee7591975"></a><!-- doxytag: member="OCAnnotation::annotationsInCluster" ref="afca7d4a7ccde1c7f27239c7ee7591975" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (NSArray *) <a class="el" href="interface_o_c_annotation.html#a2e9d8607cce8764664a387959a4b7cf9">annotationsInCluster</a> </td>
+          <td class="memname">- (NSArray *) <a class="el" href="interface_o_c_annotation.html#ad9449e4c93edf0863c7c557256e2927b">annotationsInCluster</a> </td>
           <td></td>
           <td class="paramname"></td>
           <td></td>
@@ -183,12 +196,12 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a77a4843fde8e33c7acc73957d66010d0"></a><!-- doxytag: member="OCAnnotation::coordinate" ref="a77a4843fde8e33c7acc73957d66010d0" args="()" -->
+<a class="anchor" id="a377c9caa829a929c4e50424510dc1a9a"></a><!-- doxytag: member="OCAnnotation::coordinate" ref="a377c9caa829a929c4e50424510dc1a9a" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (CLLocationCoordinate2D) <a class="el" href="interface_o_c_annotation.html#a06da4420d4fe081b9775fd4f0961cda4">coordinate</a> </td>
+          <td class="memname">- (CLLocationCoordinate2D) <a class="el" href="interface_o_c_annotation.html#aa284dfc828e69ed8a933afa71bcd119d">coordinate</a> </td>
           <td></td>
           <td class="paramname"></td>
           <td></td>
@@ -201,7 +214,29 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a57ad2fd0acc7f81a31f4ddb709653418"></a><!-- doxytag: member="OCAnnotation::init" ref="a57ad2fd0acc7f81a31f4ddb709653418" args="()" -->
+<a class="anchor" id="a57678709759abcc7d87b12e77db94c8c"></a><!-- doxytag: member="OCAnnotation::groupTag" ref="a57678709759abcc7d87b12e77db94c8c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (NSString *) groupTag </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get the GroupTag of the cluster. </p>
+
+<p>Reimplemented from <a class="el" href="protocol_o_c_grouping-p.html#a57678709759abcc7d87b12e77db94c8c">&lt;OCGrouping&gt;</a>.</p>
+
+<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00120">120</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4213bb26f5207ee3f402fe463badc691"></a><!-- doxytag: member="OCAnnotation::init" ref="a4213bb26f5207ee3f402fe463badc691" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -217,11 +252,11 @@ Properties</h2></td></tr>
 
 <p>Standard initializer. </p>
 
-<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00013">13</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00015">15</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a3b2fcbe6872b025f27bbfc0703804fc4"></a><!-- doxytag: member="OCAnnotation::initWithAnnotation:" ref="a3b2fcbe6872b025f27bbfc0703804fc4" args="(id&lt; MKAnnotation &gt; annotation)" -->
+<a class="anchor" id="ae512d98b7ecb301de4d73d9ca8c82e46"></a><!-- doxytag: member="OCAnnotation::initWithAnnotation:" ref="ae512d98b7ecb301de4d73d9ca8c82e46" args="(id&lt; MKAnnotation &gt; annotation)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -239,11 +274,11 @@ Properties</h2></td></tr>
 <p>Init with annotations. </p>
 <p>Init object with containing annotations </p>
 
-<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00025">25</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00027">27</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a1b369229c5d6b6a767271d83b700bdaf"></a><!-- doxytag: member="OCAnnotation::removeAnnotation:" ref="a1b369229c5d6b6a767271d83b700bdaf" args="(id&lt; MKAnnotation &gt; annotation)" -->
+<a class="anchor" id="a51f07c18b989bfba93033dc15bbfa886"></a><!-- doxytag: member="OCAnnotation::removeAnnotation:" ref="a51f07c18b989bfba93033dc15bbfa886" args="(id&lt; MKAnnotation &gt; annotation)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -261,11 +296,11 @@ Properties</h2></td></tr>
 <p>Removes a single annotation from the Cluster. </p>
 <p>Removes a given annotation from the cluster and sets the title to the number of containing annotations. </p>
 
-<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00055">55</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00081">81</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ae87819fe57fff257bc17c0b5e3c8b0e0"></a><!-- doxytag: member="OCAnnotation::removeAnnotations:" ref="ae87819fe57fff257bc17c0b5e3c8b0e0" args="(NSArray *annotations)" -->
+<a class="anchor" id="abceec438d66243cacdace1d11a910eb2"></a><!-- doxytag: member="OCAnnotation::removeAnnotations:" ref="abceec438d66243cacdace1d11a910eb2" args="(NSArray *annotations)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -283,11 +318,11 @@ Properties</h2></td></tr>
 <p>Removes multiple annotations from the Cluster. </p>
 <p>Removes multiple annotations from the cluster and sets the title to the number of containing annotations. </p>
 
-<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00061">61</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00090">90</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a6b57763947990587254c4e3322b6ecb7"></a><!-- doxytag: member="OCAnnotation::setCoordinate:" ref="a6b57763947990587254c4e3322b6ecb7" args="(CLLocationCoordinate2D coord)" -->
+<a class="anchor" id="a72b5f43455b16055b2d52c0e2c4be854"></a><!-- doxytag: member="OCAnnotation::setCoordinate:" ref="a72b5f43455b16055b2d52c0e2c4be854" args="(CLLocationCoordinate2D coord)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -304,11 +339,32 @@ Properties</h2></td></tr>
 
 <p>Set the coordinate of the cluster. </p>
 
-<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00089">89</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00134">134</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a19e5f07dd4f6e49a5f904ef1b5f41aa9"></a><!-- doxytag: member="OCAnnotation::setSubtitle:" ref="a19e5f07dd4f6e49a5f904ef1b5f41aa9" args="(NSString *text)" -->
+<a class="anchor" id="a0129e7c0120a543b9a68a3058646ae09"></a><!-- doxytag: member="OCAnnotation::setGroupTag:" ref="a0129e7c0120a543b9a68a3058646ae09" args="(NSString *tag)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) setGroupTag: </td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>tag</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set the GroupTag of the cluster. </p>
+
+<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00124">124</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acacc0fcf8870abd79523394504b89e2f"></a><!-- doxytag: member="OCAnnotation::setSubtitle:" ref="acacc0fcf8870abd79523394504b89e2f" args="(NSString *text)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -325,11 +381,11 @@ Properties</h2></td></tr>
 
 <p>Set the Subitle of the cluster. </p>
 
-<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00081">81</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00114">114</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a7a440b67aff9d27d2de227eae594d42a"></a><!-- doxytag: member="OCAnnotation::setTitle:" ref="a7a440b67aff9d27d2de227eae594d42a" args="(NSString *text)" -->
+<a class="anchor" id="abb57e105050062adad3b1112f2b46feb"></a><!-- doxytag: member="OCAnnotation::setTitle:" ref="abb57e105050062adad3b1112f2b46feb" args="(NSString *text)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -346,16 +402,16 @@ Properties</h2></td></tr>
 
 <p>Set the Title of the cluster. </p>
 
-<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00073">73</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_annotation_8m_source.html#l00104">104</a> of file <a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ae33485fa8be0fa811c5463b66d95e776"></a><!-- doxytag: member="OCAnnotation::subtitle" ref="ae33485fa8be0fa811c5463b66d95e776" args="()" -->
+<a class="anchor" id="af6f703c067b8d6c8725c94a4977ecf50"></a><!-- doxytag: member="OCAnnotation::subtitle" ref="af6f703c067b8d6c8725c94a4977ecf50" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (NSString *) <a class="el" href="interface_o_c_annotation.html#a82e06ae9bd5fbdcb9019a73eb9027864">subtitle</a> </td>
+          <td class="memname">- (NSString *) <a class="el" href="interface_o_c_annotation.html#a917db584ad932e6663677b38b5887bd8">subtitle</a> </td>
           <td></td>
           <td class="paramname"></td>
           <td></td>
@@ -368,12 +424,12 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a18b600e17cdc551dbe3274fff97dc26b"></a><!-- doxytag: member="OCAnnotation::title" ref="a18b600e17cdc551dbe3274fff97dc26b" args="()" -->
+<a class="anchor" id="a6a39015256ae82e8a3110f254f86c7b0"></a><!-- doxytag: member="OCAnnotation::title" ref="a6a39015256ae82e8a3110f254f86c7b0" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (NSString *) <a class="el" href="interface_o_c_annotation.html#ac662e0cec0ed1043f652716153449e11">title</a> </td>
+          <td class="memname">- (NSString *) <a class="el" href="interface_o_c_annotation.html#a6782f341812fcbe7fc1add57a80edc5c">title</a> </td>
           <td></td>
           <td class="paramname"></td>
           <td></td>
@@ -386,28 +442,13 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a2e9d8607cce8764664a387959a4b7cf9"></a><!-- doxytag: member="OCAnnotation::annotationsInCluster" ref="a2e9d8607cce8764664a387959a4b7cf9" args="" -->
+<hr/><h2>Field Documentation</h2>
+<a class="anchor" id="a5f95391c4e2ec90c4122a5fde9d29e85"></a><!-- doxytag: member="OCAnnotation::_groupTag" ref="a5f95391c4e2ec90c4122a5fde9d29e85" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (NSArray *) <a class="el" href="interface_o_c_annotation.html#a2e9d8607cce8764664a387959a4b7cf9">annotationsInCluster</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="_o_c_annotation_8h_source.html#l00018">18</a> of file <a class="el" href="_o_c_annotation_8h_source.html">OCAnnotation.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a06da4420d4fe081b9775fd4f0961cda4"></a><!-- doxytag: member="OCAnnotation::coordinate" ref="a06da4420d4fe081b9775fd4f0961cda4" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (CLLocationCoordinate2D) <a class="el" href="interface_o_c_annotation.html#a06da4420d4fe081b9775fd4f0961cda4">coordinate</a><code> [protected]</code></td>
+          <td class="memname">- (NSString*) <a class="el" href="interface_o_c_annotation.html#a5f95391c4e2ec90c4122a5fde9d29e85">_groupTag</a><code> [protected]</code></td>
         </tr>
       </table>
 </div>
@@ -417,12 +458,42 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a82e06ae9bd5fbdcb9019a73eb9027864"></a><!-- doxytag: member="OCAnnotation::subtitle" ref="a82e06ae9bd5fbdcb9019a73eb9027864" args="" -->
+<a class="anchor" id="ad9449e4c93edf0863c7c557256e2927b"></a><!-- doxytag: member="OCAnnotation::annotationsInCluster" ref="ad9449e4c93edf0863c7c557256e2927b" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (NSString *) <a class="el" href="interface_o_c_annotation.html#a82e06ae9bd5fbdcb9019a73eb9027864">subtitle</a><code> [protected]</code></td>
+          <td class="memname">- (NSArray *) <a class="el" href="interface_o_c_annotation.html#ad9449e4c93edf0863c7c557256e2927b">annotationsInCluster</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_o_c_annotation_8h_source.html#l00018">18</a> of file <a class="el" href="_o_c_annotation_8h_source.html">OCAnnotation.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa284dfc828e69ed8a933afa71bcd119d"></a><!-- doxytag: member="OCAnnotation::coordinate" ref="aa284dfc828e69ed8a933afa71bcd119d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (CLLocationCoordinate2D) <a class="el" href="interface_o_c_annotation.html#aa284dfc828e69ed8a933afa71bcd119d">coordinate</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_o_c_annotation_8h_source.html#l00022">22</a> of file <a class="el" href="_o_c_annotation_8h_source.html">OCAnnotation.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a917db584ad932e6663677b38b5887bd8"></a><!-- doxytag: member="OCAnnotation::subtitle" ref="a917db584ad932e6663677b38b5887bd8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (NSString *) <a class="el" href="interface_o_c_annotation.html#a917db584ad932e6663677b38b5887bd8">subtitle</a><code> [protected]</code></td>
         </tr>
       </table>
 </div>
@@ -432,12 +503,12 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac662e0cec0ed1043f652716153449e11"></a><!-- doxytag: member="OCAnnotation::title" ref="ac662e0cec0ed1043f652716153449e11" args="" -->
+<a class="anchor" id="a6782f341812fcbe7fc1add57a80edc5c"></a><!-- doxytag: member="OCAnnotation::title" ref="a6782f341812fcbe7fc1add57a80edc5c" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (NSString *) <a class="el" href="interface_o_c_annotation.html#ac662e0cec0ed1043f652716153449e11">title</a><code> [protected]</code></td>
+          <td class="memname">- (NSString *) <a class="el" href="interface_o_c_annotation.html#a6782f341812fcbe7fc1add57a80edc5c">title</a><code> [protected]</code></td>
         </tr>
       </table>
 </div>
@@ -448,12 +519,12 @@ Properties</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Property Documentation</h2>
-<a class="anchor" id="ab44267f9f966b9d9c86fcd335c895fcd"></a><!-- doxytag: member="OCAnnotation::annotationsInCluster" ref="ab44267f9f966b9d9c86fcd335c895fcd" args="" -->
+<a class="anchor" id="a20afdd82c3c2a07249518649250d4877"></a><!-- doxytag: member="OCAnnotation::annotationsInCluster" ref="a20afdd82c3c2a07249518649250d4877" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (NSArray*) <a class="el" href="interface_o_c_annotation.html#a2e9d8607cce8764664a387959a4b7cf9">annotationsInCluster</a><code> [read, assign]</code></td>
+          <td class="memname">- (NSArray*) <a class="el" href="interface_o_c_annotation.html#ad9449e4c93edf0863c7c557256e2927b">annotationsInCluster</a><code> [read, assign]</code></td>
         </tr>
       </table>
 </div>
@@ -462,13 +533,13 @@ Properties</h2></td></tr>
 <p>List of annotations in the cluster. </p>
 <p>Returns all annotations in the cluster. READONLY </p>
 
-<p>Definition at line <a class="el" href="_o_c_annotation_8h_source.html#l00037">37</a> of file <a class="el" href="_o_c_annotation_8h_source.html">OCAnnotation.h</a>.</p>
+<p>Definition at line <a class="el" href="_o_c_annotation_8h_source.html#l00038">38</a> of file <a class="el" href="_o_c_annotation_8h_source.html">OCAnnotation.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/Users/Boti/Desktop/OClusterMapView+Sample/OCMapView/<a class="el" href="_o_c_annotation_8h_source.html">OCAnnotation.h</a></li>
-<li>/Users/Boti/Desktop/OClusterMapView+Sample/OCMapView/<a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a></li>
+<li>/Users/Boti/Documents/coding/iPhone Development/OCMapView+Sample/OCMapView/<a class="el" href="_o_c_annotation_8h_source.html">OCAnnotation.h</a></li>
+<li>/Users/Boti/Documents/coding/iPhone Development/OCMapView+Sample/OCMapView/<a class="el" href="_o_c_annotation_8m_source.html">OCAnnotation.m</a></li>
 </ul>
 </div>
 <!-- window showing the filter options -->
@@ -476,7 +547,7 @@ Properties</h2></td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -485,7 +556,7 @@ Properties</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Jul 21 2011 21:18:34 for OCMapView by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 13 2012 22:25:28 for OCMapView by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
 </body>
