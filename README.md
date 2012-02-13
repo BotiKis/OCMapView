@@ -11,9 +11,9 @@ If you have trouble to display a lot of annotations on the map, this class is fo
 It is written in *Objective-C* + *C* and works for all iOS applications.  
 
 ##Screnshots:
-![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/open_cluster_mapview_off.png "OpenClusterMapView Turned off")
-![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/open_cluster_mapview_on.png "OpenClusterMapView Turned on")
-![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/open_cluster_mapview_groups.png "OpenClusterMapView grouped")    
+![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/screenshots/open_cluster_mapview_off.png "OpenClusterMapView Turned off")
+![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/screenshots/open_cluster_mapview_on.png "OpenClusterMapView Turned on")
+![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/screenshots/open_cluster_mapview_groups.png "OpenClusterMapView grouped")    
 
 #Background:
 You may already encountered the problem when you adding a several hundred annotations the the `MKMapView` it will get laggy and everything but user friendly.
