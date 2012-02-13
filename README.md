@@ -1,3 +1,10 @@
+###Update 13.02.2012:###
+Added support for cluster different groups of annotations.  
+Implement the new `OCGrouping` protocol on your annotation class, set its grouping-tag and set the `clusterByGroupTag` property of your `OCMapView` to *true*.  
+  
+
+- - - -
+  
 #What is OCMapView?
 **OpenClusterMapView** is a simple and easy to use extension of `MKMapView` for iOS.
 If you have trouble to display a lot of annotations on the map, this class is for you.
@@ -49,6 +56,7 @@ You can customize the behavior of the clusters by setting specific attributes. F
 - Algorithm help functions are written in C to maximize performance.
 - Customize behavior like cluster size.
 - Manage clusters yourself by providing an ignore list of annotations.
+- *NEW*: Create independent clusters by using groups.
 
 #Contribute:
 If you are using OCMapView and want to contribute, please contact me to add your app to a upcoming list of supporting apps!
