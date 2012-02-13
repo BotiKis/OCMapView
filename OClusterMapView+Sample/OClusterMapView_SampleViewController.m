@@ -13,6 +13,7 @@
 #define ARC4RANDOM_MAX 0x100000000
 #define kTYPE1 @"Banana"
 #define kTYPE2 @"Orange"
+#define kDEFAULTCLUSTERSIZE 0.2
 
 @implementation OClusterMapView_SampleViewController
 
@@ -30,7 +31,7 @@
 {
     [super viewDidLoad];
     mapView.delegate = self;
-    mapView.clusterSize = 0.2;
+    mapView.clusterSize = kDEFAULTCLUSTERSIZE;
     labelNumberOfAnnotations.text = @"Number of Annotations: 0";
 }
 
@@ -163,10 +164,12 @@
 - (IBAction)buttonGroupByTagTouchUpInside:(UIButton *)sender {
     mapView.clusterByGroupTag = ! mapView.clusterByGroupTag;
     if(mapView.clusterByGroupTag){
-        [sender setTitle:@"group by tag on" forState:UIControlStateNormal];
+        [sender setTitle:@"turn groups off" forState:UIControlStateNormal];
+        mapView.clusterSize = kDEFAULTCLUSTERSIZE * 2.0;
     }
     else{
-        [sender setTitle:@"group by tag off" forState:UIControlStateNormal];
+        [sender setTitle:@"turn groups on" forState:UIControlStateNormal];
+        mapView.clusterSize = kDEFAULTCLUSTERSIZE;
     }
     
     [mapView removeOverlays:mapView.overlays];
