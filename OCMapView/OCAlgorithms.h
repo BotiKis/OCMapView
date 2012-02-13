@@ -18,7 +18,7 @@ typedef enum {
 
 /// Protocol for notifying on Cluster events. NOT in use yet.
 /** Implement this protocol if you are using asynchronous clustering algorithms.
-In fact, there isn't one yet. This just demonstrates where this class will develop to in future.*/
+ In fact, there isn't one yet. This just demonstrates where this class will develop to in future.*/
 @protocol OCAlgorithmDelegate <NSObject>
 @required
 /// Called when an algorithm finishes a block of calculations
@@ -49,23 +49,23 @@ In fact, there isn't one yet. This just demonstrates where this class will devel
 
 /// Bubble clustering with iteration
 /** This algorithm creates clusters based on the distance
-between single annotations.
+ between single annotations.
  
-@param annotationsToCluster contains the Annotations that should be clustered
-@param radius represents the cluster size. 
-
-It iterates through all annotations in the array and compare their distances. If they are near engough, they will be clustered.*/
-+ (NSArray*) bubbleClusteringWithAnnotations:(NSArray *) annotationsToCluster andClusterRadius:(CLLocationDistance)radius;
+ @param annotationsToCluster contains the Annotations that should be clustered
+ @param radius represents the cluster size. 
+ 
+ It iterates through all annotations in the array and compare their distances. If they are near engough, they will be clustered.*/
++ (NSArray*) bubbleClusteringWithAnnotations:(NSArray *) annotationsToCluster andClusterRadius:(CLLocationDistance)radius grouped:(BOOL) grouped;
 
 
 
 /// Grid clustering with predefined size
 /** This algorithm creates clusters based on a defined grid.
-
-@param annotationsToCluster contains the Annotations that should be clustered
-@param tileRect represents the size of a grid tile. 
-
-It iterates through all annotations in the array and puts them into a grid tile based on their location.*/
-+ (NSArray*) gridClusteringWithAnnotations:(NSArray *) annotationsToCluster andClusterRect:(MKCoordinateSpan)tileRect;
+ 
+ @param annotationsToCluster contains the Annotations that should be clustered
+ @param tileRect represents the size of a grid tile. 
+ 
+ It iterates through all annotations in the array and puts them into a grid tile based on their location.*/
++ (NSArray*) gridClusteringWithAnnotations:(NSArray *) annotationsToCluster andClusterRect:(MKCoordinateSpan)tileRect grouped:(BOOL) grouped;
 
 @end
