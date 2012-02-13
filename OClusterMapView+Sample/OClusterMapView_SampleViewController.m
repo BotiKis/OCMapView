@@ -85,6 +85,15 @@
     for (CLLocation *loc in randomLocations) {
         OCMapViewSampleHelpAnnotation *annotation = [[OCMapViewSampleHelpAnnotation alloc] initWithCoordinate:loc.coordinate];
         [annotationsToAdd addObject:annotation];
+        
+        // add to group if specified
+        if (annotationsToAdd.count < (randomLocations.count)/2) {
+            annotation.groupTag = @"first half";
+        }
+        else{
+            annotation.groupTag = @"second half";
+        }
+        
         [annotation release];
     }
     
@@ -144,9 +153,22 @@
 }
 
 - (IBAction)infoButtonTouchUpInside:(UIButton *)sender{
-    UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Info" message:@"The size of a cluster-annotation represents the number of annotations it contains and not his actual size in geo-coordinates." delegate:nil cancelButtonTitle:@"great!" otherButtonTitles:nil];
+    UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Info" message:@"The size of a cluster-annotation represents the number of annotations it contains and not its size." delegate:nil cancelButtonTitle:@"great!" otherButtonTitles:nil];
     [a show];
     [a release];
+}
+
+- (IBAction)buttonGroupByTagTouchUpInside:(UIButton *)sender {
+    mapView.clusterByGroupTag = ! mapView.clusterByGroupTag;
+    if(mapView.clusterByGroupTag){
+        [sender setTitle:@"group by tag on" forState:UIControlStateNormal];
+    }
+    else{
+        [sender setTitle:@"group by tag off" forState:UIControlStateNormal];
+    }
+    
+    [mapView removeOverlays:mapView.overlays];
+    [mapView doClustering];
 }
 
 // ==============================
@@ -166,7 +188,6 @@
             annotationView.canShowCallout = YES;
             annotationView.pinColor = MKPinAnnotationColorPurple;
         }
-        
         //calculate cluster region
         //CLLocationDistance clusterRadius = mapView.region.span.longitudeDelta * mapView.clusterSize * 111000; //static circle size of cluster
         CLLocationDistance clusterRadius = mapView.region.span.longitudeDelta/log(mapView.region.span.longitudeDelta*mapView.region.span.longitudeDelta) * log(pow([clusterAnnotation.annotationsInCluster count], 4)) * mapView.clusterSize * 50000; //circle size based on number of annotations in cluster
@@ -182,6 +203,15 @@
         // set title
         clusterAnnotation.title = @"Cluster";
         clusterAnnotation.subtitle = [NSString stringWithFormat:@"Containing annotations: %d", [clusterAnnotation.annotationsInCluster count]];
+        
+        // change pincolor for group
+        annotationView.pinColor = MKPinAnnotationColorPurple;
+        if (mapView.clusterByGroupTag) {
+            if ([clusterAnnotation.groupTag isEqualToString:@"second half"]) {
+                annotationView.pinColor = MKPinAnnotationColorRed;
+            }
+            clusterAnnotation.title = clusterAnnotation.groupTag;
+        }
     }
     // If it's a single annotation
     else if([annotation isKindOfClass:[OCMapViewSampleHelpAnnotation class]]){
@@ -261,4 +291,7 @@
     return  [coordinates autorelease];
 }
 
+- (void)dealloc {
+    [super dealloc];
+}
 @end
