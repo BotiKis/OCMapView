@@ -1,6 +1,6 @@
 ###Update 13.02.2012:###
 Added support for cluster different groups of annotations.  
-Implement the new `OCGrouping` protocol on your annotation class, set its grouping-tag and set the `clusterByGroupTag` property of your `OCMapView` to *true*. Take a look at the sample project to see it working.
+Implement the new `OCGrouping` protocol on your annotation class, set its grouping-tag and set the `clusterByGroupTag` property of your `OCMapView` to *true*. Take a look at the sample project to see how it works.
   
 
 - - - -
