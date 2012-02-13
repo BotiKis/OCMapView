@@ -7,11 +7,13 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "OCGrouping.h"
 
-@interface OCMapViewSampleHelpAnnotation : NSObject <MKAnnotation>{
+@interface OCMapViewSampleHelpAnnotation : NSObject <MKAnnotation, OCGrouping>{
     CLLocationCoordinate2D coordinate;
     NSString *title;
     NSString *subtitle;
+    NSString *_groupTag;
 }
 - (id)initWithCoordinate:(CLLocationCoordinate2D)aCoordinate;
 
@@ -22,6 +24,9 @@
 
 - (NSString *)subtitle;
 - (void)setSubtitle:(NSString *)text;
+
+- (NSString *)groupTag;
+- (void)setGroupTag:(NSString *)tag;
 
 - (CLLocationCoordinate2D)coordinate;
 

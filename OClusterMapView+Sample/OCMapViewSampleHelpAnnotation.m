@@ -49,6 +49,16 @@
     subtitle = text;
 }
 
+- (NSString *)groupTag{
+    return _groupTag;
+}
+
+- (void)setGroupTag:(NSString *)tag{
+    [tag retain];
+    [_groupTag release];
+    _groupTag = tag;
+}
+
 - (CLLocationCoordinate2D)coordinate{
     return coordinate;
 }
