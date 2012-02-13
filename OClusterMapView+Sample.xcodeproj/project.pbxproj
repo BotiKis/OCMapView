@@ -28,6 +28,16 @@
 		8890D05A142FC4EC000F6905 /* OClusterMapView_SampleViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8890D058142FC4EB000F6905 /* OClusterMapView_SampleViewController-iPhone.xib */; };
 		8890D05D142FC559000F6905 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8890D05B142FC559000F6905 /* MainWindow.xib */; };
 		8890D060142FC560000F6905 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8890D05E142FC560000F6905 /* MainWindow-iPad.xib */; };
+		88F58CED14E9C6960007E6FA /* banana.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F58CE514E9C6960007E6FA /* banana.png */; };
+		88F58CEE14E9C6960007E6FA /* banana@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F58CE614E9C6960007E6FA /* banana@2x.png */; };
+		88F58CEF14E9C6960007E6FA /* bananas.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F58CE714E9C6960007E6FA /* bananas.png */; };
+		88F58CF014E9C6960007E6FA /* bananas@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F58CE814E9C6960007E6FA /* bananas@2x.png */; };
+		88F58CF114E9C6960007E6FA /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F58CE914E9C6960007E6FA /* orange.png */; };
+		88F58CF214E9C6960007E6FA /* orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F58CEA14E9C6960007E6FA /* orange@2x.png */; };
+		88F58CF314E9C6960007E6FA /* oranges.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F58CEB14E9C6960007E6FA /* oranges.png */; };
+		88F58CF414E9C6960007E6FA /* oranges@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F58CEC14E9C6960007E6FA /* oranges@2x.png */; };
+		88F58CFC14E9CE520007E6FA /* regular.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F58CFA14E9CE520007E6FA /* regular.png */; };
+		88F58CFD14E9CE520007E6FA /* regular@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F58CFB14E9CE520007E6FA /* regular@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +73,16 @@
 		8890D059142FC4EB000F6905 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/OClusterMapView_SampleViewController-iPhone.xib"; sourceTree = "<group>"; };
 		8890D05C142FC559000F6905 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		8890D05F142FC560000F6905 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		88F58CE514E9C6960007E6FA /* banana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banana.png; sourceTree = "<group>"; };
+		88F58CE614E9C6960007E6FA /* banana@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banana@2x.png"; sourceTree = "<group>"; };
+		88F58CE714E9C6960007E6FA /* bananas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bananas.png; sourceTree = "<group>"; };
+		88F58CE814E9C6960007E6FA /* bananas@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bananas@2x.png"; sourceTree = "<group>"; };
+		88F58CE914E9C6960007E6FA /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange.png; sourceTree = "<group>"; };
+		88F58CEA14E9C6960007E6FA /* orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange@2x.png"; sourceTree = "<group>"; };
+		88F58CEB14E9C6960007E6FA /* oranges.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oranges.png; sourceTree = "<group>"; };
+		88F58CEC14E9C6960007E6FA /* oranges@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oranges@2x.png"; sourceTree = "<group>"; };
+		88F58CFA14E9CE520007E6FA /* regular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = regular.png; sourceTree = "<group>"; };
+		88F58CFB14E9CE520007E6FA /* regular@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "regular@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +146,7 @@
 				8878B490142FC6E700F5AC6A /* ocmapview_logo~ipad.png */,
 				8878B48E142FC6E100F5AC6A /* ocmapview_logo@2x.png */,
 				8878B48C142FC6DD00F5AC6A /* ocmapview_logo.png */,
+				88F58CE414E9C6960007E6FA /* sample_pins */,
 				88098246142FBF04002AD1BD /* Supporting Files */,
 				88098267142FC02A002AD1BD /* OCMapView */,
 			);
@@ -157,6 +178,23 @@
 				8890623314E9ADF800A402D0 /* OCGrouping.h */,
 			);
 			path = OCMapView;
+			sourceTree = SOURCE_ROOT;
+		};
+		88F58CE414E9C6960007E6FA /* sample_pins */ = {
+			isa = PBXGroup;
+			children = (
+				88F58CE514E9C6960007E6FA /* banana.png */,
+				88F58CE614E9C6960007E6FA /* banana@2x.png */,
+				88F58CE714E9C6960007E6FA /* bananas.png */,
+				88F58CE814E9C6960007E6FA /* bananas@2x.png */,
+				88F58CE914E9C6960007E6FA /* orange.png */,
+				88F58CEA14E9C6960007E6FA /* orange@2x.png */,
+				88F58CEB14E9C6960007E6FA /* oranges.png */,
+				88F58CEC14E9C6960007E6FA /* oranges@2x.png */,
+				88F58CFA14E9CE520007E6FA /* regular.png */,
+				88F58CFB14E9CE520007E6FA /* regular@2x.png */,
+			);
+			path = sample_pins;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -217,6 +255,16 @@
 				8878B48D142FC6DD00F5AC6A /* ocmapview_logo.png in Resources */,
 				8878B48F142FC6E100F5AC6A /* ocmapview_logo@2x.png in Resources */,
 				8878B491142FC6E700F5AC6A /* ocmapview_logo~ipad.png in Resources */,
+				88F58CED14E9C6960007E6FA /* banana.png in Resources */,
+				88F58CEE14E9C6960007E6FA /* banana@2x.png in Resources */,
+				88F58CEF14E9C6960007E6FA /* bananas.png in Resources */,
+				88F58CF014E9C6960007E6FA /* bananas@2x.png in Resources */,
+				88F58CF114E9C6960007E6FA /* orange.png in Resources */,
+				88F58CF214E9C6960007E6FA /* orange@2x.png in Resources */,
+				88F58CF314E9C6960007E6FA /* oranges.png in Resources */,
+				88F58CF414E9C6960007E6FA /* oranges@2x.png in Resources */,
+				88F58CFC14E9CE520007E6FA /* regular.png in Resources */,
+				88F58CFD14E9CE520007E6FA /* regular@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
