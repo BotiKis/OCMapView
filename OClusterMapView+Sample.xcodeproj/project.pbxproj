@@ -59,6 +59,7 @@
 		8878B48C142FC6DD00F5AC6A /* ocmapview_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ocmapview_logo.png; path = ../ocmapview_logo.png; sourceTree = "<group>"; };
 		8878B48E142FC6E100F5AC6A /* ocmapview_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ocmapview_logo@2x.png"; path = "../ocmapview_logo@2x.png"; sourceTree = "<group>"; };
 		8878B490142FC6E700F5AC6A /* ocmapview_logo~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ocmapview_logo~ipad.png"; path = "../ocmapview_logo~ipad.png"; sourceTree = "<group>"; };
+		8890623314E9ADF800A402D0 /* OCGrouping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCGrouping.h; sourceTree = "<group>"; };
 		8890D059142FC4EB000F6905 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/OClusterMapView_SampleViewController-iPhone.xib"; sourceTree = "<group>"; };
 		8890D05C142FC559000F6905 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		8890D05F142FC560000F6905 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
@@ -153,6 +154,7 @@
 				8809826D142FC02A002AD1BD /* OCDistance.m */,
 				8809826E142FC02A002AD1BD /* OCMapView.h */,
 				8809826F142FC02A002AD1BD /* OCMapView.m */,
+				8890623314E9ADF800A402D0 /* OCGrouping.h */,
 			);
 			path = OCMapView;
 			sourceTree = SOURCE_ROOT;
@@ -182,6 +184,9 @@
 /* Begin PBXProject section */
 		88098232142FBF04002AD1BD /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 88098235142FBF04002AD1BD /* Build configuration list for PBXProject "OClusterMapView+Sample" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
