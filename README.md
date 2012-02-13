@@ -1,7 +1,7 @@
 ###Update 13.02.2012:###
-Added support for cluster different groups of annotations.  
+Added support for cluster different groups of annotations. See the screenshots below.  
+####How to use:
 Implement the new `OCGrouping` protocol on your annotation class, set its grouping-tag and set the `clusterByGroupTag` property of your `OCMapView` to *true*. Take a look at the sample project to see how it works.
-  
 
 - - - -
   
@@ -10,7 +10,7 @@ Implement the new `OCGrouping` protocol on your annotation class, set its groupi
 If you have trouble to display a lot of annotations on the map, this class is for you.
 It is written in *Objective-C* + *C* and works for all iOS applications.  
 
-##Screnshots:
+##Screenshots:
 ![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/screenshots/open_cluster_mapview_off.png "OpenClusterMapView Turned off")
 ![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/screenshots/open_cluster_mapview_on.png "OpenClusterMapView Turned on")
 ![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/screenshots/open_cluster_mapview_groups.png "OpenClusterMapView grouped")    
