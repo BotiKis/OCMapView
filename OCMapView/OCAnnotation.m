@@ -16,7 +16,7 @@
 {
     self = [super init];
     if (self) {
-        title = subtitle = [[NSString stringWithFormat:@""] retain];
+        _groupTag = title = subtitle = [[NSString stringWithFormat:@""] retain];
         coordinate = CLLocationCoordinate2DMake(0.0, 0.0);
         annotationsInCluster = [[NSMutableArray alloc] init];
     }
@@ -32,9 +32,10 @@
         coordinate = [annotation coordinate];
         annotationsInCluster = [[NSMutableArray alloc] init];
         [annotationsInCluster addObject:annotation];
-    
+        
         title = [annotation.title retain];
         subtitle = [annotation.title retain];
+        _groupTag = [[NSString stringWithFormat:@""] retain];
     }
     [annotation release];
     
@@ -46,6 +47,7 @@
     
     [title release];
     [subtitle release];
+    [_groupTag release];
     
     [super dealloc];
 }
@@ -113,6 +115,16 @@
     [text retain];
     [subtitle release];
     subtitle = text;
+}
+
+- (NSString *)groupTag{
+    return _groupTag;
+}
+
+- (void)setGroupTag:(NSString *)tag{
+    [tag retain];
+    [_groupTag release];
+    _groupTag = tag;
 }
 
 - (CLLocationCoordinate2D)coordinate{
