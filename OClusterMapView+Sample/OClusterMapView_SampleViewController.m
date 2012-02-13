@@ -11,6 +11,8 @@
 #import <math.h>
 
 #define ARC4RANDOM_MAX 0x100000000
+#define kTYPE1 @"Banana"
+#define kTYPE2 @"Orange"
 
 @implementation OClusterMapView_SampleViewController
 
@@ -88,10 +90,10 @@
         
         // add to group if specified
         if (annotationsToAdd.count < (randomLocations.count)/2) {
-            annotation.groupTag = @"first half";
+            annotation.groupTag = kTYPE1;
         }
         else{
-            annotation.groupTag = @"second half";
+            annotation.groupTag = kTYPE2;
         }
         
         [annotation release];
@@ -174,19 +176,19 @@
 // ==============================
 #pragma mark - map delegate
 - (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id <MKAnnotation>)annotation{
-    MKPinAnnotationView *annotationView;
+    MKAnnotationView *annotationView;
     
     // if it's a cluster
     if ([annotation isKindOfClass:[OCAnnotation class]]) {
         
         OCAnnotation *clusterAnnotation = (OCAnnotation *)annotation;
         
-        annotationView = (MKPinAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:@"ClusterView"];
+        annotationView = (MKAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:@"ClusterView"];
         [annotationView retain];
         if (!annotationView) {
-            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"ClusterView"];
+            annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"ClusterView"];
             annotationView.canShowCallout = YES;
-            annotationView.pinColor = MKPinAnnotationColorPurple;
+            annotationView.centerOffset = CGPointMake(0, -20);
         }
         //calculate cluster region
         //CLLocationDistance clusterRadius = mapView.region.span.longitudeDelta * mapView.clusterSize * 111000; //static circle size of cluster
@@ -204,11 +206,16 @@
         clusterAnnotation.title = @"Cluster";
         clusterAnnotation.subtitle = [NSString stringWithFormat:@"Containing annotations: %d", [clusterAnnotation.annotationsInCluster count]];
         
-        // change pincolor for group
-        annotationView.pinColor = MKPinAnnotationColorPurple;
+        // set its image
+        annotationView.image = [UIImage imageNamed:@"regular.png"];
+        
+        // change pin image for group
         if (mapView.clusterByGroupTag) {
-            if ([clusterAnnotation.groupTag isEqualToString:@"second half"]) {
-                annotationView.pinColor = MKPinAnnotationColorRed;
+            if ([clusterAnnotation.groupTag isEqualToString:kTYPE1]) {
+                annotationView.image = [UIImage imageNamed:@"bananas.png"];
+            }
+            else if([clusterAnnotation.groupTag isEqualToString:kTYPE2]){
+                annotationView.image = [UIImage imageNamed:@"oranges.png"];
             }
             clusterAnnotation.title = clusterAnnotation.groupTag;
         }
@@ -216,14 +223,21 @@
     // If it's a single annotation
     else if([annotation isKindOfClass:[OCMapViewSampleHelpAnnotation class]]){
         OCMapViewSampleHelpAnnotation *singleAnnotation = (OCMapViewSampleHelpAnnotation *)annotation;
-        annotationView = (MKPinAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:@"singleAnnotationView"];
+        annotationView = (MKAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:@"singleAnnotationView"];
         [annotationView retain];
         if (!annotationView) {
-            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:singleAnnotation reuseIdentifier:@"singleAnnotationView"];
+            annotationView = [[MKAnnotationView alloc] initWithAnnotation:singleAnnotation reuseIdentifier:@"singleAnnotationView"];
             annotationView.canShowCallout = YES;
-            annotationView.pinColor = MKPinAnnotationColorGreen;
+            annotationView.centerOffset = CGPointMake(0, -20);
         }
-        singleAnnotation.title = @"Single annotation";
+        singleAnnotation.title = singleAnnotation.groupTag;
+        
+        if ([singleAnnotation.groupTag isEqualToString:kTYPE1]) {
+            annotationView.image = [UIImage imageNamed:@"banana.png"];
+        }
+        else if([singleAnnotation.groupTag isEqualToString:kTYPE2]){
+            annotationView.image = [UIImage imageNamed:@"orange.png"];
+        }
     }
     // Error
     else{
@@ -232,7 +246,7 @@
         if (!annotationView) {
             annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"errorAnnotationView"];
             annotationView.canShowCallout = NO;
-            annotationView.pinColor = MKPinAnnotationColorRed;
+            ((MKPinAnnotationView *)annotationView).pinColor = MKPinAnnotationColorRed;
         }
     }
     
@@ -245,7 +259,7 @@
     
     if ([circle.title isEqualToString:@"background"])
     {
-        circleView.fillColor = [UIColor purpleColor];
+        circleView.fillColor = [UIColor yellowColor];
         circleView.alpha = 0.25;
     }
     else if ([circle.title isEqualToString:@"helper"])
@@ -256,7 +270,7 @@
     else
     {
         circleView.strokeColor = [UIColor blackColor];
-        circleView.lineWidth = 1.0;
+        circleView.lineWidth = 0.5;
     }
     
     return [circleView autorelease];
