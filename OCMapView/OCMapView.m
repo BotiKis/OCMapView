@@ -23,17 +23,26 @@
 {
     self = [super init];
     if (self) {
-        // call acutal constructor
+        // call actual initializer
         [self initSetUp];
     }
     
     return self;
 }
 
+-(id)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // call actual initializer
+        [self initSetUp];
+    }
+    return self;
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];    
     if (self) {
-        // call acutal constructor
+        // call actual initializer
         [self initSetUp];
     }
     return self;
