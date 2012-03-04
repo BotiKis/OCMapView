@@ -164,11 +164,13 @@
     
     // add clustered and ignored annotations to map
     [super addAnnotations: clusteredAnnotations];
-    [super addAnnotations: [annotationsToIgnore allObjects]];
     
     // fix for flickering
     [annotationsToRemove removeObjectsInArray: clusteredAnnotations];
     [super removeAnnotations:annotationsToRemove];
+    
+    // add ignored annotations
+    [super addAnnotations: [annotationsToIgnore allObjects]];
     
     // memory
     [clusteredAnnotations release];
