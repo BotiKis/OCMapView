@@ -133,8 +133,10 @@
         
         // check group
         if (grouped && [annotation respondsToSelector:@selector(groupTag)]) {
-            if (![clusterAnnotation.groupTag isEqualToString:((id <OCGrouping>)annotation).groupTag])
+            if (![clusterAnnotation.groupTag isEqualToString:((id <OCGrouping>)annotation).groupTag]){
+                [clusterAnnotation release];
                 continue;
+            }
         }
         
         // add annotation to the cluster
