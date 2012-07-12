@@ -8,6 +8,7 @@ Implement the new `OCGrouping` protocol on your annotation class, set its groupi
 #What is OCMapView?
 **OpenClusterMapView** is a simple and easy to use extension of `MKMapView` for iOS.
 If you have trouble to display a lot of annotations on the map, this class is for you.
+OCMapView automatically creates cluster by combinig annotation super fast.
 It is written in *Objective-C* + *C* and works for all iOS applications.  
 
 ##Screenshots:
