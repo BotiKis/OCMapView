@@ -61,5 +61,10 @@ You can customize the behavior of the clusters by setting specific attributes. F
 - *NEW*: Create independent clusters by using groups.
 
 #Contribute:
-If you are using OCMapView and want to contribute, please contact me to add your app to a upcoming list of supporting apps!
-![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/ocmapview_logo_small.png "OpenClusterMapView Logo")
+- official Car2Go App
+- cost control for Car2Go aka. aCar2Go
+- AbHof
+- and a lot of more who do not tell me ;)
+
+If you are using OCMapView and want to contribute, please contact me to add your app to the list of supporting apps!
+![OpenClusterMapView Logo](http://www.unet.univie.ac.at/~a0846794/OCMapView/ocmapview_logo.png "OpenClusterMapView Logo")
