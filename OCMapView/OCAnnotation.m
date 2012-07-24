@@ -65,6 +65,11 @@
 - (void)addAnnotation:(id < MKAnnotation >)annotation{
     [annotation retain];
     
+    //calculate new cluster coordinate
+    float annotationCount = (float)[annotationsInCluster count];
+    coordinate.latitude = (coordinate.latitude * annotationCount + annotation.coordinate.latitude) / (annotationCount + 1);
+    coordinate.longitude = (coordinate.longitude * annotationCount + annotation.coordinate.longitude) / (annotationCount + 1);
+    
     // Add annotation to the cluster
     [annotationsInCluster addObject:annotation];
     [annotation release];
@@ -80,6 +85,11 @@
 
 - (void)removeAnnotation:(id < MKAnnotation >)annotation{
     [annotation retain];
+    
+    //calculate new cluster coordinate
+    float annotationCount = (float)[annotationsInCluster count];
+    coordinate.latitude = (coordinate.latitude * annotationCount - annotation.coordinate.latitude) / (annotationCount - 1);
+    coordinate.longitude = (coordinate.longitude * annotationCount - annotation.coordinate.longitude) / (annotationCount - 1);
     
     // Remove annotation from cluster
     [annotationsInCluster removeObject:annotation];
