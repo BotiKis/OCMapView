@@ -121,7 +121,9 @@
 #pragma mark - Clustering
 
 - (void)doClustering{
-    
+    [self doClusteringWithClass:[OCAnnotation class]];
+}
+- (void)doClusteringWithClass:(Class)annotationClass{
     // Remove the annotation which should be ignored
     NSMutableArray *bufferArray = [[NSMutableArray alloc] initWithArray:[allAnnotations allObjects]];
     [bufferArray removeObjectsInArray:[annotationsToIgnore allObjects]];
@@ -140,11 +142,11 @@
         // switch to selected algoritm
         switch (clusteringMethod) {
             case OCClusteringMethodBubble:{
-                clusteredAnnotations = [[NSArray alloc] initWithArray:[OCAlgorithms bubbleClusteringWithAnnotations:annotationsToCluster andClusterRadius:clusterRadius grouped:self.clusterByGroupTag]];
+                clusteredAnnotations = [[NSArray alloc] initWithArray:[OCAlgorithms bubbleClusteringWithAnnotations:annotationsToCluster andClusterRadius:clusterRadius grouped:self.clusterByGroupTag withAnnotationClass:annotationClass]];
                 break;
             }
             case OCClusteringMethodGrid:{
-                clusteredAnnotations =[[NSArray alloc] initWithArray:[OCAlgorithms gridClusteringWithAnnotations:annotationsToCluster andClusterRect:MKCoordinateSpanMake(clusterRadius, clusterRadius)  grouped:self.clusterByGroupTag]];
+                clusteredAnnotations =[[NSArray alloc] initWithArray:[OCAlgorithms gridClusteringWithAnnotations:annotationsToCluster andClusterRect:MKCoordinateSpanMake(clusterRadius, clusterRadius) grouped:self.clusterByGroupTag withAnnotationClass:annotationClass]];
                 break;
             }
             default:{

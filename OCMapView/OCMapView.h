@@ -116,7 +116,7 @@ default: 0.2*/
  Handles the ignoreList of annotations, calls the defined clustering algorithm and adds the clustered annotations to the map.
  */
 - (void)doClustering;
-
+- (void)doClusteringWithClass:(Class)annotationClass;
 // ======================================
 // Help Methods
 

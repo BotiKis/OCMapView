@@ -8,13 +8,14 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "OCGrouping.h"
+#import "OCAnnotationProtocol.h"
 
 /// Annotation class which represents a Cluster.
 /** OCAnnotation stores all annotations which are in its area.
  Objects of this class will be returned by the delegate method of OCMapView "viewForAnnotation".
  Implements MKAnnotation protocol.
  */
-@interface OCAnnotation : NSObject <MKAnnotation, OCGrouping>{
+@interface OCAnnotation : NSObject <MKAnnotation, OCGrouping, OCAnnotationProtocol>{
     NSMutableArray *annotationsInCluster;
     NSString *title;
     NSString *subtitle;
