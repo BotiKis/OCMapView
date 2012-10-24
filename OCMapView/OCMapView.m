@@ -123,7 +123,7 @@
 #pragma mark - Clustering
 
 - (void)doClustering{
-    [self doClusteringWithClass:self.annotationClass];
+    [self doClusteringWithClass:annotationClass];
 }
 
 - (void)doClusteringWithClass:(Class)annClass{

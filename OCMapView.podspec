@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name     = 'OCMapView'
-  s.version  = '1.1'
+  s.version  = '1.1.1'
   s.platform = :ios
   s.summary  = 'Simple and easy to use clustering mapView for iOS'
   s.homepage = 'https://github.com/XBeg9/OCMapView'
   s.author   = { 'Botond Kis' => 'boti.kis@gmx.at' }
-  s.source   = { :git => 'https://github.com/XBeg9/OCMapView.git', :tag => '1.1' }
+  s.source   = { :git => 'https://github.com/XBeg9/OCMapView.git', :tag => '1.1.1' }
 
   s.description = 'OpenClusterMapView is a simple and easy to use extension of MKMapView for iOS. ' \
                   'If you have trouble to display a lot of annotations on the map, this class is for you.' \
