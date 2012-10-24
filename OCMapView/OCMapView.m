@@ -18,6 +18,7 @@
 @synthesize clusterSize;
 @synthesize clusterByGroupTag;
 @synthesize minLongitudeDeltaToCluster;
+@synthesize annotationClass;
 
 - (id)init
 {
@@ -56,7 +57,8 @@
     minLongitudeDeltaToCluster = 0.0;
     clusteringEnabled = YES;
     clusterByGroupTag = NO;
-    backgroundClusterQueue = dispatch_queue_create("com.OCMapView.clustering", NULL);  
+    backgroundClusterQueue = dispatch_queue_create("com.OCMapView.clustering", NULL);
+    annotationClass = [OCAnnotation class];
 }
 
 - (void)dealloc{
@@ -121,9 +123,10 @@
 #pragma mark - Clustering
 
 - (void)doClustering{
-    [self doClusteringWithClass:[OCAnnotation class]];
+    [self doClusteringWithClass:self.annotationClass];
 }
-- (void)doClusteringWithClass:(Class)annotationClass{
+
+- (void)doClusteringWithClass:(Class)annClass{
     // Remove the annotation which should be ignored
     NSMutableArray *bufferArray = [[NSMutableArray alloc] initWithArray:[allAnnotations allObjects]];
     [bufferArray removeObjectsInArray:[annotationsToIgnore allObjects]];
@@ -142,11 +145,11 @@
         // switch to selected algoritm
         switch (clusteringMethod) {
             case OCClusteringMethodBubble:{
-                clusteredAnnotations = [[NSArray alloc] initWithArray:[OCAlgorithms bubbleClusteringWithAnnotations:annotationsToCluster andClusterRadius:clusterRadius grouped:self.clusterByGroupTag withAnnotationClass:annotationClass]];
+                clusteredAnnotations = [[NSArray alloc] initWithArray:[OCAlgorithms bubbleClusteringWithAnnotations:annotationsToCluster andClusterRadius:clusterRadius grouped:self.clusterByGroupTag withAnnotationClass:annClass]];
                 break;
             }
             case OCClusteringMethodGrid:{
-                clusteredAnnotations =[[NSArray alloc] initWithArray:[OCAlgorithms gridClusteringWithAnnotations:annotationsToCluster andClusterRect:MKCoordinateSpanMake(clusterRadius, clusterRadius) grouped:self.clusterByGroupTag withAnnotationClass:annotationClass]];
+                clusteredAnnotations =[[NSArray alloc] initWithArray:[OCAlgorithms gridClusteringWithAnnotations:annotationsToCluster andClusterRect:MKCoordinateSpanMake(clusterRadius, clusterRadius) grouped:self.clusterByGroupTag withAnnotationClass:annClass]];
                 break;
             }
             default:{
