@@ -83,6 +83,7 @@
 		88F58CEC14E9C6960007E6FA /* oranges@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oranges@2x.png"; sourceTree = "<group>"; };
 		88F58CFA14E9CE520007E6FA /* regular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = regular.png; sourceTree = "<group>"; };
 		88F58CFB14E9CE520007E6FA /* regular@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "regular@2x.png"; sourceTree = "<group>"; };
+		C512B2D4163815B8002FD1AB /* OCAnnotationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCAnnotationProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +177,7 @@
 				8809826E142FC02A002AD1BD /* OCMapView.h */,
 				8809826F142FC02A002AD1BD /* OCMapView.m */,
 				8890623314E9ADF800A402D0 /* OCGrouping.h */,
+				C512B2D4163815B8002FD1AB /* OCAnnotationProtocol.h */,
 			);
 			path = OCMapView;
 			sourceTree = SOURCE_ROOT;

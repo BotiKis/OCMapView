@@ -12,4 +12,5 @@
 /** Implement this protocol to in an annotation to enable cluster different groups*/
 @protocol OCGrouping <NSObject>
 -(NSString *) groupTag;
+- (void)setGroupTag:(NSString *)tag;
 @end

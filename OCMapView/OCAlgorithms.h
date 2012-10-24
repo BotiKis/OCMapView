@@ -56,7 +56,7 @@ typedef enum {
  
  It iterates through all annotations in the array and compare their distances. If they are near engough, they will be clustered.*/
 + (NSArray*) bubbleClusteringWithAnnotations:(NSArray *) annotationsToCluster andClusterRadius:(CLLocationDistance)radius grouped:(BOOL) grouped;
-
++ (NSArray*) bubbleClusteringWithAnnotations:(NSArray *) annotationsToCluster andClusterRadius:(CLLocationDistance)radius grouped:(BOOL) grouped withAnnotationClass:(Class)annotationClass;
 
 
 /// Grid clustering with predefined size
@@ -64,8 +64,9 @@ typedef enum {
  
  @param annotationsToCluster contains the Annotations that should be clustered
  @param tileRect represents the size of a grid tile. 
- 
+
  It iterates through all annotations in the array and puts them into a grid tile based on their location.*/
 + (NSArray*) gridClusteringWithAnnotations:(NSArray *) annotationsToCluster andClusterRect:(MKCoordinateSpan)tileRect grouped:(BOOL) grouped;
++ (NSArray*) gridClusteringWithAnnotations:(NSArray *) annotationsToCluster andClusterRect:(MKCoordinateSpan)tileRect grouped:(BOOL) grouped withAnnotationClass:(Class)annotationClass;
 
 @end
