@@ -59,13 +59,6 @@
     backgroundClusterQueue = dispatch_queue_create("com.OCMapView.clustering", NULL);  
 }
 
-- (void)dealloc{
-    [allAnnotations release];
-    [annotationsToIgnore release];
-    dispatch_release(backgroundClusterQueue);
-    
-    [super dealloc];
-}
 
 // ======================================
 #pragma mark MKMapView implementation
@@ -86,11 +79,9 @@
 }
 
 - (void)removeAnnotations:(NSArray *)annotations{
-    [annotations retain];
     for (id<MKAnnotation> annotation in annotations) {
         [allAnnotations removeObject:annotation];
     }
-    [annotations release];
     [self doClustering];
 }
 
@@ -125,8 +116,7 @@
     // Remove the annotation which should be ignored
     NSMutableArray *bufferArray = [[NSMutableArray alloc] initWithArray:[allAnnotations allObjects]];
     [bufferArray removeObjectsInArray:[annotationsToIgnore allObjects]];
-    NSMutableArray *annotationsToCluster = [[NSMutableArray alloc] initWithArray:[self filterAnnotationsForVisibleMap:bufferArray]];
-    [bufferArray release];
+    NSMutableArray *annotationsToCluster = [[NSMutableArray alloc] initWithArray:[self filterAnnotationsForVisibleMap:bufferArray]];;
     
     //calculate cluster radius
     CLLocationDistance clusterRadius = self.region.span.longitudeDelta * clusterSize;
@@ -148,14 +138,14 @@
                 break;
             }
             default:{
-                clusteredAnnotations = [annotationsToCluster retain];
+                clusteredAnnotations = annotationsToCluster;
                 break;
             }
         }
     }
     // pass through without when not
     else{
-        clusteredAnnotations = [annotationsToCluster retain];
+        clusteredAnnotations = annotationsToCluster ;
     }
     
     // Clear map but leave Userlcoation
@@ -172,10 +162,7 @@
     // add ignored annotations
     [super addAnnotations: [annotationsToIgnore allObjects]];
     
-    // memory
-    [clusteredAnnotations release];
-    [annotationsToCluster release];
-    [annotationsToRemove release];
+   
 }
 
 // ======================================
@@ -197,7 +184,7 @@
         }
     }
     
-    return [filteredAnnotations autorelease];
+    return filteredAnnotations;
 }
 
 @end

@@ -16,7 +16,7 @@
 {
     self = [super init];
     if (self) {
-        _groupTag = title = subtitle = [[NSString stringWithFormat:@""] retain];
+        _groupTag = title = subtitle = [NSString stringWithFormat:@""] ;
         coordinate = CLLocationCoordinate2DMake(0.0, 0.0);
         annotationsInCluster = [[NSMutableArray alloc] init];
     }
@@ -25,7 +25,6 @@
 }
 
 - (id)initWithAnnotation:(id <MKAnnotation>) annotation{
-    [annotation retain];
     
     self = [super init];
     if (self) {
@@ -33,23 +32,11 @@
         annotationsInCluster = [[NSMutableArray alloc] init];
         [annotationsInCluster addObject:annotation];
         
-        title = [annotation.title retain];
-        subtitle = [annotation.title retain];
-        _groupTag = [[NSString stringWithFormat:@""] retain];
+        title = annotation.title ;
+        subtitle = annotation.title ;
+        _groupTag = [NSString stringWithFormat:@""] ;
     }
-    [annotation release];
-    
     return self;
-}
-
-- (void)dealloc {
-    [annotationsInCluster release];
-    
-    [title release];
-    [subtitle release];
-    [_groupTag release];
-    
-    [super dealloc];
 }
 
 //
@@ -63,7 +50,7 @@
 //
 // manipulate cluster
 - (void)addAnnotation:(id < MKAnnotation >)annotation{
-    [annotation retain];
+
     
     //calculate new cluster coordinate
     float annotationCount = (float)[annotationsInCluster count];
@@ -72,19 +59,19 @@
     
     // Add annotation to the cluster
     [annotationsInCluster addObject:annotation];
-    [annotation release];
+
 }
 
 - (void)addAnnotations:(NSArray *)annotations{
-    [annotations retain];
+
     for (id<MKAnnotation> annotation in annotations) {
         [self addAnnotation: annotation];
     }
-    [annotations release];
+
 }
 
 - (void)removeAnnotation:(id < MKAnnotation >)annotation{
-    [annotation retain];
+
     
     //calculate new cluster coordinate
     float annotationCount = (float)[annotationsInCluster count];
@@ -94,15 +81,15 @@
     // Remove annotation from cluster
     [annotationsInCluster removeObject:annotation];
     
-    [annotation release];
+
 }
 
 - (void)removeAnnotations:(NSArray *)annotations{
-    [annotations retain];
+
     for (id<MKAnnotation> annotation in annotations) {
         [self removeAnnotation: annotation];
     }
-    [annotations release];
+
 }
 
 //
@@ -111,9 +98,7 @@
     return title;
 }
 
-- (void)setTitle:(NSString *)text{
-    [text retain];
-    [title release];
+- (void)setTitle:(NSString *)text{    
     title = text;
 }
 
@@ -122,8 +107,6 @@
 }
 
 - (void)setSubtitle:(NSString *)text{
-    [text retain];
-    [subtitle release];
     subtitle = text;
 }
 
@@ -132,8 +115,6 @@
 }
 
 - (void)setGroupTag:(NSString *)tag{
-    [tag retain];
-    [_groupTag release];
     _groupTag = tag;
 }
 
