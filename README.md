@@ -1,3 +1,5 @@
+#Fit best with ios 6 devices. Use it if you want to implement OCMapView under ios6 build.
+
 ###Update 13.02.2012:###
 Added support for cluster different groups of annotations. See the screenshots below.  
 ####How to use:
