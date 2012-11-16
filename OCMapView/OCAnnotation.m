@@ -7,6 +7,10 @@
 
 #import "OCAnnotation.h"
 
+@interface OCAnnotation ()
+CLLocationCoordinate2D safeCoordinate (CLLocationCoordinate2D);
+@end
+
 @implementation OCAnnotation
 @synthesize coordinate;
 
@@ -65,13 +69,21 @@
 - (void)addAnnotation:(id < MKAnnotation >)annotation{
     [annotation retain];
     
-    //calculate new cluster coordinate
-    float annotationCount = (float)[annotationsInCluster count];
-    coordinate.latitude = (coordinate.latitude * annotationCount + annotation.coordinate.latitude) / (annotationCount + 1);
-    coordinate.longitude = (coordinate.longitude * annotationCount + annotation.coordinate.longitude) / (annotationCount + 1);
-    
     // Add annotation to the cluster
     [annotationsInCluster addObject:annotation];
+    
+    // get the number of stored annotations
+    float multiplier = 1.0f/(float)[annotationsInCluster count];
+    
+    // calc delta vector
+    CLLocationCoordinate2D deltaCoord;
+    deltaCoord.latitude = (coordinate.latitude - annotation.coordinate.latitude) * multiplier;
+    deltaCoord.longitude = (coordinate.longitude - annotation.coordinate.longitude) * multiplier;
+    
+    // recenter
+    coordinate.latitude = deltaCoord.latitude + annotation.coordinate.latitude;
+    coordinate.longitude = deltaCoord.longitude + annotation.coordinate.longitude;
+    
     [annotation release];
 }
 
@@ -86,10 +98,17 @@
 - (void)removeAnnotation:(id < MKAnnotation >)annotation{
     [annotation retain];
     
-    //calculate new cluster coordinate
-    float annotationCount = (float)[annotationsInCluster count];
-    coordinate.latitude = (coordinate.latitude * annotationCount - annotation.coordinate.latitude) / (annotationCount - 1);
-    coordinate.longitude = (coordinate.longitude * annotationCount - annotation.coordinate.longitude) / (annotationCount - 1);
+    // get the number of stored annotations
+    float multiplier = 1.0f/(float)[annotationsInCluster count];
+    
+    // calc delta vector
+    CLLocationCoordinate2D deltaCoord;
+    deltaCoord.latitude = (coordinate.latitude - annotation.coordinate.latitude) * multiplier;
+    deltaCoord.longitude = (coordinate.longitude - annotation.coordinate.longitude) * multiplier;
+    
+    // recenter
+    coordinate.latitude = deltaCoord.latitude - annotation.coordinate.latitude;
+    coordinate.longitude = deltaCoord.longitude - annotation.coordinate.longitude;
     
     // Remove annotation from cluster
     [annotationsInCluster removeObject:annotation];
@@ -143,6 +162,22 @@
 
 - (void)setCoordinate:(CLLocationCoordinate2D)coord{
     coordinate = coord;
+}
+
+//================
+#pragma mark - private
+
+CLLocationCoordinate2D safeCoordinate (CLLocationCoordinate2D coordinate){
+    
+    CLLocationCoordinate2D safeCoordinate = coordinate;
+    
+    safeCoordinate.latitude = MIN(90.0, safeCoordinate.latitude);
+    safeCoordinate.latitude = MAX(-90.0, safeCoordinate.latitude);
+    
+    safeCoordinate.longitude = MIN(180.0, safeCoordinate.longitude);
+    safeCoordinate.longitude = MAX(-180.0, safeCoordinate.longitude);
+    
+    return safeCoordinate;
 }
 
 @end
