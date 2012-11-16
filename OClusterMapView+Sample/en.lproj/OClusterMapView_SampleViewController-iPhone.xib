@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
 	<data>
-		<int key="IBDocument.SystemTarget">1280</int>
-		<string key="IBDocument.SystemVersion">11D50</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
-		<string key="IBDocument.AppKitVersion">1138.32</string>
-		<string key="IBDocument.HIToolboxVersion">568.00</string>
+		<int key="IBDocument.SystemTarget">1536</int>
+		<string key="IBDocument.SystemVersion">12C60</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2840</string>
+		<string key="IBDocument.AppKitVersion">1187.34</string>
+		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">933</string>
+			<string key="NS.object.0">1926</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<string>IBUILabel</string>
-			<string>IBUIButton</string>
-			<string>IBUIView</string>
 			<string>IBMKMapView</string>
 			<string>IBProxyObject</string>
+			<string>IBUIButton</string>
+			<string>IBUILabel</string>
+			<string>IBUIView</string>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -55,7 +55,7 @@
 					</object>
 					<object class="IBUIButton" id="965170072">
 						<reference key="NSNextResponder" ref="774585933"/>
-						<int key="NSvFlags">1316</int>
+						<int key="NSvFlags">1293</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{20, 391}, {130, 30}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
@@ -94,7 +94,7 @@
 					</object>
 					<object class="IBUIButton" id="722003660">
 						<reference key="NSNextResponder" ref="774585933"/>
-						<int key="NSvFlags">1316</int>
+						<int key="NSvFlags">1293</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{20, 424}, {130, 30}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
@@ -118,7 +118,7 @@
 					</object>
 					<object class="IBUIButton" id="491948827">
 						<reference key="NSNextResponder" ref="774585933"/>
-						<int key="NSvFlags">1316</int>
+						<int key="NSvFlags">1293</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{170, 391}, {130, 30}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
@@ -142,7 +142,7 @@
 					</object>
 					<object class="IBUIButton" id="247906273">
 						<reference key="NSNextResponder" ref="774585933"/>
-						<int key="NSvFlags">1316</int>
+						<int key="NSvFlags">1293</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{20, 358}, {130, 30}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
@@ -181,6 +181,7 @@
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MCAwIDAAA</bytes>
+							<string key="IBUIColorCocoaTouchKeyPath">darkTextColor</string>
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -199,7 +200,7 @@
 					</object>
 					<object class="IBUIButton" id="795663446">
 						<reference key="NSNextResponder" ref="774585933"/>
-						<int key="NSvFlags">1316</int>
+						<int key="NSvFlags">1293</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{170, 358}, {130, 30}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
@@ -223,7 +224,7 @@
 					</object>
 					<object class="IBUIButton" id="595743294">
 						<reference key="NSNextResponder" ref="774585933"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">289</int>
 						<string key="NSFrame">{{297, 7}, {18, 19}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
@@ -255,7 +256,7 @@
 					</object>
 					<object class="IBUIButton" id="1061115761">
 						<reference key="NSNextResponder" ref="774585933"/>
-						<int key="NSvFlags">1316</int>
+						<int key="NSvFlags">1293</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{170, 424}, {130, 29}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
@@ -507,7 +508,7 @@
 					<string>9.IBUserGuides</string>
 					<string>9.showNotes</string>
 				</object>
-				<object class="NSMutableArray" key="dict.values">
+				<object class="NSArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>OClusterMapView_SampleViewController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -582,7 +583,7 @@
 							<string>infoButtonTouchUpInside:</string>
 							<string>removeButtonTouchUpInside:</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>id</string>
 							<string>id</string>
@@ -605,7 +606,7 @@
 							<string>infoButtonTouchUpInside:</string>
 							<string>removeButtonTouchUpInside:</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
 								<string key="name">addButtonTouchUpInside:</string>
@@ -644,7 +645,7 @@
 							<string>labelNumberOfAnnotations</string>
 							<string>mapView</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UILabel</string>
 							<string>OCMapView</string>
@@ -657,7 +658,7 @@
 							<string>labelNumberOfAnnotations</string>
 							<string>mapView</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">labelNumberOfAnnotations</string>
@@ -684,6 +685,6 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<string key="IBCocoaTouchPluginVersion">933</string>
+		<string key="IBCocoaTouchPluginVersion">1926</string>
 	</data>
 </archive>
