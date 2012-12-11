@@ -108,6 +108,11 @@ default: 0.2*/
  default: 0.0 (no min. zoom)*/
 @property(nonatomic, assign) CLLocationDegrees minLongitudeDeltaToCluster;
 
+//
+/// Clusters all annotations, even if they are outside of the visible MKCoordinateRegion
+/* default: NO (checks for boundaries)*/
+@property BOOL clusterInvisibleViews;
+
 // ======================================
 // Clustering
 
