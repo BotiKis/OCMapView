@@ -18,6 +18,7 @@
 @synthesize clusterSize;
 @synthesize clusterByGroupTag;
 @synthesize minLongitudeDeltaToCluster;
+@synthesize clusterInvisibleViews;
 
 - (id)init
 {
@@ -56,7 +57,8 @@
     minLongitudeDeltaToCluster = 0.0;
     clusteringEnabled = YES;
     clusterByGroupTag = NO;
-    backgroundClusterQueue = dispatch_queue_create("com.OCMapView.clustering", NULL);  
+    backgroundClusterQueue = dispatch_queue_create("com.OCMapView.clustering", NULL);
+    clusterInvisibleViews = NO;
 }
 
 - (void)dealloc{
@@ -122,12 +124,21 @@
 
 - (void)doClustering{
     
+    NSMutableArray *annotationsToCluster = nil;
+
+    // Filter invisible (eg. out of visible map rect) annotations, if wanted
+    if (!self.clusterInvisibleViews) {
+        NSMutableArray *bufferArray = [[NSMutableArray alloc] initWithArray:[allAnnotations allObjects]];
+        annotationsToCluster = [[NSMutableArray alloc] initWithArray:[self filterAnnotationsForVisibleMap:bufferArray]];
+        [bufferArray release];
+    } else {
+        annotationsToCluster = [[allAnnotations allObjects] mutableCopy];
+    }
+
     // Remove the annotation which should be ignored
-    NSMutableArray *bufferArray = [[NSMutableArray alloc] initWithArray:[allAnnotations allObjects]];
-    [bufferArray removeObjectsInArray:[annotationsToIgnore allObjects]];
-    NSMutableArray *annotationsToCluster = [[NSMutableArray alloc] initWithArray:[self filterAnnotationsForVisibleMap:bufferArray]];
-    [bufferArray release];
-    
+    [annotationsToCluster removeObjectsInArray:[annotationsToIgnore allObjects]];
+
+
     //calculate cluster radius
     CLLocationDistance clusterRadius = self.region.span.longitudeDelta * clusterSize;
     
