@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name     = 'OCMapView'
   s.version  = '1.0'
   s.platform = :ios
-  s.summary  = 'Simple and easy to use clustering mapView for iOS'
+  s.summary  = 'Simple and easy to use clustering mapView for iOS.'
   s.homepage = 'https://github.com/XBeg9/OCMapView'
   s.author   = { 'Botond Kis' => 'boti.kis@gmx.at' }
   s.source   = { :git => 'https://github.com/XBeg9/OCMapView.git', :tag => '1.0' }
@@ -14,4 +14,5 @@ Pod::Spec.new do |s|
   s.requires_arc = false
   s.source_files = 'OCMapView'
   s.frameworks   = 'MapKit', 'CoreLocation'
+  s.license = "LICENSE.txt"
 end
