@@ -17,48 +17,20 @@
 
 @implementation OClusterMapView_SampleViewController
 
-@synthesize mapView;
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
-}
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    mapView.delegate = self;
-    mapView.clusterSize = kDEFAULTCLUSTERSIZE;
-    labelNumberOfAnnotations.text = @"Number of Annotations: 0";
+    self.mapView.delegate = self;
+    self.mapView.clusterSize = kDEFAULTCLUSTERSIZE;
+    self.labelNumberOfAnnotations.text = @"Number of Annotations: 0";
 }
 
 - (void)viewDidUnload
 {
     [self setMapView:nil];
     [super viewDidUnload];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -75,13 +47,13 @@
 #pragma mark - UI actions
 
 - (IBAction)removeButtonTouchUpInside:(id)sender {
-    [mapView removeAnnotations:mapView.annotations];
-    [mapView removeOverlays:mapView.overlays];
-    labelNumberOfAnnotations.text = @"Number of Annotations: 0";
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    [self.mapView removeOverlays:self.mapView.overlays];
+    self.labelNumberOfAnnotations.text = @"Number of Annotations: 0";
 }
 
 - (IBAction)addButtonTouchUpInside:(id)sender {
-    [mapView removeOverlays:mapView.overlays];
+    [self.mapView removeOverlays:self.mapView.overlays];
     NSArray *randomLocations = [[NSArray alloc] initWithArray:[self randomCoordinatesGenerator:100]];
     NSMutableSet *annotationsToAdd = [[NSMutableSet alloc] init];
     
@@ -100,8 +72,8 @@
         [annotation release];
     }
     
-    [mapView addAnnotations:[annotationsToAdd allObjects]];
-    labelNumberOfAnnotations.text = [NSString stringWithFormat:@"Number of Annotations: %d", [mapView.annotations count]];
+    [self.mapView addAnnotations:[annotationsToAdd allObjects]];
+    self.labelNumberOfAnnotations.text = [NSString stringWithFormat:@"Number of Annotations: %d", [self.mapView.annotations count]];
     
     // clean
     [randomLocations release];
@@ -109,29 +81,29 @@
 }
 
 - (IBAction)clusteringButtonTouchUpInside:(UIButton *)sender {
-    [mapView removeOverlays:mapView.overlays];
-    if (mapView.clusteringEnabled) {
+    [self.mapView removeOverlays:self.mapView.overlays];
+    if (self.mapView.clusteringEnabled) {
         [sender setTitle:@"turn clustering on" forState:UIControlStateNormal];
         [sender setTitle:@"turn clustering on" forState:UIControlStateSelected];
         [sender setTitle:@"turn clustering on" forState:UIControlStateHighlighted];
-        mapView.clusteringEnabled = NO;
+        self.mapView.clusteringEnabled = NO;
     }
     else{
         [sender setTitle:@"turn clustering off" forState:UIControlStateNormal];
         [sender setTitle:@"turn clustering off" forState:UIControlStateSelected];
         [sender setTitle:@"turn clustering off" forState:UIControlStateHighlighted];
-        mapView.clusteringEnabled = YES;
+        self.mapView.clusteringEnabled = YES;
     }
 }
 
 - (IBAction)addOneButtonTouchupInside:(id)sender {
-    [mapView removeOverlays:mapView.overlays];
+    [self.mapView removeOverlays:self.mapView.overlays];
     NSArray *randomLocations = [[NSArray alloc] initWithArray:[self randomCoordinatesGenerator:1]];
     CLLocationCoordinate2D loc = ((CLLocation *)[randomLocations objectAtIndex:0]).coordinate;
     OCMapViewSampleHelpAnnotation *annotation = [[OCMapViewSampleHelpAnnotation alloc] initWithCoordinate:loc];
     
-    [mapView addAnnotation:annotation];
-    labelNumberOfAnnotations.text = [NSString stringWithFormat:@"Number of Annotations: %d", [mapView.annotations count]];
+    [self.mapView addAnnotation:annotation];
+    self.labelNumberOfAnnotations.text = [NSString stringWithFormat:@"Number of Annotations: %d", [self.mapView.annotations count]];
     
     // clean
     [randomLocations release];
@@ -139,20 +111,20 @@
 }
 
 - (IBAction)changeClusterMethodButtonTouchUpInside:(UIButton *)sender {    
-    [mapView removeOverlays:mapView.overlays];
-    if (mapView.clusteringMethod == OCClusteringMethodBubble) {
+    [self.mapView removeOverlays:self.mapView.overlays];
+    if (self.mapView.clusteringMethod == OCClusteringMethodBubble) {
         [sender setTitle:@"Bubble cluster" forState:UIControlStateNormal];
         [sender setTitle:@"Bubble cluster" forState:UIControlStateSelected];
         [sender setTitle:@"Bubble cluster" forState:UIControlStateHighlighted];
-        mapView.clusteringMethod = OCClusteringMethodGrid;
+        self.mapView.clusteringMethod = OCClusteringMethodGrid;
     }
     else{
         [sender setTitle:@"Grid cluster" forState:UIControlStateNormal];
         [sender setTitle:@"Grid cluster" forState:UIControlStateSelected];
         [sender setTitle:@"Grid cluster" forState:UIControlStateHighlighted];
-        mapView.clusteringMethod = OCClusteringMethodBubble;
+        self.mapView.clusteringMethod = OCClusteringMethodBubble;
     }
-    [mapView doClustering];
+    [self.mapView doClustering];
 }
 
 - (IBAction)infoButtonTouchUpInside:(UIButton *)sender{
@@ -162,18 +134,18 @@
 }
 
 - (IBAction)buttonGroupByTagTouchUpInside:(UIButton *)sender {
-    mapView.clusterByGroupTag = ! mapView.clusterByGroupTag;
-    if(mapView.clusterByGroupTag){
+    self.mapView.clusterByGroupTag = ! self.mapView.clusterByGroupTag;
+    if(self.mapView.clusterByGroupTag){
         [sender setTitle:@"turn groups off" forState:UIControlStateNormal];
-        mapView.clusterSize = kDEFAULTCLUSTERSIZE * 2.0;
+        self.mapView.clusterSize = kDEFAULTCLUSTERSIZE * 2.0;
     }
     else{
         [sender setTitle:@"turn groups on" forState:UIControlStateNormal];
-        mapView.clusterSize = kDEFAULTCLUSTERSIZE;
+        self.mapView.clusterSize = kDEFAULTCLUSTERSIZE;
     }
     
-    [mapView removeOverlays:mapView.overlays];
-    [mapView doClustering];
+    [self.mapView removeOverlays:self.mapView.overlays];
+    [self.mapView doClustering];
 }
 
 // ==============================
@@ -194,16 +166,16 @@
             annotationView.centerOffset = CGPointMake(0, -20);
         }
         //calculate cluster region
-        CLLocationDistance clusterRadius = mapView.region.span.longitudeDelta * mapView.clusterSize * 111000 / 2.0f; //static circle size of cluster
-        //CLLocationDistance clusterRadius = mapView.region.span.longitudeDelta/log(mapView.region.span.longitudeDelta*mapView.region.span.longitudeDelta) * log(pow([clusterAnnotation.annotationsInCluster count], 4)) * mapView.clusterSize * 50000; //circle size based on number of annotations in cluster
+        CLLocationDistance clusterRadius = self.mapView.region.span.longitudeDelta * self.mapView.clusterSize * 111000 / 2.0f; //static circle size of cluster
+        //CLLocationDistance clusterRadius = self.mapView.region.span.longitudeDelta/log(self.mapView.region.span.longitudeDelta*self.mapView.region.span.longitudeDelta) * log(pow([clusterAnnotation.annotationsInCluster count], 4)) * self.mapView.clusterSize * 50000; //circle size based on number of annotations in cluster
         
         MKCircle *circle = [MKCircle circleWithCenterCoordinate:clusterAnnotation.coordinate radius:clusterRadius * cos([annotation coordinate].latitude * M_PI / 180.0)];
         [circle setTitle:@"background"];
-        [mapView addOverlay:circle];
+        [self.mapView addOverlay:circle];
         
         MKCircle *circleLine = [MKCircle circleWithCenterCoordinate:clusterAnnotation.coordinate radius:clusterRadius * cos([annotation coordinate].latitude * M_PI / 180.0)];
         [circleLine setTitle:@"line"];
-        [mapView addOverlay:circleLine];
+        [self.mapView addOverlay:circleLine];
         
         // set title
         clusterAnnotation.title = @"Cluster";
@@ -213,7 +185,7 @@
         annotationView.image = [UIImage imageNamed:@"regular.png"];
         
         // change pin image for group
-        if (mapView.clusterByGroupTag) {
+        if (self.mapView.clusterByGroupTag) {
             if ([clusterAnnotation.groupTag isEqualToString:kTYPE1]) {
                 annotationView.image = [UIImage imageNamed:@"bananas.png"];
             }
@@ -280,8 +252,8 @@
 }
 
 - (void)mapView:(MKMapView *)aMapView regionDidChangeAnimated:(BOOL)animated{
-    [mapView removeOverlays:mapView.overlays];
-    [mapView doClustering];
+    [self.mapView removeOverlays:self.mapView.overlays];
+    [self.mapView doClustering];
 }
 
 // ==============================
