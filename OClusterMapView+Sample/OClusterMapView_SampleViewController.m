@@ -260,24 +260,24 @@ static CGFloat kDEFAULTCLUSTERSIZE = 0.2;
 //
 // Help method which returns an array of random CLLocations
 // You can specify the number of coordinates by setting numberOfCoordinates
-- (NSArray *)randomCoordinatesGenerator:(int) numberOfCoordinates{
+- (NSArray *)randomCoordinatesGenerator:(int) numberOfCoordinates
+{
+    MKCoordinateRegion visibleRegion = MKCoordinateRegionForMapRect([self.mapView visibleMapRect]);
+    visibleRegion.span.latitudeDelta *= 0.8;
+    visibleRegion.span.longitudeDelta *= 0.8;
     
-    numberOfCoordinates = (numberOfCoordinates < 0) ? 0 : numberOfCoordinates;
-    
+    numberOfCoordinates = MAX(0,numberOfCoordinates);
     NSMutableArray *coordinates = [[NSMutableArray alloc] initWithCapacity:numberOfCoordinates];
     for (int i = 0; i < numberOfCoordinates; i++) {
         
-        // Get random coordinates
-        CLLocationDistance latitude  = arc4random() * 180.0 - 90.0;   // the latitude goes from +90° - 0 - -90°
-        CLLocationDistance longitude = arc4random() * 360.0 - 180.0;  // the longitude goes from +180° - 0 - -180°
+        // start with top left corner
+        CLLocationDistance longitude = visibleRegion.center.longitude - visibleRegion.span.longitudeDelta/2.0;
+        CLLocationDistance latitude  = visibleRegion.center.latitude + visibleRegion.span.latitudeDelta/2.0;
         
-        // This is a fix, because the randomizing above can fail
-        latitude = MIN(90.0, latitude);
-        latitude = MAX(-90.0, latitude);
-        
-        longitude = MIN(180.0, longitude);
-        longitude = MAX(-180.0, longitude);
-        
+        // Get random coordinates within current map rect
+        NSInteger max = NSIntegerMax;
+        longitude += (arc4random()%max)/(CGFloat)max * visibleRegion.span.longitudeDelta;
+        latitude  -= (arc4random()%max)/(CGFloat)max * visibleRegion.span.latitudeDelta;
         
         CLLocation *loc = [[CLLocation alloc]initWithLatitude:latitude longitude:longitude];
         [coordinates addObject:loc];
