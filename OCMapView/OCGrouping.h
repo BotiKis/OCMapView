@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 /// Protocol which is needed to use different groups of clusters
-/** Implement this protocol to in an annotation to enable cluster different groups*/
+/** Implement this protocol in an annotation to enable clustering of groups
+ */
 @protocol OCGrouping <NSObject>
--(NSString *) groupTag;
+@property (nonatomic, readonly, copy) NSString *groupTag;
 @end
