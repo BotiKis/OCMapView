@@ -12,30 +12,22 @@
 
 @implementation OClusterMapView_SampleAppDelegate
 
+@synthesize window = _window;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window = window;
-    [window release];
-    
     NSString *nibName = @"OClusterMapView_SampleViewController-iPhone";
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         nibName = @"OClusterMapView_SampleViewController-iPad";
     }
     
-    OClusterMapView_SampleViewController *controller = [[OClusterMapView_SampleViewController alloc]
-                                                        initWithNibName:nibName bundle:nil];
-    self.window.rootViewController = controller;
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = [[OClusterMapView_SampleViewController alloc]
+                                      initWithNibName:nibName bundle:nil];
     [self.window makeKeyAndVisible];
-    [controller release];
     
     return YES;
 }
 
-- (void)dealloc
-{
-    [_window release];
-    [super dealloc];
-}
 
 @end

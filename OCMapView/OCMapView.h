@@ -65,7 +65,7 @@
 /// List of annotations which will be ignored by the clustering algorithm.
 /** The objects in this array must adopt the @see MKAnnotation protocol.
  The clustering algorithms will automatically ignore this annotations.*/
-@property(nonatomic, retain) NSMutableSet *annotationsToIgnore;
+@property(nonatomic, strong) NSMutableSet *annotationsToIgnore;
 
 //
 /// The complete list of annotations displayed on the map including clusters (read-only).

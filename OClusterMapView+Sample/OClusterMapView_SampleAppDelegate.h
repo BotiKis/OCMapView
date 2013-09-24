@@ -10,6 +10,6 @@
 
 @interface OClusterMapView_SampleAppDelegate : NSObject <UIApplicationDelegate>
 
-@property (nonatomic, retain) UIWindow *window;
+@property (nonatomic, strong) UIWindow *window;
 
 @end

@@ -19,7 +19,6 @@
 + (NSArray*) bubbleClusteringWithAnnotations:(NSArray *) annotationsToCluster andClusterRadius:(CLLocationDistance)radius grouped:(BOOL) grouped{
     
     // memory
-    [annotationsToCluster retain];
     
     // return array
     NSMutableArray *clusteredAnnotations = [[NSMutableArray alloc] init];
@@ -39,7 +38,6 @@
                 newCluster.groupTag = ((id <OCGrouping>)annotation).groupTag;
             }
             
-            [newCluster release];
 		}
 		else {
             for (OCAnnotation *clusterAnnotation in clusteredAnnotations) {
@@ -68,7 +66,6 @@
                     newCluster.groupTag = ((id <OCGrouping>)annotation).groupTag;
                 }
                 
-                [newCluster release];
 			}
 		}
 	}
@@ -86,10 +83,8 @@
     }
     
     // memory
-    [annotationsToCluster release];
-    [clusteredAnnotations release];
     
-    return [returnArray autorelease];
+    return returnArray;
 }
 
 
@@ -97,7 +92,6 @@
 + (NSArray*) gridClusteringWithAnnotations:(NSArray *) annotationsToCluster andClusterRect:(MKCoordinateSpan)tileRect grouped:(BOOL) grouped{
     
     // memory
-    [annotationsToCluster retain];
     
     // return array
     NSMutableDictionary *clusteredAnnotations = [[NSMutableDictionary alloc] init];
@@ -113,7 +107,7 @@
         
         
         // get the cluster for the calculated coordinates
-        OCAnnotation *clusterAnnotation = [[clusteredAnnotations objectForKey:key] retain];
+        OCAnnotation *clusterAnnotation = [clusteredAnnotations objectForKey:key];
         
         // if there is none, create one
         if (clusterAnnotation == nil) {
@@ -134,14 +128,12 @@
         // check group
         if (grouped && [annotation respondsToSelector:@selector(groupTag)]) {
             if (![clusterAnnotation.groupTag isEqualToString:((id <OCGrouping>)annotation).groupTag]){
-                [clusterAnnotation release];
                 continue;
             }
         }
         
         // add annotation to the cluster
         [clusterAnnotation addAnnotation:annotation];
-        [clusterAnnotation release];
 	}
     
     // return array
@@ -149,19 +141,16 @@
     
     // whipe all empty or single annotations
     for (OCAnnotation *anAnnotation in [clusteredAnnotations allValues]) {
-        if ([anAnnotation.annotationsInCluster count] <= 1) {
+        if ([anAnnotation.annotationsInCluster count] == 1) {
             [returnArray addObject:[anAnnotation.annotationsInCluster lastObject]];
-        }
-        else{
+        } else if ([anAnnotation.annotationsInCluster count] > 1) {
             [returnArray addObject:anAnnotation];
         }
     }
     
     // memory
-    [annotationsToCluster release];
-    [clusteredAnnotations release];
     
-    return [returnArray autorelease];
+    return returnArray;
 }
 
 @end

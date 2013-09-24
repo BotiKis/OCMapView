@@ -20,7 +20,7 @@ CLLocationCoordinate2D safeCoordinate (CLLocationCoordinate2D);
 {
     self = [super init];
     if (self) {
-        _groupTag = title = subtitle = [[NSString stringWithFormat:@""] retain];
+        _groupTag = title = subtitle = [NSString stringWithFormat:@""];
         coordinate = CLLocationCoordinate2DMake(0.0, 0.0);
         annotationsInCluster = [[NSMutableArray alloc] init];
     }
@@ -29,7 +29,6 @@ CLLocationCoordinate2D safeCoordinate (CLLocationCoordinate2D);
 }
 
 - (id)initWithAnnotation:(id <MKAnnotation>) annotation{
-    [annotation retain];
     
     self = [super init];
     if (self) {
@@ -37,24 +36,14 @@ CLLocationCoordinate2D safeCoordinate (CLLocationCoordinate2D);
         annotationsInCluster = [[NSMutableArray alloc] init];
         [annotationsInCluster addObject:annotation];
         
-        title = [annotation.title retain];
-        subtitle = [annotation.title retain];
-        _groupTag = [[NSString stringWithFormat:@""] retain];
+        title = annotation.title;
+        subtitle = annotation.title;
+        _groupTag = [NSString stringWithFormat:@""];
     }
-    [annotation release];
     
     return self;
 }
 
-- (void)dealloc {
-    [annotationsInCluster release];
-    
-    [title release];
-    [subtitle release];
-    [_groupTag release];
-    
-    [super dealloc];
-}
 
 //
 // List of annotations in the cluster
@@ -67,7 +56,6 @@ CLLocationCoordinate2D safeCoordinate (CLLocationCoordinate2D);
 //
 // manipulate cluster
 - (void)addAnnotation:(id < MKAnnotation >)annotation{
-    [annotation retain];
     
     // Add annotation to the cluster
     [annotationsInCluster addObject:annotation];
@@ -84,19 +72,15 @@ CLLocationCoordinate2D safeCoordinate (CLLocationCoordinate2D);
     coordinate.latitude = deltaCoord.latitude + annotation.coordinate.latitude;
     coordinate.longitude = deltaCoord.longitude + annotation.coordinate.longitude;
     
-    [annotation release];
 }
 
 - (void)addAnnotations:(NSArray *)annotations{
-    [annotations retain];
     for (id<MKAnnotation> annotation in annotations) {
         [self addAnnotation: annotation];
     }
-    [annotations release];
 }
 
 - (void)removeAnnotation:(id < MKAnnotation >)annotation{
-    [annotation retain];
     
     // get the number of stored annotations
     float multiplier = 1.0f/(float)[annotationsInCluster count];
@@ -113,15 +97,12 @@ CLLocationCoordinate2D safeCoordinate (CLLocationCoordinate2D);
     // Remove annotation from cluster
     [annotationsInCluster removeObject:annotation];
     
-    [annotation release];
 }
 
 - (void)removeAnnotations:(NSArray *)annotations{
-    [annotations retain];
     for (id<MKAnnotation> annotation in annotations) {
         [self removeAnnotation: annotation];
     }
-    [annotations release];
 }
 
 //
@@ -131,8 +112,6 @@ CLLocationCoordinate2D safeCoordinate (CLLocationCoordinate2D);
 }
 
 - (void)setTitle:(NSString *)text{
-    [text retain];
-    [title release];
     title = text;
 }
 
@@ -141,8 +120,6 @@ CLLocationCoordinate2D safeCoordinate (CLLocationCoordinate2D);
 }
 
 - (void)setSubtitle:(NSString *)text{
-    [text retain];
-    [subtitle release];
     subtitle = text;
 }
 
@@ -151,8 +128,6 @@ CLLocationCoordinate2D safeCoordinate (CLLocationCoordinate2D);
 }
 
 - (void)setGroupTag:(NSString *)tag{
-    [tag retain];
-    [_groupTag release];
     _groupTag = tag;
 }
 

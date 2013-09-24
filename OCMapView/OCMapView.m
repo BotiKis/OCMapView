@@ -61,13 +61,6 @@
     clusterInvisibleViews = NO;
 }
 
-- (void)dealloc{
-    [allAnnotations release];
-    [annotationsToIgnore release];
-    dispatch_release(backgroundClusterQueue);
-    
-    [super dealloc];
-}
 
 // ======================================
 #pragma mark MKMapView implementation
@@ -88,11 +81,9 @@
 }
 
 - (void)removeAnnotations:(NSArray *)annotations{
-    [annotations retain];
     for (id<MKAnnotation> annotation in annotations) {
         [allAnnotations removeObject:annotation];
     }
-    [annotations release];
     [self doClustering];
 }
 
@@ -130,7 +121,6 @@
     if (!self.clusterInvisibleViews) {
         NSMutableArray *bufferArray = [[NSMutableArray alloc] initWithArray:[allAnnotations allObjects]];
         annotationsToCluster = [[NSMutableArray alloc] initWithArray:[self filterAnnotationsForVisibleMap:bufferArray]];
-        [bufferArray release];
     } else {
         annotationsToCluster = [[allAnnotations allObjects] mutableCopy];
     }
@@ -159,14 +149,14 @@
                 break;
             }
             default:{
-                clusteredAnnotations = [annotationsToCluster retain];
+                clusteredAnnotations = annotationsToCluster;
                 break;
             }
         }
     }
     // pass through without when not
     else{
-        clusteredAnnotations = [annotationsToCluster retain];
+        clusteredAnnotations = annotationsToCluster;
     }
     
     // Clear map but leave Userlcoation
@@ -182,11 +172,6 @@
     
     // add ignored annotations
     [super addAnnotations: [annotationsToIgnore allObjects]];
-    
-    // memory
-    [clusteredAnnotations release];
-    [annotationsToCluster release];
-    [annotationsToRemove release];
 }
 
 // ======================================
@@ -208,7 +193,7 @@
         }
     }
     
-    return [filteredAnnotations autorelease];
+    return filteredAnnotations;
 }
 
 @end
