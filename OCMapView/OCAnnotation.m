@@ -41,12 +41,6 @@
     return self;
 }
 
-- (CLLocation *)location;
-{
-    return [[CLLocation alloc] initWithLatitude:_coordinate.latitude
-                                      longitude:_coordinate.longitude];
-}
-
 //
 // List of annotations in the cluster
 // read only

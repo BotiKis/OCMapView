@@ -21,9 +21,6 @@
 @property (nonatomic, copy) NSString *groupTag;
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 
-/// The coordinate of the cluster as CLLocation
-@property (nonatomic, readonly) CLLocation *location;
-
 /// Init with annotations
 /** Init cluster with containing annotations*/
 - (id)initWithAnnotation:(id <MKAnnotation>) annotation;
