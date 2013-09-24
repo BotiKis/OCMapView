@@ -8,21 +8,18 @@
 #import "OCAnnotation.h"
 
 @interface OCAnnotation ()
-CLLocationCoordinate2D safeCoordinate (CLLocationCoordinate2D);
+@property (nonatomic, strong) NSMutableArray *annotationsInCluster;
 @end
 
 @implementation OCAnnotation
-@synthesize coordinate;
 
-
-// Memory
 - (id)init
 {
     self = [super init];
     if (self) {
-        _groupTag = title = subtitle = [NSString stringWithFormat:@""];
-        coordinate = CLLocationCoordinate2DMake(0.0, 0.0);
-        annotationsInCluster = [[NSMutableArray alloc] init];
+        self.groupTag = self.title = self.subtitle = @"";
+        _coordinate = CLLocationCoordinate2DMake(0.0, 0.0);
+        _annotationsInCluster = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -32,24 +29,29 @@ CLLocationCoordinate2D safeCoordinate (CLLocationCoordinate2D);
     
     self = [super init];
     if (self) {
-        coordinate = [annotation coordinate];
-        annotationsInCluster = [[NSMutableArray alloc] init];
-        [annotationsInCluster addObject:annotation];
+        _coordinate = [annotation coordinate];
+        _annotationsInCluster = [[NSMutableArray alloc] init];
+        [_annotationsInCluster addObject:annotation];
         
-        title = annotation.title;
-        subtitle = annotation.title;
-        _groupTag = [NSString stringWithFormat:@""];
+        self.title = annotation.self.title;
+        self.subtitle = annotation.self.title;
+        self.groupTag = @"";
     }
     
     return self;
 }
 
+- (CLLocation *)location;
+{
+    return [[CLLocation alloc] initWithLatitude:_coordinate.latitude
+                                      longitude:_coordinate.longitude];
+}
 
 //
 // List of annotations in the cluster
 // read only
-- (NSArray *)annotationsInCluster{
-    return annotationsInCluster;
+- (NSArray *)_annotationsInCluster{
+    return [_annotationsInCluster copy];
 }
 
 
@@ -58,19 +60,19 @@ CLLocationCoordinate2D safeCoordinate (CLLocationCoordinate2D);
 - (void)addAnnotation:(id < MKAnnotation >)annotation{
     
     // Add annotation to the cluster
-    [annotationsInCluster addObject:annotation];
+    [_annotationsInCluster addObject:annotation];
     
     // get the number of stored annotations
-    float multiplier = 1.0f/(float)[annotationsInCluster count];
+    float multiplier = 1.0f/(float)[_annotationsInCluster count];
     
     // calc delta vector
     CLLocationCoordinate2D deltaCoord;
-    deltaCoord.latitude = (coordinate.latitude - annotation.coordinate.latitude) * multiplier;
-    deltaCoord.longitude = (coordinate.longitude - annotation.coordinate.longitude) * multiplier;
+    deltaCoord.latitude = (_coordinate.latitude - annotation.coordinate.latitude) * multiplier;
+    deltaCoord.longitude = (_coordinate.longitude - annotation.coordinate.longitude) * multiplier;
     
     // recenter
-    coordinate.latitude = deltaCoord.latitude + annotation.coordinate.latitude;
-    coordinate.longitude = deltaCoord.longitude + annotation.coordinate.longitude;
+    _coordinate.latitude = deltaCoord.latitude + annotation.coordinate.latitude;
+    _coordinate.longitude = deltaCoord.longitude + annotation.coordinate.longitude;
     
 }
 
@@ -83,19 +85,19 @@ CLLocationCoordinate2D safeCoordinate (CLLocationCoordinate2D);
 - (void)removeAnnotation:(id < MKAnnotation >)annotation{
     
     // get the number of stored annotations
-    float multiplier = 1.0f/(float)[annotationsInCluster count];
+    float multiplier = 1.0f/(float)[_annotationsInCluster count];
     
     // calc delta vector
     CLLocationCoordinate2D deltaCoord;
-    deltaCoord.latitude = (coordinate.latitude - annotation.coordinate.latitude) * multiplier;
-    deltaCoord.longitude = (coordinate.longitude - annotation.coordinate.longitude) * multiplier;
+    deltaCoord.latitude = (_coordinate.latitude - annotation.coordinate.latitude) * multiplier;
+    deltaCoord.longitude = (_coordinate.longitude - annotation.coordinate.longitude) * multiplier;
     
     // recenter
-    coordinate.latitude = deltaCoord.latitude - annotation.coordinate.latitude;
-    coordinate.longitude = deltaCoord.longitude - annotation.coordinate.longitude;
+    _coordinate.latitude = deltaCoord.latitude - annotation.coordinate.latitude;
+    _coordinate.longitude = deltaCoord.longitude - annotation.coordinate.longitude;
     
     // Remove annotation from cluster
-    [annotationsInCluster removeObject:annotation];
+    [_annotationsInCluster removeObject:annotation];
     
 }
 
@@ -105,54 +107,5 @@ CLLocationCoordinate2D safeCoordinate (CLLocationCoordinate2D);
     }
 }
 
-//
-// protocoll implementation
-- (NSString *)title{
-    return title;
-}
-
-- (void)setTitle:(NSString *)text{
-    title = text;
-}
-
-- (NSString *)subtitle{
-    return subtitle;
-}
-
-- (void)setSubtitle:(NSString *)text{
-    subtitle = text;
-}
-
-- (NSString *)groupTag{
-    return _groupTag;
-}
-
-- (void)setGroupTag:(NSString *)tag{
-    _groupTag = tag;
-}
-
-- (CLLocationCoordinate2D)coordinate{
-    return coordinate;
-}
-
-- (void)setCoordinate:(CLLocationCoordinate2D)coord{
-    coordinate = coord;
-}
-
-//================
-#pragma mark - private
-
-CLLocationCoordinate2D safeCoordinate (CLLocationCoordinate2D coordinate){
-    
-    CLLocationCoordinate2D safeCoordinate = coordinate;
-    
-    safeCoordinate.latitude = MIN(90.0, safeCoordinate.latitude);
-    safeCoordinate.latitude = MAX(-90.0, safeCoordinate.latitude);
-    
-    safeCoordinate.longitude = MIN(180.0, safeCoordinate.longitude);
-    safeCoordinate.longitude = MAX(-180.0, safeCoordinate.longitude);
-    
-    return safeCoordinate;
-}
-
 @end
+
