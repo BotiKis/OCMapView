@@ -7,103 +7,79 @@
 
 #import "OCMapView.h"
 
-@interface OCMapView (private)
-- (void)initSetUp;
+@interface OCMapView ()
+@property (nonatomic, strong) NSMutableSet *allAnnotations;
+@property (nonatomic, strong) dispatch_queue_t backgroundClusterQueue;
+- (void)sharedInit;
+
+/// Filters annotations for visibleMapRect.
+/** This method filters the annotations for the visibleMapRect.*/
+- (NSArray *)filterAnnotationsForVisibleMap:(NSArray *)annotationsToFilter;
 @end
 
 @implementation OCMapView
-@synthesize clusteringEnabled;
-@synthesize annotationsToIgnore;
-@synthesize clusteringMethod;
-@synthesize clusterSize;
-@synthesize clusterByGroupTag;
-@synthesize minLongitudeDeltaToCluster;
-@synthesize clusterInvisibleViews;
 
-- (id)init
+- (id)initWithFrame:(CGRect)frame;
 {
-    self = [super init];
-    if (self) {
-        // call actual initializer
-        [self initSetUp];
-    }
-    
-    return self;
-}
-
--(id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        // call actual initializer
-        [self initSetUp];
+        [self sharedInit];
     }
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder{
-    self = [super initWithCoder:aDecoder];    
+- (id)initWithCoder:(NSCoder *)aDecoder;
+{
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        // call actual initializer
-        [self initSetUp];
+        [self sharedInit];
     }
     return self;
 }
 
-- (void)initSetUp{
-    allAnnotations = [[NSMutableSet alloc] init];
-    annotationsToIgnore = [[NSMutableSet alloc] init];
-    clusteringMethod = OCClusteringMethodBubble;
-    clusterSize = 0.2;
-    minLongitudeDeltaToCluster = 0.0;
-    clusteringEnabled = YES;
-    clusterByGroupTag = NO;
-    backgroundClusterQueue = dispatch_queue_create("com.OCMapView.clustering", NULL);
-    clusterInvisibleViews = NO;
+- (void)sharedInit;
+{
+    _allAnnotations = [[NSMutableSet alloc] init];
+    _annotationsToIgnore = [[NSMutableSet alloc] init];
+    _clusteringMethod = OCClusteringMethodBubble;
+    _clusterSize = 0.2;
+    _minLongitudeDeltaToCluster = 0.0;
+    _clusteringEnabled = YES;
+    _clusterByGroupTag = NO;
+    _backgroundClusterQueue = dispatch_queue_create("com.OCMapView.clustering", NULL);
+    _clusterInvisibleViews = NO;
 }
 
-- (void)dealloc{
-    [allAnnotations release];
-    [annotationsToIgnore release];
-    dispatch_release(backgroundClusterQueue);
-    
-    [super dealloc];
-}
-
-// ======================================
-#pragma mark MKMapView implementation
+#pragma mark - MKMapView
 
 - (void)addAnnotation:(id < MKAnnotation >)annotation{
-    [allAnnotations addObject:annotation];
+    [_allAnnotations addObject:annotation];
     [self doClustering];
 }
 
 - (void)addAnnotations:(NSArray *)annotations{
-    [allAnnotations addObjectsFromArray:annotations];
+    [_allAnnotations addObjectsFromArray:annotations];
     [self doClustering];
 }
 
 - (void)removeAnnotation:(id < MKAnnotation >)annotation{
-    [allAnnotations removeObject:annotation];
+    [_allAnnotations removeObject:annotation];
     [self doClustering];
 }
 
 - (void)removeAnnotations:(NSArray *)annotations{
-    [annotations retain];
     for (id<MKAnnotation> annotation in annotations) {
-        [allAnnotations removeObject:annotation];
+        [_allAnnotations removeObject:annotation];
     }
-    [annotations release];
     [self doClustering];
 }
 
-
-// ======================================
 #pragma mark - Properties
 //
 // Returns, like the original method,
 // all annotations in the map unclustered.
 - (NSArray *)annotations{
-    return [allAnnotations allObjects];
+    return [_allAnnotations allObjects];
 }
 
 //
@@ -115,11 +91,10 @@
 //
 // enable or disable clustering
 - (void)setClusteringEnabled:(BOOL)enabled{
-    clusteringEnabled = enabled;
+    _clusteringEnabled = enabled;
     [self doClustering];
 }
 
-// ======================================
 #pragma mark - Clustering
 
 - (void)doClustering{
@@ -128,28 +103,27 @@
 
     // Filter invisible (eg. out of visible map rect) annotations, if wanted
     if (!self.clusterInvisibleViews) {
-        NSMutableArray *bufferArray = [[NSMutableArray alloc] initWithArray:[allAnnotations allObjects]];
+        NSMutableArray *bufferArray = [[NSMutableArray alloc] initWithArray:[_allAnnotations allObjects]];
         annotationsToCluster = [[NSMutableArray alloc] initWithArray:[self filterAnnotationsForVisibleMap:bufferArray]];
-        [bufferArray release];
     } else {
-        annotationsToCluster = [[allAnnotations allObjects] mutableCopy];
+        annotationsToCluster = [[_allAnnotations allObjects] mutableCopy];
     }
 
     // Remove the annotation which should be ignored
-    [annotationsToCluster removeObjectsInArray:[annotationsToIgnore allObjects]];
+    [annotationsToCluster removeObjectsInArray:[_annotationsToIgnore allObjects]];
 
 
     //calculate cluster radius
-    CLLocationDistance clusterRadius = self.region.span.longitudeDelta * clusterSize;
+    CLLocationDistance clusterRadius = self.region.span.longitudeDelta * _clusterSize;
     
     // Do clustering
     NSArray *clusteredAnnotations;
     
     // Check if clustering is enabled and map is above the minZoom
-    if (clusteringEnabled && (self.region.span.longitudeDelta > minLongitudeDeltaToCluster)) {
+    if (_clusteringEnabled && (self.region.span.longitudeDelta > _minLongitudeDeltaToCluster)) {
         
         // switch to selected algoritm
-        switch (clusteringMethod) {
+        switch (_clusteringMethod) {
             case OCClusteringMethodBubble:{
                 clusteredAnnotations = [[NSArray alloc] initWithArray:[OCAlgorithms bubbleClusteringWithAnnotations:annotationsToCluster andClusterRadius:clusterRadius grouped:self.clusterByGroupTag]];
                 break;
@@ -159,14 +133,14 @@
                 break;
             }
             default:{
-                clusteredAnnotations = [annotationsToCluster retain];
+                clusteredAnnotations = annotationsToCluster;
                 break;
             }
         }
     }
     // pass through without when not
     else{
-        clusteredAnnotations = [annotationsToCluster retain];
+        clusteredAnnotations = annotationsToCluster;
     }
     
     // Clear map but leave Userlcoation
@@ -181,15 +155,9 @@
     [super removeAnnotations:annotationsToRemove];
     
     // add ignored annotations
-    [super addAnnotations: [annotationsToIgnore allObjects]];
-    
-    // memory
-    [clusteredAnnotations release];
-    [annotationsToCluster release];
-    [annotationsToRemove release];
+    [super addAnnotations: [_annotationsToIgnore allObjects]];
 }
 
-// ======================================
 #pragma mark - Helpers
 
 - (NSArray *)filterAnnotationsForVisibleMap:(NSArray *)annotationsToFilter{
@@ -203,12 +171,12 @@
     
     for (id<MKAnnotation> annotation in annotationsToFilter) {
         // if annotation is not inside the coordinates, kick it
-        if (isLocationNearToOtherLocation(annotation.coordinate, self.centerCoordinate, radius)) {
+        if ((CLLocationCoordinateDistance([annotation coordinate], self.centerCoordinate) <= radius)) {
             [filteredAnnotations addObject:annotation];
         }
     }
     
-    return [filteredAnnotations autorelease];
+    return filteredAnnotations;
 }
 
 @end

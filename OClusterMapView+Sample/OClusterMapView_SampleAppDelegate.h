@@ -8,12 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class OClusterMapView_SampleViewController;
-
 @interface OClusterMapView_SampleAppDelegate : NSObject <UIApplicationDelegate>
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-
-@property (nonatomic, retain) IBOutlet OClusterMapView_SampleViewController *viewController;
+@property (nonatomic, strong) UIWindow *window;
 
 @end

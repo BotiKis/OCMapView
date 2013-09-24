@@ -9,25 +9,13 @@
 #import <MapKit/MapKit.h>
 #import "OCGrouping.h"
 
-@interface OCMapViewSampleHelpAnnotation : NSObject <MKAnnotation, OCGrouping>{
-    CLLocationCoordinate2D coordinate;
-    NSString *title;
-    NSString *subtitle;
-    NSString *_groupTag;
-}
+@interface OCMapViewSampleHelpAnnotation : NSObject <MKAnnotation, OCGrouping>
+
+@property (nonatomic, assign) CLLocationCoordinate2D coordinate;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *subtitle;
+@property (nonatomic, copy) NSString *groupTag;
+
 - (id)initWithCoordinate:(CLLocationCoordinate2D)aCoordinate;
-
-//
-// protocoll implementation
-- (NSString *)title;
-- (void)setTitle:(NSString *)text;
-
-- (NSString *)subtitle;
-- (void)setSubtitle:(NSString *)text;
-
-- (NSString *)groupTag;
-- (void)setGroupTag:(NSString *)tag;
-
-- (CLLocationCoordinate2D)coordinate;
 
 @end
