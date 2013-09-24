@@ -100,38 +100,34 @@
     NSMutableArray *annotationsToCluster = nil;
 
     // Filter invisible (eg. out of visible map rect) annotations, if wanted
-    if (!self.clusterInvisibleViews) {
-        NSMutableArray *bufferArray = [[NSMutableArray alloc] initWithArray:[_allAnnotations allObjects]];
-        annotationsToCluster = [[NSMutableArray alloc] initWithArray:[self filterAnnotationsForVisibleMap:bufferArray]];
-    } else {
+    if (self.clusterInvisibleViews) {
         annotationsToCluster = [[_allAnnotations allObjects] mutableCopy];
+    } else {
+        annotationsToCluster = [[self filterAnnotationsForVisibleMap:[_allAnnotations allObjects]] mutableCopy];
     }
 
     // Remove the annotation which should be ignored
     [annotationsToCluster removeObjectsInArray:[_annotationsToIgnore allObjects]];
-
-
-    //calculate cluster radius
-    CLLocationDistance clusterRadius = self.region.span.longitudeDelta * _clusterSize;
     
-    // Do clustering
+    // Cluster annotations, when enabled and map is above the minimum zoom
     NSArray *clusteredAnnotations;
-    
-    // Check if clustering is enabled and map is above the minZoom
-    if (_clusteringEnabled && (self.region.span.longitudeDelta > _minLongitudeDeltaToCluster)) {
-        
-        // switch to selected algoritm
+    if (_clusteringEnabled && (self.region.span.longitudeDelta > _minLongitudeDeltaToCluster))
+    {
+        //calculate cluster radius
+        CLLocationDistance clusterRadius = self.region.span.longitudeDelta * _clusterSize;
+     
+        // clustering
         switch (_clusteringMethod) {
             case OCClusteringMethodBubble:{
-                clusteredAnnotations = [[NSArray alloc] initWithArray:[OCAlgorithms bubbleClusteringWithAnnotations:annotationsToCluster andClusterRadius:clusterRadius grouped:self.clusterByGroupTag]];
+                clusteredAnnotations = [OCAlgorithms bubbleClusteringWithAnnotations:annotationsToCluster
+                                                                    andClusterRadius:clusterRadius
+                                                                             grouped:self.clusterByGroupTag];
                 break;
             }
             case OCClusteringMethodGrid:{
-                clusteredAnnotations =[[NSArray alloc] initWithArray:[OCAlgorithms gridClusteringWithAnnotations:annotationsToCluster andClusterRect:MKCoordinateSpanMake(clusterRadius, clusterRadius)  grouped:self.clusterByGroupTag]];
-                break;
-            }
-            default:{
-                clusteredAnnotations = annotationsToCluster;
+                clusteredAnnotations =[OCAlgorithms gridClusteringWithAnnotations:annotationsToCluster
+                                                                   andClusterRect:MKCoordinateSpanMake(clusterRadius, clusterRadius)
+                                                                          grouped:self.clusterByGroupTag];
                 break;
             }
         }
@@ -141,19 +137,25 @@
         clusteredAnnotations = annotationsToCluster;
     }
     
-    // Clear map but leave Userlcoation
-    NSMutableArray *annotationsToRemove = [[NSMutableArray alloc] initWithArray:self.displayedAnnotations];
-    [annotationsToRemove removeObject:self.userLocation];
+    NSMutableArray *annotationsToDisplay = [clusteredAnnotations mutableCopy];
+    [annotationsToDisplay addObjectsFromArray:[_annotationsToIgnore allObjects]];
     
-    // add clustered and ignored annotations to map
-    [super addAnnotations: clusteredAnnotations];
+    // update visible annotations
+    for (id<MKAnnotation> annotation in self.displayedAnnotations) {
+        if (annotation == self.userLocation) {
+            continue;
+        }
+        
+        // remove old annotations
+        if (![annotationsToDisplay containsObject:annotation]) {
+            [super removeAnnotation:annotation];
+        } else {
+            [annotationsToDisplay removeObject:annotation];
+        }
+    }
     
-    // fix for flickering
-    [annotationsToRemove removeObjectsInArray: clusteredAnnotations];
-    [super removeAnnotations:annotationsToRemove];
-    
-    // add ignored annotations
-    [super addAnnotations: [_annotationsToIgnore allObjects]];
+    // add not existing annotations
+    [super addAnnotations:annotationsToDisplay];
 }
 
 #pragma mark - Helpers
@@ -163,9 +165,9 @@
     NSMutableArray *filteredAnnotations = [[NSMutableArray alloc] initWithCapacity:[annotationsToFilter count]];
     
     // border calculation
-    CLLocationDistance a = self.region.span.latitudeDelta/2.0;
-    CLLocationDistance b = self.region.span.longitudeDelta /2.0;
-    CLLocationDistance radius = sqrt(a*a + b*b);
+    CLLocationDistance a = self.region.span.latitudeDelta / 2.0;
+    CLLocationDistance b = self.region.span.longitudeDelta / 2.0;
+    CLLocationDistance radius = sqrt(pow(a,2.0) + pow(b,2.0));
     
     for (id<MKAnnotation> annotation in annotationsToFilter) {
         // if annotation is not inside the coordinates, kick it
