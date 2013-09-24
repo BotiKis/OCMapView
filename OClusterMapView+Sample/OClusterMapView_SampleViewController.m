@@ -263,7 +263,7 @@ static CGFloat kDEFAULTCLUSTERSIZE = 0.2;
 // You can specify the number of coordinates by setting numberOfCoordinates
 - (NSArray *)randomCoordinatesGenerator:(int) numberOfCoordinates
 {
-    MKCoordinateRegion visibleRegion = MKCoordinateRegionForMapRect([self.mapView visibleMapRect]);
+    MKCoordinateRegion visibleRegion = self.mapView.region;
     visibleRegion.span.latitudeDelta *= 0.8;
     visibleRegion.span.longitudeDelta *= 0.8;
     
