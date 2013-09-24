@@ -9,7 +9,6 @@
 
 @interface OCMapView ()
 @property (nonatomic, strong) NSMutableSet *allAnnotations;
-@property (nonatomic, strong) dispatch_queue_t backgroundClusterQueue;
 - (void)sharedInit;
 
 /// Filters annotations for visibleMapRect.
@@ -46,7 +45,6 @@
     _minLongitudeDeltaToCluster = 0.0;
     _clusteringEnabled = YES;
     _clusterByGroupTag = NO;
-    _backgroundClusterQueue = dispatch_queue_create("com.OCMapView.clustering", NULL);
     _clusterInvisibleViews = NO;
 }
 
