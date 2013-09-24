@@ -9,22 +9,20 @@
 #import "OCAnnotation.h"
 #import "OCDistance.h"
 #import "OCGrouping.h"
-#import <math.h>
 
 @implementation OCAlgorithms
 
 #pragma mark - bubbleClustering
 
 // Bubble clustering with iteration
-+ (NSArray*) bubbleClusteringWithAnnotations:(NSArray *) annotationsToCluster andClusterRadius:(CLLocationDistance)radius grouped:(BOOL) grouped{
-    
-    // memory
-    
-    // return array
++ (NSArray*)bubbleClusteringWithAnnotations:(NSArray*)annotationsToCluster
+                           andClusterRadius:(CLLocationDistance)radius grouped:(BOOL)grouped;
+{
     NSMutableArray *clusteredAnnotations = [[NSMutableArray alloc] init];
     
 	// Clustering
-	for (id <MKAnnotation> annotation in annotationsToCluster) {
+	for (id <MKAnnotation> annotation in annotationsToCluster)
+    {
 		// flag for cluster
 		BOOL isContaining = NO;
 		
@@ -38,8 +36,7 @@
                 newCluster.groupTag = ((id <OCGrouping>)annotation).groupTag;
             }
             
-		}
-		else {
+		} else {
             for (OCAnnotation *clusterAnnotation in clusteredAnnotations) {
                 // If the annotation is in range of the Cluster add it to it
                 if ((CLLocationCoordinateDistance([annotation coordinate], [clusterAnnotation coordinate]) <= radius)) {
@@ -64,35 +61,28 @@
                 if (grouped && [annotation respondsToSelector:@selector(groupTag)]) {
                     newCluster.groupTag = ((id <OCGrouping>)annotation).groupTag;
                 }
-                
 			}
 		}
 	}
     
-    NSMutableArray *returnArray = [[NSMutableArray alloc] init];
-    
     // whipe all empty or single annotations
+    NSMutableArray *returnArray = [[NSMutableArray alloc] init];
     for (OCAnnotation *anAnnotation in clusteredAnnotations) {
-        if ([anAnnotation.annotationsInCluster count] <= 1) {
+        if ([anAnnotation.annotationsInCluster count] == 1) {
             [returnArray addObject:[anAnnotation.annotationsInCluster lastObject]];
-        }
-        else{
+        } else if ([anAnnotation.annotationsInCluster count] > 1){
             [returnArray addObject:anAnnotation];
         }
     }
-    
-    // memory
     
     return returnArray;
 }
 
 
 // Grid clustering with predefined size
-+ (NSArray*) gridClusteringWithAnnotations:(NSArray *) annotationsToCluster andClusterRect:(MKCoordinateSpan)tileRect grouped:(BOOL) grouped{
-    
-    // memory
-    
-    // return array
++ (NSArray*)gridClusteringWithAnnotations:(NSArray*)annotationsToCluster
+                           andClusterRect:(MKCoordinateSpan)tileRect grouped:(BOOL)grouped
+{
     NSMutableDictionary *clusteredAnnotations = [[NSMutableDictionary alloc] init];
     
     // iterate through all annotations
@@ -146,8 +136,6 @@
             [returnArray addObject:anAnnotation];
         }
     }
-    
-    // memory
     
     return returnArray;
 }

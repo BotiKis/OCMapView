@@ -48,9 +48,8 @@
     return [_annotationsInCluster copy];
 }
 
+#pragma mark add / remove annotations
 
-//
-// manipulate cluster
 - (void)addAnnotation:(id < MKAnnotation >)annotation{
     
     // Add annotation to the cluster
