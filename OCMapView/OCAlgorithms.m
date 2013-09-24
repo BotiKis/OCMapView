@@ -12,8 +12,6 @@
 
 @implementation OCAlgorithms
 
-#pragma mark - bubbleClustering
-
 // Bubble clustering with iteration
 + (NSArray*)bubbleClusteringWithAnnotations:(NSArray*)annotationsToCluster
                            andClusterRadius:(CLLocationDistance)radius grouped:(BOOL)grouped;
@@ -68,7 +66,7 @@
 
 // Grid clustering with predefined size
 + (NSArray*)gridClusteringWithAnnotations:(NSArray*)annotationsToCluster
-                           andClusterRect:(MKCoordinateSpan)tileRect grouped:(BOOL)grouped
+                           andClusterRect:(MKCoordinateSpan)tileRect grouped:(BOOL)grouped;
 {
     NSMutableDictionary *clusteredAnnotations = [[NSMutableDictionary alloc] init];
     

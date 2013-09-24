@@ -81,6 +81,7 @@
 		D215C9B817F1CB0E00754E7D /* oranges@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oranges@2x.png"; sourceTree = "<group>"; };
 		D215C9B917F1CB0E00754E7D /* regular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = regular.png; sourceTree = "<group>"; };
 		D215C9BA17F1CB0E00754E7D /* regular@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "regular@2x.png"; sourceTree = "<group>"; };
+		D282A70817F1E6D300BAE1B4 /* OCAlgorithmDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCAlgorithmDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +162,7 @@
 			children = (
 				88098268142FC02A002AD1BD /* OCAlgorithms.h */,
 				88098269142FC02A002AD1BD /* OCAlgorithms.m */,
+				D282A70817F1E6D300BAE1B4 /* OCAlgorithmDelegate.h */,
 				8809826A142FC02A002AD1BD /* OCAnnotation.h */,
 				8809826B142FC02A002AD1BD /* OCAnnotation.m */,
 				8809826C142FC02A002AD1BD /* OCDistance.h */,
