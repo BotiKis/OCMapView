@@ -11,10 +11,10 @@
 
 /// Annotation class which represents a Cluster.
 /** OCAnnotation stores all annotations which are in its area.
- Objects of this class will be returned by the delegate method of OCMapView "viewForAnnotation".
- Implements MKAnnotation protocol.
+ Objects of this class will be handed over to the MKMapView delegate method "viewForAnnotation".
+ Implements OCGrouping protocol. @see OCGrouping
  */
-@interface OCAnnotation : NSObject <MKAnnotation, OCGrouping>
+@interface OCAnnotation : NSObject <OCGrouping>
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subtitle;

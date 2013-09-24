@@ -32,16 +32,15 @@
             [clusteredAnnotations addObject:newCluster];
             
             // check group
-            if (grouped && [annotation respondsToSelector:@selector(groupTag)]) {
-                newCluster.groupTag = ((id <OCGrouping>)annotation).groupTag;
+            if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
+                newCluster.groupTag = ((id<OCGrouping>)annotation).groupTag;
             }
-            
 		} else {
             for (OCAnnotation *clusterAnnotation in clusteredAnnotations) {
                 // If the annotation is in range of the Cluster add it to it
                 if ((CLLocationCoordinateDistance([annotation coordinate], [clusterAnnotation coordinate]) <= radius)) {
                     // check group
-                    if (grouped && [annotation respondsToSelector:@selector(groupTag)]) {
+                    if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
                         if (![clusterAnnotation.groupTag isEqualToString:((id <OCGrouping>)annotation).groupTag])
                             continue;
                     }
@@ -58,7 +57,7 @@
 				[clusteredAnnotations addObject:newCluster];
                 
                 // check group
-                if (grouped && [annotation respondsToSelector:@selector(groupTag)]) {
+                if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
                     newCluster.groupTag = ((id <OCGrouping>)annotation).groupTag;
                 }
 			}
@@ -107,7 +106,7 @@
             clusterAnnotation.coordinate = CLLocationCoordinate2DMake(lat, lon);
             
             // check group
-            if (grouped && [annotation respondsToSelector:@selector(groupTag)]) {
+            if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
                 clusterAnnotation.groupTag = ((id <OCGrouping>)annotation).groupTag;
             }
             
@@ -115,7 +114,7 @@
         }
         
         // check group
-        if (grouped && [annotation respondsToSelector:@selector(groupTag)]) {
+        if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
             if (![clusterAnnotation.groupTag isEqualToString:((id <OCGrouping>)annotation).groupTag]){
                 continue;
             }

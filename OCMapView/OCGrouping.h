@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
 /// Protocol which is needed to use different groups of clusters
 /** Implement this protocol in an annotation to enable clustering of groups
  */
-@protocol OCGrouping <NSObject>
+@protocol OCGrouping <MKAnnotation>
 @property (nonatomic, readonly, copy) NSString *groupTag;
 @end
