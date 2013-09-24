@@ -188,7 +188,7 @@
     
     for (id<MKAnnotation> annotation in annotationsToFilter) {
         // if annotation is not inside the coordinates, kick it
-        if (isLocationNearToOtherLocation(annotation.coordinate, self.centerCoordinate, radius)) {
+        if ((CLLocationCoordinateDistance([annotation coordinate], self.centerCoordinate) <= radius)) {
             [filteredAnnotations addObject:annotation];
         }
     }

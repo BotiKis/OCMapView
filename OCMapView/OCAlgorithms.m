@@ -42,8 +42,7 @@
 		else {
             for (OCAnnotation *clusterAnnotation in clusteredAnnotations) {
                 // If the annotation is in range of the Cluster add it to it
-                if(isLocationNearToOtherLocation([annotation coordinate], [clusterAnnotation coordinate], radius)){
-                    
+                if ((CLLocationCoordinateDistance([annotation coordinate], [clusterAnnotation coordinate]) <= radius)) {
                     // check group
                     if (grouped && [annotation respondsToSelector:@selector(groupTag)]) {
                         if (![clusterAnnotation.groupTag isEqualToString:((id <OCGrouping>)annotation).groupTag])
