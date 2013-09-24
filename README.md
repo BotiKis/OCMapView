@@ -1,15 +1,16 @@
 ## What is OCMapView?
-**OpenClusterMapView** is a simple and easy to use extension of `MKMapView` for iOS.
-If you have trouble to display a lot of annotations on the map, this class is for you.
-OCMapView automatically creates cluster by combinig annotation super fast.
-It is written in *Objective-C* + *C* and works for all iOS applications.  
+**OpenClusterMapView** is a simple and easy to use extension of `MKMapView` for iOS. If you are displaying a lot of annotations on the map, this class is made for you.
+
+OCMapView automatically creates clusters by combining annotations super fast.
+It works with any iOS application.
 
 ## Screenshots:
 ![Screenshots](screenshots.jpg "Screenshots")
 
 ## Background:
-You may already encountered the problem when you adding a several hundred annotations the the `MKMapView` it will get laggy and everything but user friendly.
-Many developers believe that iOS can't handle a huge amount of annotations on a `MKMapView` due the low memory capacities of iDevices. So they start to handle the annotation management themselves with pretty dumb filter methods which won't display all annotations and confuse users even more.  
+You may already have encountered the problem: When adding a several hundred annotations to the `MKMapView`, it will get laggy and everything but user friendly.
+
+Many developers believe that iOS can't handle a huge amount of annotations on a `MKMapView` due to the low memory capacities of iDevices. So they start to handle the annotation management themselves with pretty dumb filter methods which won't display all annotations and confuse users even more.  
 
 The actual problem is not memory related. It rather occurs because *annotationViews* are `UIViews` and these are extremely slow. So if you scroll/zoom a `MKMapView` with many annotations, iOS has to redraw them all at once and that will take time.  
 
