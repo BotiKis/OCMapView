@@ -23,45 +23,33 @@
 	// Clustering
 	for (id <MKAnnotation> annotation in annotationsToCluster)
     {
-		// flag for cluster
-		BOOL isContaining = NO;
-		
-		// If it's the first one, add it as new cluster annotation
-		if([clusteredAnnotations count] == 0){
+		// Find fitting existing cluster
+		BOOL foundCluster = NO;
+        for (OCAnnotation *clusterAnnotation in clusteredAnnotations) {
+            // If the annotation is in range of the cluster, add it
+            if ((CLLocationCoordinateDistance([annotation coordinate], [clusterAnnotation coordinate]) <= radius)) {
+                // check group
+                if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
+                    if (![clusterAnnotation.groupTag isEqualToString:((id <OCGrouping>)annotation).groupTag])
+                        continue;
+                }
+                
+                foundCluster = YES;
+                [clusterAnnotation addAnnotation:annotation];
+                break;
+            }
+        }
+        
+        // If the annotation wasn't added to a cluster, create a new one
+        if (!foundCluster){
             OCAnnotation *newCluster = [[OCAnnotation alloc] initWithAnnotation:annotation];
             [clusteredAnnotations addObject:newCluster];
             
             // check group
             if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
-                newCluster.groupTag = ((id<OCGrouping>)annotation).groupTag;
+                newCluster.groupTag = [(id<OCGrouping>)annotation groupTag];
             }
-		} else {
-            for (OCAnnotation *clusterAnnotation in clusteredAnnotations) {
-                // If the annotation is in range of the Cluster add it to it
-                if ((CLLocationCoordinateDistance([annotation coordinate], [clusterAnnotation coordinate]) <= radius)) {
-                    // check group
-                    if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
-                        if (![clusterAnnotation.groupTag isEqualToString:((id <OCGrouping>)annotation).groupTag])
-                            continue;
-                    }
-                    
-					isContaining = YES;
-					[clusterAnnotation addAnnotation:annotation];
-					break;
-				}
-            }
-            
-            // If the annotation is not in a Cluster make it to a new one
-			if (!isContaining){
-				OCAnnotation *newCluster = [[OCAnnotation alloc] initWithAnnotation:annotation];
-				[clusteredAnnotations addObject:newCluster];
-                
-                // check group
-                if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
-                    newCluster.groupTag = ((id <OCGrouping>)annotation).groupTag;
-                }
-			}
-		}
+        }
 	}
     
     // whipe all empty or single annotations
