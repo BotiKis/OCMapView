@@ -85,14 +85,12 @@
     NSMutableDictionary *clusteredAnnotations = [[NSMutableDictionary alloc] init];
     
     // iterate through all annotations
-	for (id <MKAnnotation> annotation in annotationsToCluster) {
-        
+	for (id<MKAnnotation> annotation in annotationsToCluster)
+    {
         // calculate grid coordinates of the annotation
-        int row = ([annotation coordinate].longitude+180.0)/tileRect.longitudeDelta;
-        int column = ([annotation coordinate].latitude+90.0)/tileRect.latitudeDelta;
-        
+        NSInteger row = ([annotation coordinate].longitude+180.0)/tileRect.longitudeDelta;
+        NSInteger column = ([annotation coordinate].latitude+90.0)/tileRect.latitudeDelta;
         NSString *key = [NSString stringWithFormat:@"%d%d",row,column];
-        
         
         // get the cluster for the calculated coordinates
         OCAnnotation *clusterAnnotation = [clusteredAnnotations objectForKey:key];
@@ -107,7 +105,7 @@
             
             // check group
             if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
-                clusterAnnotation.groupTag = ((id <OCGrouping>)annotation).groupTag;
+                clusterAnnotation.groupTag = [(id<OCGrouping>)annotation groupTag];
             }
             
             [clusteredAnnotations setValue:clusterAnnotation forKey:key];
