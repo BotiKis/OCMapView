@@ -92,6 +92,11 @@
         NSInteger column = ([annotation coordinate].latitude+90.0)/tileRect.latitudeDelta;
         NSString *key = [NSString stringWithFormat:@"%d%d",row,column];
         
+        // add group tag to key
+        if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
+            key = [NSString stringWithFormat: @"%@%@", key, [(id<OCGrouping>)annotation groupTag]];
+        }
+        
         // get the cluster for the calculated coordinates
         OCAnnotation *clusterAnnotation = [clusteredAnnotations objectForKey:key];
         
@@ -111,13 +116,6 @@
             [clusteredAnnotations setValue:clusterAnnotation forKey:key];
         }
         
-        // check group
-        if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
-            if (![clusterAnnotation.groupTag isEqualToString:((id <OCGrouping>)annotation).groupTag]){
-                continue;
-            }
-        }
-        
         // add annotation to the cluster
         [clusterAnnotation addAnnotation:annotation];
 	}
@@ -125,7 +123,7 @@
     // return array
     NSMutableArray *returnArray = [[NSMutableArray alloc] init];
     
-    // whipe all empty or single annotations
+    // add single annotations directly without OCAnnotation
     for (OCAnnotation *anAnnotation in [clusteredAnnotations allValues]) {
         if ([anAnnotation.annotationsInCluster count] == 1) {
             [returnArray addObject:[anAnnotation.annotationsInCluster lastObject]];
