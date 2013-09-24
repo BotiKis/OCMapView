@@ -3,9 +3,9 @@ Pod::Spec.new do |s|
   s.version      = '1.1'
   s.platform     = :ios
   s.summary      = 'Simple, easy and fast class for clustering in MKMapViews.'
-  s.homepage     = 'https://github.com/XBeg9/OCMapView'
+  s.homepage     = 'https://github.com/yinkou/OCMapView'
   s.authors      = { 'Botond Kis' => 'boti.kis@gmx.at', 'Markus Emrich' => 'markus@nxtbgthng.com' }
-  s.source       = { :git => 'https://github.com/XBeg9/OCMapView.git', :tag => "#{s.version}" }
+  s.source       = { :git => 'https://github.com/yinkou/OCMapView.git', :tag => "#{s.version}" }
   s.requires_arc = true
   s.source_files = 'OCMapView'
   s.frameworks   = 'MapKit', 'CoreLocation'
