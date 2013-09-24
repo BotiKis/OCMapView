@@ -9,111 +9,82 @@
 #import "OCAnnotation.h"
 #import "OCDistance.h"
 #import "OCGrouping.h"
-#import <math.h>
 
 @implementation OCAlgorithms
 
-#pragma mark - bubbleClustering
-
 // Bubble clustering with iteration
-+ (NSArray*) bubbleClusteringWithAnnotations:(NSArray *) annotationsToCluster andClusterRadius:(CLLocationDistance)radius grouped:(BOOL) grouped{
-    
-    // memory
-    [annotationsToCluster retain];
-    
-    // return array
++ (NSArray*)bubbleClusteringWithAnnotations:(NSArray*)annotationsToCluster
+                           andClusterRadius:(CLLocationDistance)radius grouped:(BOOL)grouped;
+{
     NSMutableArray *clusteredAnnotations = [[NSMutableArray alloc] init];
     
 	// Clustering
-	for (id <MKAnnotation> annotation in annotationsToCluster) {
-		// flag for cluster
-		BOOL isContaining = NO;
-		
-		// If it's the first one, add it as new cluster annotation
-		if([clusteredAnnotations count] == 0){
+	for (id <MKAnnotation> annotation in annotationsToCluster)
+    {
+		// Find fitting existing cluster
+		BOOL foundCluster = NO;
+        for (OCAnnotation *clusterAnnotation in clusteredAnnotations) {
+            // If the annotation is in range of the cluster, add it
+            if ((CLLocationCoordinateDistance([annotation coordinate], [clusterAnnotation coordinate]) <= radius)) {
+                // check group
+                if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
+                    if (![clusterAnnotation.groupTag isEqualToString:((id <OCGrouping>)annotation).groupTag])
+                        continue;
+                }
+                
+                foundCluster = YES;
+                [clusterAnnotation addAnnotation:annotation];
+                break;
+            }
+        }
+        
+        // If the annotation wasn't added to a cluster, create a new one
+        if (!foundCluster){
             OCAnnotation *newCluster = [[OCAnnotation alloc] initWithAnnotation:annotation];
             [clusteredAnnotations addObject:newCluster];
             
             // check group
-            if (grouped && [annotation respondsToSelector:@selector(groupTag)]) {
-                newCluster.groupTag = ((id <OCGrouping>)annotation).groupTag;
+            if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
+                newCluster.groupTag = [(id<OCGrouping>)annotation groupTag];
             }
-            
-            [newCluster release];
-		}
-		else {
-            for (OCAnnotation *clusterAnnotation in clusteredAnnotations) {
-                // If the annotation is in range of the Cluster add it to it
-                if(isLocationNearToOtherLocation([annotation coordinate], [clusterAnnotation coordinate], radius)){
-                    
-                    // check group
-                    if (grouped && [annotation respondsToSelector:@selector(groupTag)]) {
-                        if (![clusterAnnotation.groupTag isEqualToString:((id <OCGrouping>)annotation).groupTag])
-                            continue;
-                    }
-                    
-					isContaining = YES;
-					[clusterAnnotation addAnnotation:annotation];
-					break;
-				}
-            }
-            
-            // If the annotation is not in a Cluster make it to a new one
-			if (!isContaining){
-				OCAnnotation *newCluster = [[OCAnnotation alloc] initWithAnnotation:annotation];
-				[clusteredAnnotations addObject:newCluster];
-                
-                // check group
-                if (grouped && [annotation respondsToSelector:@selector(groupTag)]) {
-                    newCluster.groupTag = ((id <OCGrouping>)annotation).groupTag;
-                }
-                
-                [newCluster release];
-			}
-		}
+        }
 	}
     
-    NSMutableArray *returnArray = [[NSMutableArray alloc] init];
-    
     // whipe all empty or single annotations
+    NSMutableArray *returnArray = [[NSMutableArray alloc] init];
     for (OCAnnotation *anAnnotation in clusteredAnnotations) {
-        if ([anAnnotation.annotationsInCluster count] <= 1) {
+        if ([anAnnotation.annotationsInCluster count] == 1) {
             [returnArray addObject:[anAnnotation.annotationsInCluster lastObject]];
-        }
-        else{
+        } else if ([anAnnotation.annotationsInCluster count] > 1){
             [returnArray addObject:anAnnotation];
         }
     }
     
-    // memory
-    [annotationsToCluster release];
-    [clusteredAnnotations release];
-    
-    return [returnArray autorelease];
+    return returnArray;
 }
 
 
 // Grid clustering with predefined size
-+ (NSArray*) gridClusteringWithAnnotations:(NSArray *) annotationsToCluster andClusterRect:(MKCoordinateSpan)tileRect grouped:(BOOL) grouped{
-    
-    // memory
-    [annotationsToCluster retain];
-    
-    // return array
++ (NSArray*)gridClusteringWithAnnotations:(NSArray*)annotationsToCluster
+                           andClusterRect:(MKCoordinateSpan)tileRect grouped:(BOOL)grouped;
+{
     NSMutableDictionary *clusteredAnnotations = [[NSMutableDictionary alloc] init];
     
     // iterate through all annotations
-	for (id <MKAnnotation> annotation in annotationsToCluster) {
-        
+	for (id<MKAnnotation> annotation in annotationsToCluster)
+    {
         // calculate grid coordinates of the annotation
-        int row = ([annotation coordinate].longitude+180.0)/tileRect.longitudeDelta;
-        int column = ([annotation coordinate].latitude+90.0)/tileRect.latitudeDelta;
-        
+        NSInteger row = ([annotation coordinate].longitude+180.0)/tileRect.longitudeDelta;
+        NSInteger column = ([annotation coordinate].latitude+90.0)/tileRect.latitudeDelta;
         NSString *key = [NSString stringWithFormat:@"%d%d",row,column];
         
+        // add group tag to key
+        if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
+            key = [NSString stringWithFormat: @"%@%@", key, [(id<OCGrouping>)annotation groupTag]];
+        }
         
         // get the cluster for the calculated coordinates
-        OCAnnotation *clusterAnnotation = [[clusteredAnnotations objectForKey:key] retain];
+        OCAnnotation *clusterAnnotation = [clusteredAnnotations objectForKey:key];
         
         // if there is none, create one
         if (clusterAnnotation == nil) {
@@ -124,44 +95,30 @@
             clusterAnnotation.coordinate = CLLocationCoordinate2DMake(lat, lon);
             
             // check group
-            if (grouped && [annotation respondsToSelector:@selector(groupTag)]) {
-                clusterAnnotation.groupTag = ((id <OCGrouping>)annotation).groupTag;
+            if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
+                clusterAnnotation.groupTag = [(id<OCGrouping>)annotation groupTag];
             }
             
             [clusteredAnnotations setValue:clusterAnnotation forKey:key];
         }
         
-        // check group
-        if (grouped && [annotation respondsToSelector:@selector(groupTag)]) {
-            if (![clusterAnnotation.groupTag isEqualToString:((id <OCGrouping>)annotation).groupTag]){
-                [clusterAnnotation release];
-                continue;
-            }
-        }
-        
         // add annotation to the cluster
         [clusterAnnotation addAnnotation:annotation];
-        [clusterAnnotation release];
 	}
     
     // return array
     NSMutableArray *returnArray = [[NSMutableArray alloc] init];
     
-    // whipe all empty or single annotations
+    // add single annotations directly without OCAnnotation
     for (OCAnnotation *anAnnotation in [clusteredAnnotations allValues]) {
-        if ([anAnnotation.annotationsInCluster count] <= 1) {
+        if ([anAnnotation.annotationsInCluster count] == 1) {
             [returnArray addObject:[anAnnotation.annotationsInCluster lastObject]];
-        }
-        else{
+        } else if ([anAnnotation.annotationsInCluster count] > 1) {
             [returnArray addObject:anAnnotation];
         }
     }
     
-    // memory
-    [annotationsToCluster release];
-    [clusteredAnnotations release];
-    
-    return [returnArray autorelease];
+    return returnArray;
 }
 
 @end
