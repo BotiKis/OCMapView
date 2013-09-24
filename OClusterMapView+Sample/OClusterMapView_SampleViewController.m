@@ -23,6 +23,17 @@ static CGFloat kDEFAULTCLUSTERSIZE = 0.2;
     self.mapView.delegate = self;
     self.mapView.clusterSize = kDEFAULTCLUSTERSIZE;
     self.labelNumberOfAnnotations.text = @"Number of Annotations: 0";
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        for (UIButton *button in self.view.subviews) {
+            if ([button isKindOfClass:[UIButton class]]) {
+                [button setTitleColor:[UIColor cyanColor] forState:UIControlStateNormal];
+            }
+        }
+        [self.view performSelector:@selector(setTintColor:) withObject:[UIColor cyanColor]];
+        self.mapView.frame = CGRectMake(0, 20, self.view.bounds.size.width, self.view.bounds.size.height-20);
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    }
 }
 
 - (void)viewDidUnload

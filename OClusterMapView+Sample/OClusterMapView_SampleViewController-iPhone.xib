@@ -61,7 +61,7 @@
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MAA</bytes>
 						</object>
-						<float key="IBUIAlpha">0.5</float>
+						<float key="IBUIAlpha">0.69999998807907104</float>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 					<object class="IBUILabel" id="1039677264">
