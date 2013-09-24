@@ -8,13 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-/// Enumaration for the clustering methods
-/** Contains all clustering methods which are aviable in OCMapView yet*/
-typedef enum {
-    OCClusteringMethodBubble,
-    OCClusteringMethodGrid
-} OCClusteringMethod;
-
 /// Protocol for notifying on Cluster events. NOT in use yet.
 /** Implement this protocol if you are using asynchronous clustering algorithms.
  In fact, there isn't one yet. This just demonstrates where this class will develop to in future.*/

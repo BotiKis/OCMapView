@@ -8,6 +8,13 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
+/// Enumaration for the clustering methods
+/** Contains all clustering methods which are aviable in OCMapView yet*/
+typedef enum {
+    OCClusteringMethodBubble,
+    OCClusteringMethodGrid
+} OCClusteringMethod;
+
 /// Class containing clustering algorithms.
 /** The first release of OCMapView brings two different algorithms.
  This class is supposed to hold those algorithms.
