@@ -9,6 +9,7 @@
 #import "OClusterMapView_SampleAppDelegate.h"
 
 #import "OClusterMapView_SampleViewController.h"
+#import "OCDistanceCalculationPerformance.h"
 
 @implementation OClusterMapView_SampleAppDelegate
 
@@ -25,6 +26,8 @@
     self.window.rootViewController = [[OClusterMapView_SampleViewController alloc]
                                       initWithNibName:nibName bundle:nil];
     [self.window makeKeyAndVisible];
+    
+//    [OCDistanceCalculationPerformance testDistanceCalculationPerformance];
     
     return YES;
 }

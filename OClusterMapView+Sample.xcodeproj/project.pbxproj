@@ -37,6 +37,7 @@
 		D215C9C717F1CB0E00754E7D /* oranges@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D215C9B817F1CB0E00754E7D /* oranges@2x.png */; };
 		D215C9C817F1CB0E00754E7D /* regular.png in Resources */ = {isa = PBXBuildFile; fileRef = D215C9B917F1CB0E00754E7D /* regular.png */; };
 		D215C9C917F1CB0E00754E7D /* regular@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D215C9BA17F1CB0E00754E7D /* regular@2x.png */; };
+		D24DB6BE17F2E9850075E8F9 /* OCDistanceCalculationPerformance.m in Sources */ = {isa = PBXBuildFile; fileRef = D24DB6BD17F2E9850075E8F9 /* OCDistanceCalculationPerformance.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,8 @@
 		D215C9B817F1CB0E00754E7D /* oranges@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oranges@2x.png"; sourceTree = "<group>"; };
 		D215C9B917F1CB0E00754E7D /* regular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = regular.png; sourceTree = "<group>"; };
 		D215C9BA17F1CB0E00754E7D /* regular@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "regular@2x.png"; sourceTree = "<group>"; };
+		D24DB6BC17F2E9850075E8F9 /* OCDistanceCalculationPerformance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDistanceCalculationPerformance.h; sourceTree = "<group>"; };
+		D24DB6BD17F2E9850075E8F9 /* OCDistanceCalculationPerformance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDistanceCalculationPerformance.m; sourceTree = "<group>"; };
 		D282A70817F1E6D300BAE1B4 /* OCAlgorithmDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCAlgorithmDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +108,7 @@
 			children = (
 				88098267142FC02A002AD1BD /* OCMapView */,
 				88098245142FBF04002AD1BD /* OClusterMapView+Sample */,
+				D24DB6BF17F2EE440075E8F9 /* OCCalculationTests */,
 				D215C9A917F1CB0E00754E7D /* Images */,
 				8809823E142FBF04002AD1BD /* Frameworks */,
 				8809823C142FBF04002AD1BD /* Products */,
@@ -213,6 +217,16 @@
 			path = sample_pins;
 			sourceTree = "<group>";
 		};
+		D24DB6BF17F2EE440075E8F9 /* OCCalculationTests */ = {
+			isa = PBXGroup;
+			children = (
+				D24DB6BC17F2E9850075E8F9 /* OCDistanceCalculationPerformance.h */,
+				D24DB6BD17F2E9850075E8F9 /* OCDistanceCalculationPerformance.m */,
+			);
+			name = OCCalculationTests;
+			path = "OClusterMapView+Sample";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -292,6 +306,7 @@
 			files = (
 				8809824C142FBF04002AD1BD /* main.m in Sources */,
 				88098250142FBF04002AD1BD /* OClusterMapView_SampleAppDelegate.m in Sources */,
+				D24DB6BE17F2E9850075E8F9 /* OCDistanceCalculationPerformance.m in Sources */,
 				88098256142FBF04002AD1BD /* OClusterMapView_SampleViewController.m in Sources */,
 				88098270142FC02A002AD1BD /* OCAlgorithms.m in Sources */,
 				88098271142FC02A002AD1BD /* OCAnnotation.m in Sources */,
