@@ -46,10 +46,10 @@ double CLLocationCoordinateDistancePow(CLLocationCoordinate2D c1, CLLocationCoor
         CLLocation *randomLoc = [self randomCoordinatesGenerator:1][0];
         NSArray *otherLocs = [self randomCoordinatesGenerator:count];
         
-        show([NSString stringWithFormat:@"Device/OS: %@, %@", [self platform], [[UIDevice currentDevice] systemVersion]]);
+        show([NSString stringWithFormat:@"Device/OS: '%@', iOS %@", [self platform], [[UIDevice currentDevice] systemVersion]]);
         show([NSString stringWithFormat:@"Testing %d runs of distance calculation per method with %@ coords", runs, [numFormatter stringFromNumber:@(count)]]);
         show([NSString stringWithFormat:@">> This will be %@ distance calculations.", [numFormatter stringFromNumber:@(count*runs)]]);
-        CGFloat duration1 = 0;
+        CGFloat firstDuration = 0;
         for (NSInteger type=0; type<2; type++) {
             NSDate *dateForType = [NSDate date];
             for (NSInteger i=0; i<runs; i++) {
@@ -71,8 +71,16 @@ double CLLocationCoordinateDistancePow(CLLocationCoordinate2D c1, CLLocationCoor
             NSString *method = (type==0)?@"MULTIPLY":@"POW";
             show([NSString stringWithFormat:@"== %@: AVERAGE DURATION IN %d RUNS: %.5fs/run ====", method, runs, duration]);
             
-            if (type ==1) show([NSString stringWithFormat: @"Difference: %.7fs/run", ABS(duration1-duration)]);
-            duration1 = duration;
+            if (type == 1) {
+                show([NSString stringWithFormat: @"Difference: %.7fs/run", ABS(firstDuration-duration)]);
+                if (duration > firstDuration) {
+                    show([NSString stringWithFormat: @"POW was %.3f%% faster.", duration/firstDuration - 1.0]);
+                } else {
+                    show([NSString stringWithFormat: @"MULTIPLY was %.3f%% faster.", firstDuration/duration - 1.0]);
+                }
+            } else {
+                firstDuration = duration;
+            }
         }
         show([NSString stringWithFormat: @"This needed %.2fs in total.", [[NSDate date] timeIntervalSinceDate:startDate]]);
     }
