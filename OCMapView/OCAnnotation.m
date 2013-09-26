@@ -84,8 +84,8 @@
     for (id<MKAnnotation> annotation in self.annotationsInCluster) {
         min.latitude = MIN(min.latitude, annotation.coordinate.latitude);
         min.longitude = MIN(min.longitude, annotation.coordinate.longitude);
-        max.latitude = MIN(max.latitude, annotation.coordinate.latitude);
-        max.longitude = MIN(max.longitude, annotation.coordinate.longitude);
+        max.latitude = MAX(max.latitude, annotation.coordinate.latitude);
+        max.longitude = MAX(max.longitude, annotation.coordinate.longitude);
     }
     
     // calc center
