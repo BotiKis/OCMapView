@@ -37,7 +37,8 @@ typedef enum {
  It iterates through all annotations in the array and compare their
  distances. If they are near engough, they will be clustered.*/
 + (NSArray*)bubbleClusteringWithAnnotations:(NSArray*)annotationsToCluster
-                           andClusterRadius:(CLLocationDistance)radius grouped:(BOOL)grouped;
+                              clusterRadius:(CLLocationDistance)radius
+                                    grouped:(BOOL)grouped;
 
 
 
@@ -49,6 +50,7 @@ typedef enum {
  
  It iterates through all annotations in the array and puts them into a grid tile based on their location.*/
 + (NSArray*)gridClusteringWithAnnotations:(NSArray*)annotationsToCluster
-                           andClusterRect:(MKCoordinateSpan)tileRect grouped:(BOOL)grouped;
+                              clusterRect:(MKCoordinateSpan)tileRect
+                                  grouped:(BOOL)grouped;
 
 @end

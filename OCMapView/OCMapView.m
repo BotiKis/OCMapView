@@ -162,13 +162,13 @@
         switch (_clusteringMethod) {
             case OCClusteringMethodBubble:{
                 clusteredAnnotations = [OCAlgorithms bubbleClusteringWithAnnotations:annotationsToCluster
-                                                                    andClusterRadius:clusterRadius
+                                                                       clusterRadius:clusterRadius
                                                                              grouped:self.clusterByGroupTag];
                 break;
             }
             case OCClusteringMethodGrid:{
                 clusteredAnnotations =[OCAlgorithms gridClusteringWithAnnotations:annotationsToCluster
-                                                                   andClusterRect:MKCoordinateSpanMake(clusterRadius, clusterRadius)
+                                                                      clusterRect:MKCoordinateSpanMake(clusterRadius, clusterRadius)
                                                                           grouped:self.clusterByGroupTag];
                 break;
             }

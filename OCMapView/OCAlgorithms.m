@@ -14,7 +14,8 @@
 
 // Bubble clustering with iteration
 + (NSArray*)bubbleClusteringWithAnnotations:(NSArray*)annotationsToCluster
-                           andClusterRadius:(CLLocationDistance)radius grouped:(BOOL)grouped;
+                              clusterRadius:(CLLocationDistance)radius
+                                    grouped:(BOOL)grouped;
 {
     NSMutableArray *clusteredAnnotations = [[NSMutableArray alloc] init];
     
@@ -66,7 +67,8 @@
 
 // Grid clustering with predefined size
 + (NSArray*)gridClusteringWithAnnotations:(NSArray*)annotationsToCluster
-                           andClusterRect:(MKCoordinateSpan)tileRect grouped:(BOOL)grouped;
+                              clusterRect:(MKCoordinateSpan)tileRect
+                                  grouped:(BOOL)grouped;
 {
     NSMutableDictionary *clusteredAnnotations = [[NSMutableDictionary alloc] init];
     
