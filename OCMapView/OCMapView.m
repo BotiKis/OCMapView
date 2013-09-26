@@ -56,6 +56,7 @@
                                          @"clusterSize",
                                          @"clusterByGroupTag",
                                          @"minLongitudeDeltaToCluster",
+                                         @"minimumAnnotationCountPerCluster",
                                          @"clusterInvisibleViews",
                                          @"annotationsToIgnore"];
     
