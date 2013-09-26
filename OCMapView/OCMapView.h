@@ -65,6 +65,12 @@ default: 0.2*/
 @property(nonatomic, assign) CLLocationDegrees minLongitudeDeltaToCluster;
 
 //
+/// Defines how many annotations are needed to build a cluster
+/** If a cluster contains less annotations, they will shown as they are
+ default: 0 (no minimum count)*/
+@property(nonatomic, assign) NSUInteger minimumAnnotationCountPerCluster;
+
+//
 /// Clusters all annotations, even if they are outside of the visible MKCoordinateRegion
 /* default: NO (checks for boundaries)*/
 @property (nonatomic, assign) BOOL clusterInvisibleViews;

@@ -43,6 +43,7 @@
     _clusteringMethod = OCClusteringMethodBubble;
     _clusterSize = 0.2;
     _minLongitudeDeltaToCluster = 0.0;
+    _minimumAnnotationCountPerCluster = 0;
     _clusteringEnabled = YES;
     _clusterByGroupTag = NO;
     _clusterInvisibleViews = NO;
@@ -181,6 +182,16 @@
     
     NSMutableArray *annotationsToDisplay = [clusteredAnnotations mutableCopy];
     [annotationsToDisplay addObjectsFromArray:[_annotationsToIgnore allObjects]];
+    
+    // check minumum cluster size
+    for (NSInteger i=0; i<annotationsToDisplay.count; i++) {
+        OCAnnotation *ocAnnotation = annotationsToDisplay[i];
+        if ([ocAnnotation isKindOfClass:[OCAnnotation class]] &&
+            ocAnnotation.annotationsInCluster.count < self.minimumAnnotationCountPerCluster) {
+            [annotationsToDisplay removeObject:ocAnnotation];
+            [annotationsToDisplay addObjectsFromArray:ocAnnotation.annotationsInCluster];
+        }
+    }
     
     // update visible annotations
     for (id<MKAnnotation> annotation in self.displayedAnnotations) {
