@@ -190,6 +190,7 @@
             ocAnnotation.annotationsInCluster.count < self.minimumAnnotationCountPerCluster) {
             [annotationsToDisplay removeObject:ocAnnotation];
             [annotationsToDisplay addObjectsFromArray:ocAnnotation.annotationsInCluster];
+            i--; // we removed one object, go back one (otherwise some will be skipped)
         }
     }
     
