@@ -141,14 +141,14 @@
     }
     
     NSMutableArray *annotationsToCluster = nil;
-
+    
     // Filter invisible (eg. out of visible map rect) annotations, if wanted
     if (self.clusterInvisibleViews) {
         annotationsToCluster = [[_allAnnotations allObjects] mutableCopy];
     } else {
         annotationsToCluster = [[self filterAnnotationsForVisibleMap:[_allAnnotations allObjects]] mutableCopy];
     }
-
+    
     // Remove the annotation which should be ignored
     [annotationsToCluster removeObjectsInArray:[_annotationsToIgnore allObjects]];
     
@@ -158,21 +158,16 @@
     {
         //calculate cluster radius
         CLLocationDistance clusterRadius = self.region.span.longitudeDelta * _clusterSize;
-     
+        
         // clustering
-        switch (_clusteringMethod) {
-            case OCClusteringMethodBubble:{
-                clusteredAnnotations = [OCAlgorithms bubbleClusteringWithAnnotations:annotationsToCluster
-                                                                       clusterRadius:clusterRadius
-                                                                             grouped:self.clusterByGroupTag];
-                break;
-            }
-            case OCClusteringMethodGrid:{
-                clusteredAnnotations =[OCAlgorithms gridClusteringWithAnnotations:annotationsToCluster
-                                                                      clusterRect:MKCoordinateSpanMake(clusterRadius, clusterRadius)
-                                                                          grouped:self.clusterByGroupTag];
-                break;
-            }
+        if (self.clusteringMethod == OCClusteringMethodBubble) {
+            clusteredAnnotations = [OCAlgorithms bubbleClusteringWithAnnotations:annotationsToCluster
+                                                                   clusterRadius:clusterRadius
+                                                                         grouped:self.clusterByGroupTag];
+        } else {
+            clusteredAnnotations =[OCAlgorithms gridClusteringWithAnnotations:annotationsToCluster
+                                                                  clusterRect:MKCoordinateSpanMake(clusterRadius, clusterRadius)
+                                                                      grouped:self.clusterByGroupTag];
         }
     }
     // pass through without when not
