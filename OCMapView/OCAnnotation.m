@@ -50,17 +50,6 @@
 {
     // Add annotation to the cluster
     [_annotationsInCluster addObject:annotation];
-    
-    // calc delta vector
-    CLLocationCoordinate2D deltaCoord;
-    CGFloat multiplier = (1.0f/_annotationsInCluster.count);
-    deltaCoord.latitude = (_coordinate.latitude - annotation.coordinate.latitude) * multiplier;
-    deltaCoord.longitude = (_coordinate.longitude - annotation.coordinate.longitude) * multiplier;
-    
-    // recenter
-    _coordinate.latitude = deltaCoord.latitude + annotation.coordinate.latitude;
-    _coordinate.longitude = deltaCoord.longitude + annotation.coordinate.longitude;
-    
 }
 
 - (void)addAnnotations:(NSArray *)annotations;
@@ -72,16 +61,6 @@
 
 - (void)removeAnnotation:(id<MKAnnotation>)annotation;
 {
-    // calc delta vector
-    CLLocationCoordinate2D deltaCoord;
-    CGFloat multiplier = (1.0f/_annotationsInCluster.count);
-    deltaCoord.latitude = (_coordinate.latitude - annotation.coordinate.latitude) * multiplier;
-    deltaCoord.longitude = (_coordinate.longitude - annotation.coordinate.longitude) * multiplier;
-    
-    // recenter
-    _coordinate.latitude = deltaCoord.latitude - annotation.coordinate.latitude;
-    _coordinate.longitude = deltaCoord.longitude - annotation.coordinate.longitude;
-    
     // Remove annotation from cluster
     [_annotationsInCluster removeObject:annotation];
 }
@@ -91,6 +70,30 @@
     for (id<MKAnnotation> annotation in annotations) {
         [self removeAnnotation: annotation];
     }
+}
+
+#pragma mark center coordinate
+
+- (CLLocationCoordinate2D)coordinate;
+{
+    if (self.annotationsInCluster.count == 0) return CLLocationCoordinate2DMake(0, 0);
+    
+    // find max/min coords
+    CLLocationCoordinate2D min = [self.annotationsInCluster[0] coordinate];
+    CLLocationCoordinate2D max = [self.annotationsInCluster[0] coordinate];
+    for (id<MKAnnotation> annotation in self.annotationsInCluster) {
+        min.latitude = MIN(min.latitude, annotation.coordinate.latitude);
+        min.longitude = MIN(min.longitude, annotation.coordinate.longitude);
+        max.latitude = MIN(max.latitude, annotation.coordinate.latitude);
+        max.longitude = MIN(max.longitude, annotation.coordinate.longitude);
+    }
+    
+    // calc center
+    CLLocationCoordinate2D center = min;
+    center.latitude += (max.latitude-min.latitude)/2.0;
+    center.longitude += (max.longitude-min.longitude)/2.0;
+    
+    return center;
 }
 
 #pragma mark equality
