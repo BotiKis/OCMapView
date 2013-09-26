@@ -31,7 +31,7 @@
 
 //
 /// enables or disables clustering.
-/** Setting this property will automatical call doClustering
+/** Call doClustering afterwards, to see the changes
  @see doClustering.
  
  default: YES*/
@@ -52,7 +52,7 @@ default: 0.2*/
 @property(nonatomic, assign) CLLocationDistance clusterSize;
 
 //
-/// Enables multiple Clusters
+/// Enables multiple clusters
 /** If enabled, tha mapview will generate different clusters for Tags 
  implemented by the OCGrouping protocol.
  default: NO*/
@@ -68,7 +68,6 @@ default: 0.2*/
 /// Clusters all annotations, even if they are outside of the visible MKCoordinateRegion
 /* default: NO (checks for boundaries)*/
 @property (nonatomic, assign) BOOL clusterInvisibleViews;
-
 
 /// Start the clustering of annotations.
 /**

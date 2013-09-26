@@ -98,6 +98,7 @@ static CGFloat kDEFAULTCLUSTERSIZE = 0.2;
         [sender setTitle:@"turn clustering off" forState:UIControlStateHighlighted];
         self.mapView.clusteringEnabled = YES;
     }
+    [self.mapView doClustering];
 }
 
 - (IBAction)addOneButtonTouchupInside:(id)sender {

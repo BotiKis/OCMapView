@@ -9,11 +9,11 @@
 
 @interface OCMapView ()
 @property (nonatomic, strong) NSMutableSet *allAnnotations;
-- (void)sharedInit;
+@property (nonatomic) MKCoordinateRegion lastRefreshedMapRegion;
+@property (nonatomic) MKMapRect lastRefreshedMapRect;
+@property (nonatomic) BOOL neeedsClustering;
 
-/// Filters annotations for visibleMapRect.
-/** This method filters the annotations for the visibleMapRect.*/
-- (NSArray *)filterAnnotationsForVisibleMap:(NSArray *)annotationsToFilter;
+@property (nonatomic, strong) NSArray *reclusterOnChangeProperties;
 @end
 
 @implementation OCMapView
@@ -46,22 +46,49 @@
     _clusteringEnabled = YES;
     _clusterByGroupTag = NO;
     _clusterInvisibleViews = NO;
+    _neeedsClustering = YES;
+    
+    // define relevant properties (those, which will affect the clustering)
+    self.reclusterOnChangeProperties = @[@"annotationsToIgnore",
+                                         @"clusteringEnabled",
+                                         @"clusteringMethod",
+                                         @"clusterSize",
+                                         @"clusterByGroupTag",
+                                         @"minLongitudeDeltaToCluster",
+                                         @"clusterInvisibleViews",
+                                         @"annotationsToIgnore"];
+    
+    // listen to changes
+    for (NSString *keyPath in self.reclusterOnChangeProperties) {
+        [self addObserver:self forKeyPath:keyPath
+                  options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
+    }
+}
+
+- (void)dealloc
+{
+    for (NSString *keyPath in self.reclusterOnChangeProperties) {
+        [self removeObserver:self forKeyPath:keyPath];
+    }
 }
 
 #pragma mark - MKMapView
 
 - (void)addAnnotation:(id < MKAnnotation >)annotation{
     [_allAnnotations addObject:annotation];
+    self.neeedsClustering = YES;
     [self doClustering];
 }
 
 - (void)addAnnotations:(NSArray *)annotations{
     [_allAnnotations addObjectsFromArray:annotations];
+    self.neeedsClustering = YES;
     [self doClustering];
 }
 
 - (void)removeAnnotation:(id < MKAnnotation >)annotation{
     [_allAnnotations removeObject:annotation];
+    self.neeedsClustering = YES;
     [self doClustering];
 }
 
@@ -69,6 +96,7 @@
     for (id<MKAnnotation> annotation in annotations) {
         [_allAnnotations removeObject:annotation];
     }
+    self.neeedsClustering = YES;
     [self doClustering];
 }
 
@@ -76,26 +104,40 @@
 //
 // Returns, like the original method,
 // all annotations in the map unclustered.
-- (NSArray *)annotations{
+- (NSArray *)annotations {
     return [_allAnnotations allObjects];
 }
 
 //
 // Returns all annotations which are actually displayed on the map. (clusters)
-- (NSArray *)displayedAnnotations{
-    return super.annotations;    
+- (NSArray *)displayedAnnotations {
+    return super.annotations;
 }
 
 //
-// enable or disable clustering
-- (void)setClusteringEnabled:(BOOL)enabled{
-    _clusteringEnabled = enabled;
-    [self doClustering];
+// Observe properties, that will need reclustering on change
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+                        change:(NSDictionary *)change context:(void *)context;
+{
+    if ([self.reclusterOnChangeProperties containsObject:keyPath]) {
+        if (![[change objectForKey:NSKeyValueChangeNewKey]
+              isEqual:[change objectForKey:NSKeyValueChangeOldKey]]) {
+            self.neeedsClustering = YES;
+        }
+    }
 }
 
 #pragma mark - Clustering
 
-- (void)doClustering{
+- (void)doClustering;
+{
+    // only recluster if, annotations did change, map was zoomed or,
+    // map was panned significantly
+    if(!self.neeedsClustering && !MKMapRectIsNull(self.lastRefreshedMapRect) &&
+       ![self mapWasZoomed] && ![self mapWasPannedSignificantly]){
+        // no update needed
+        return;
+    }
     
     NSMutableArray *annotationsToCluster = nil;
 
@@ -156,6 +198,27 @@
     
     // add not existing annotations
     [super addAnnotations:annotationsToDisplay];
+    
+    // update last rects & needs clustering
+    self.lastRefreshedMapRect = self.visibleMapRect;
+    self.lastRefreshedMapRegion = self.region;
+    self.neeedsClustering = NO;
+}
+
+#pragma mark map rect changes tracking
+
+- (BOOL)mapWasZoomed;
+{
+    return (fabs(self.lastRefreshedMapRect.size.width - self.visibleMapRect.size.width) > 0.1f);
+}
+
+- (BOOL)mapWasPannedSignificantly;
+{
+    CGPoint lastPoint = [self convertCoordinate:self.lastRefreshedMapRegion.center toPointToView:self];
+    CGPoint currentPoint = [self convertCoordinate:self.region.center toPointToView:self];
+    
+    return ((fabs(lastPoint.x - currentPoint.x) > self.frame.size.width/3.0) ||
+            (fabs(lastPoint.y - currentPoint.y) > self.frame.size.height/3.0));
 }
 
 #pragma mark - Helpers
