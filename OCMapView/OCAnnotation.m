@@ -29,8 +29,12 @@
         _coordinate = [annotation coordinate];
         [_annotationsInCluster addObject:annotation];
         
-        self.title = annotation.self.title;
-        self.subtitle = annotation.self.title;
+        if ([annotation respondsToSelector:@selector(title)]) {
+            self.title = [annotation title];
+        }
+        if ([annotation respondsToSelector:@selector(subtitle)]) {
+            self.subtitle = [annotation subtitle];
+        }
     }
     
     return self;
