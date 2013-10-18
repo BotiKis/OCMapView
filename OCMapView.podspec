@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'OCMapView'
-  s.version      = '1.1'
+  s.version      = '0.1.0'
   s.platform     = :ios
   s.summary      = 'Simple, easy and fast class for clustering in MKMapViews.'
   s.homepage     = 'https://github.com/yinkou/OCMapView'
@@ -11,8 +11,9 @@ Pod::Spec.new do |s|
   s.frameworks   = 'MapKit', 'CoreLocation'
   s.license      = "LICENSE.txt"
 
-  s.description  = 'OpenClusterMapView is a simple and easy to use extension of MKMapView for iOS. If ' \
+  s.description  = 'OpenClusterMapView is a simple and easy to use drop-in replacement for MKMapView on iOS. If ' \
                    'you are displaying a lot of annotations on the map, this class is made for you. ' \
                    'OCMapView automatically creates clusters by combining annotations super fast. It ' \
-                   'works with any iOS application.'
+                   'works with any iOS application. You don't even need to change any code other than replacing' \
+                   'the MKMapView class.'
 end
