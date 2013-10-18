@@ -23,7 +23,7 @@ It works with any iOS application. No code changes needed.
 
 ### Cocoapods
 
-- Just install the pod using `pod 'OCMapView'` <span class="js-zeroclipboard zeroclipboard-link" data-clipboard-text="pod 'OCMapView'" data-copied-hint="copied!" title="Copy text"><span class="octicon octicon-clippy"></span></span>
+- Just install the pod using `pod 'OCMapView'`
 
 ### Manually
 
