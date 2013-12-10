@@ -78,7 +78,7 @@
         // calculate grid coordinates of the annotation
         NSInteger row = ([annotation coordinate].longitude+180.0)/tileRect.longitudeDelta;
         NSInteger column = ([annotation coordinate].latitude+90.0)/tileRect.latitudeDelta;
-        NSString *key = [NSString stringWithFormat:@"%d%d",row,column];
+        NSString *key = [NSString stringWithFormat:@"%ld%ld",(long)row,(long)column];
         
         // add group tag to key
         if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
