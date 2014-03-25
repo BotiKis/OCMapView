@@ -133,14 +133,6 @@ static CGFloat kDEFAULTCLUSTERSIZE = 0.2;
     [self updateOverlays];
 }
 
-- (IBAction)infoButtonTouchUpInside:(UIButton *)sender {
-    [[[UIAlertView alloc] initWithTitle:@"Info"
-                                message:@"The size of a cluster-annotation represents the number of annotations it contains and not its size."
-                               delegate:nil
-                      cancelButtonTitle:@"great!"
-                      otherButtonTitles:nil] show];
-}
-
 - (IBAction)buttonGroupByTagTouchUpInside:(UIButton *)sender
 {
     self.mapView.clusterByGroupTag = ! self.mapView.clusterByGroupTag;

@@ -20,7 +20,6 @@
 - (IBAction)clusteringButtonTouchUpInside:(UIButton *)sender;
 - (IBAction)addOneButtonTouchupInside:(id)sender;
 - (IBAction)changeClusterMethodButtonTouchUpInside:(UIButton *)sender;
-- (IBAction)infoButtonTouchUpInside:(UIButton *)sender;
 - (IBAction)buttonGroupByTagTouchUpInside:(UIButton *)sender;
 
 - (NSArray *)randomCoordinatesGenerator:(int)numberOfCoordinates;
