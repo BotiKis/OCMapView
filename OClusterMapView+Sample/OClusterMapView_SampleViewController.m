@@ -299,12 +299,13 @@ static CGFloat kDEFAULTCLUSTERSIZE = 0.2;
             
             // static circle size of cluster
             CLLocationDistance clusterRadius = self.mapView.region.span.longitudeDelta * self.mapView.clusterSize * 111000 / 2.0f;
+            clusterRadius = clusterRadius * cos([annotation coordinate].latitude * M_PI / 180.0);
             
-            MKCircle *circle = [MKCircle circleWithCenterCoordinate:annotation.coordinate radius:clusterRadius * cos([annotation coordinate].latitude * M_PI / 180.0)];
+            MKCircle *circle = [MKCircle circleWithCenterCoordinate:annotation.coordinate radius:clusterRadius];
             [circle setTitle:@"background"];
             [self.mapView addOverlay:circle];
             
-            MKCircle *circleLine = [MKCircle circleWithCenterCoordinate:annotation.coordinate radius:clusterRadius * cos([annotation coordinate].latitude * M_PI / 180.0)];
+            MKCircle *circleLine = [MKCircle circleWithCenterCoordinate:annotation.coordinate radius:clusterRadius];
             [circleLine setTitle:@"line"];
             [self.mapView addOverlay:circleLine];
         }
