@@ -36,20 +36,12 @@ static CGFloat kDEFAULTCLUSTERSIZE = 0.2;
     }
 }
 
-- (void)viewDidUnload
-{
-    [self setMapView:nil];
-    [super viewDidUnload];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
-        return YES;
     }
+    return YES;
 }
 
 // ==============================
@@ -72,10 +64,9 @@ static CGFloat kDEFAULTCLUSTERSIZE = 0.2;
         [annotationsToAdd addObject:annotation];
         
         // add to group if specified
-        if (annotationsToAdd.count < (randomLocations.count)/2) {
+        if (annotationsToAdd.count < (randomLocations.count)/2.0) {
             annotation.groupTag = kTYPE1;
-        }
-        else{
+        } else {
             annotation.groupTag = kTYPE2;
         }
         
