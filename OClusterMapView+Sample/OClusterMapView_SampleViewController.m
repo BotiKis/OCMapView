@@ -81,7 +81,7 @@ static CGFloat kDEFAULTCLUSTERSIZE = 0.2;
     }
     
     [self.mapView addAnnotations:[annotationsToAdd allObjects]];
-    self.labelNumberOfAnnotations.text = [NSString stringWithFormat:@"Number of Annotations: %d", [self.mapView.annotations count]];
+    self.labelNumberOfAnnotations.text = [NSString stringWithFormat:@"Number of Annotations: %zd", [self.mapView.annotations count]];
 }
 
 - (IBAction)clusteringButtonTouchUpInside:(UIButton *)sender {
@@ -108,7 +108,7 @@ static CGFloat kDEFAULTCLUSTERSIZE = 0.2;
     OCMapViewSampleHelpAnnotation *annotation = [[OCMapViewSampleHelpAnnotation alloc] initWithCoordinate:loc];
     
     [self.mapView addAnnotation:annotation];
-    self.labelNumberOfAnnotations.text = [NSString stringWithFormat:@"Number of Annotations: %d", [self.mapView.annotations count]];
+    self.labelNumberOfAnnotations.text = [NSString stringWithFormat:@"Number of Annotations: %zd", [self.mapView.annotations count]];
 }
 
 - (IBAction)changeClusterMethodButtonTouchUpInside:(UIButton *)sender {    
@@ -181,7 +181,7 @@ static CGFloat kDEFAULTCLUSTERSIZE = 0.2;
         
         // set title
         clusterAnnotation.title = @"Cluster";
-        clusterAnnotation.subtitle = [NSString stringWithFormat:@"Containing annotations: %d", [clusterAnnotation.annotationsInCluster count]];
+        clusterAnnotation.subtitle = [NSString stringWithFormat:@"Containing annotations: %zd", [clusterAnnotation.annotationsInCluster count]];
         
         // set its image
         annotationView.image = [UIImage imageNamed:@"regular.png"];
@@ -262,7 +262,7 @@ static CGFloat kDEFAULTCLUSTERSIZE = 0.2;
 //
 // Help method which returns an array of random CLLocations
 // You can specify the number of coordinates by setting numberOfCoordinates
-- (NSArray *)randomCoordinatesGenerator:(int) numberOfCoordinates
+- (NSArray *)randomCoordinatesGenerator:(int)numberOfCoordinates
 {
     MKCoordinateRegion visibleRegion = self.mapView.region;
     visibleRegion.span.latitudeDelta *= 0.8;

@@ -23,7 +23,6 @@
 - (IBAction)infoButtonTouchUpInside:(UIButton *)sender;
 - (IBAction)buttonGroupByTagTouchUpInside:(UIButton *)sender;
 
-
-- (NSArray *)randomCoordinatesGenerator:(int) numberOfCoordinates;
+- (NSArray *)randomCoordinatesGenerator:(int)numberOfCoordinates;
 
 @end

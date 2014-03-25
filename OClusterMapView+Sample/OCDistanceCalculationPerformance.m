@@ -42,17 +42,17 @@ double CLLocationCoordinateDistancePow(CLLocationCoordinate2D c1, CLLocationCoor
     // Performance Test
     @autoreleasepool {
         NSDate *startDate = [NSDate date];
-        NSInteger count = 250000, runs = 500;
+        int count = 250000, runs = 500;
         CLLocation *randomLoc = [self randomCoordinatesGenerator:1][0];
         NSArray *otherLocs = [self randomCoordinatesGenerator:count];
         
         show([NSString stringWithFormat:@"Device/OS: '%@', iOS %@", [self platform], [[UIDevice currentDevice] systemVersion]]);
-        show([NSString stringWithFormat:@"Testing %d runs of distance calculation per method with %@ coords", runs, [numFormatter stringFromNumber:@(count)]]);
+        show([NSString stringWithFormat:@"Testing %zd runs of distance calculation per method with %@ coords", runs, [numFormatter stringFromNumber:@(count)]]);
         show([NSString stringWithFormat:@">> This will be %@ distance calculations.", [numFormatter stringFromNumber:@(count*runs)]]);
         CGFloat firstDuration = 0;
-        for (NSInteger type=0; type<2; type++) {
+        for (int type=0; type<2; type++) {
             NSDate *dateForType = [NSDate date];
-            for (NSInteger i=0; i<runs; i++) {
+            for (int i=0; i<runs; i++) {
                 CGFloat maxDistance = 0;
                 for (CLLocation *location in otherLocs) {
                     CGFloat distance = 0;
@@ -69,7 +69,7 @@ double CLLocationCoordinateDistancePow(CLLocationCoordinate2D c1, CLLocationCoor
             duration /= runs;
             
             NSString *method = (type==0)?@"MULTIPLY":@"POW";
-            show([NSString stringWithFormat:@"== %@: AVERAGE DURATION IN %d RUNS: %.5fs/run ====", method, runs, duration]);
+            show([NSString stringWithFormat:@"== %@: AVERAGE DURATION IN %zd RUNS: %.5fs/run ====", method, runs, duration]);
             
             if (type == 1) {
                 show([NSString stringWithFormat: @"Difference: %.7fs/run", ABS(firstDuration-duration)]);
@@ -89,7 +89,7 @@ double CLLocationCoordinateDistancePow(CLLocationCoordinate2D c1, CLLocationCoor
 //
 // Help method which returns an array of random CLLocations
 // You can specify the number of coordinates by setting numberOfCoordinates
-+ (NSArray *)randomCoordinatesGenerator:(int) numberOfCoordinates
++ (NSArray *)randomCoordinatesGenerator:(int)numberOfCoordinates
 {
     MKCoordinateRegion sampleRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(52.0,13.0), MKCoordinateSpanMake(20.0, 20.0));
     
