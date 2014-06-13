@@ -22,19 +22,12 @@
  The clustering algorithms will automatically ignore this annotations.*/
 @property(nonatomic, strong) NSMutableSet *annotationsToIgnore;
 
-//
 /// The complete list of annotations displayed on the map including clusters (read-only).
-/** The objects in this array must adopt the @see MKAnnotation protocol. 
- It contains all annotations as they are on the MapView.*/
+/// The objects in this array adopt the @see MKAnnotation protocol.
+/// It contains all annotations as they are on the MapView.
 @property(nonatomic, readonly) NSArray *displayedAnnotations;
-- (NSArray *)displayedAnnotations;
 
-//
-/// enables or disables clustering.
-/** Call doClustering afterwards, to see the changes
- @see doClustering.
- 
- default: YES*/
+/// Enables or disables clustering.
 @property(nonatomic, assign) BOOL clusteringEnabled;
 
 //
@@ -49,7 +42,7 @@
 /// Defines the cluster size in units of the map width.
 /** eg. clusterSize 0.5 is the half of the map.
 default: 0.2*/
-@property(nonatomic, assign) CLLocationDistance clusterSize;
+@property(nonatomic, assign) float clusterSize;
 
 //
 /// Enables multiple clusters
@@ -75,11 +68,8 @@ default: 0.2*/
 /* default: NO (checks for boundaries)*/
 @property (nonatomic, assign) BOOL clusterInvisibleViews;
 
-/// Start the clustering of annotations.
-/**
- Handles the ignoreList of annotations, calls the defined clustering
- algorithm and adds the clustered annotations to the map.
- */
+/// Handles the ignoreList of annotations, calls the defined clustering
+/// algorithm and adds the clustered annotations to the map.
 - (void)doClustering;
 
 @end

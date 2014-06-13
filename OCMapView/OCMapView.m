@@ -7,18 +7,22 @@
 
 #import "OCMapView.h"
 
-@interface OCMapView ()
-@property (nonatomic, strong) NSMutableSet *allAnnotations;
-@property (nonatomic) MKCoordinateRegion lastRefreshedMapRegion;
-@property (nonatomic) MKMapRect lastRefreshedMapRect;
-@property (nonatomic) BOOL neeedsClustering;
 
-@property (nonatomic, strong) NSArray *reclusterOnChangeProperties;
-@end
 
 @implementation OCMapView
+{
+    BOOL _clusteringEnabled;
+    NSMutableSet *_allAnnotations;
+    MKCoordinateRegion _lastRefreshedMapRegion;
+    MKMapRect _lastRefreshedMapRect;
+    NSArray *_reclusterOnChangeProperties;
+    
+    NSTimer *_doClusteringTimer;
+}
 
-- (id)initWithFrame:(CGRect)frame;
+@synthesize clusteringEnabled = _clusteringEnabled;
+
+- (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -27,7 +31,7 @@
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder;
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
@@ -36,7 +40,7 @@
     return self;
 }
 
-- (void)sharedInit;
+- (void)sharedInit
 {
     _allAnnotations = [[NSMutableSet alloc] init];
     _annotationsToIgnore = [[NSMutableSet alloc] init];
@@ -47,21 +51,20 @@
     _clusteringEnabled = YES;
     _clusterByGroupTag = NO;
     _clusterInvisibleViews = NO;
-    _neeedsClustering = YES;
     
     // define relevant properties (those, which will affect the clustering)
-    self.reclusterOnChangeProperties = @[@"annotationsToIgnore",
-                                         @"clusteringEnabled",
-                                         @"clusteringMethod",
-                                         @"clusterSize",
-                                         @"clusterByGroupTag",
-                                         @"minLongitudeDeltaToCluster",
-                                         @"minimumAnnotationCountPerCluster",
-                                         @"clusterInvisibleViews",
-                                         @"annotationsToIgnore"];
+    _reclusterOnChangeProperties = @[@"annotationsToIgnore",
+                                     @"clusteringEnabled",
+                                     @"clusteringMethod",
+                                     @"clusterSize",
+                                     @"clusterByGroupTag",
+                                     @"minLongitudeDeltaToCluster",
+                                     @"minimumAnnotationCountPerCluster",
+                                     @"clusterInvisibleViews",
+                                     @"annotationsToIgnore"];
     
     // listen to changes
-    for (NSString *keyPath in self.reclusterOnChangeProperties) {
+    for (NSString *keyPath in _reclusterOnChangeProperties) {
         [self addObserver:self forKeyPath:keyPath
                   options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     }
@@ -69,28 +72,29 @@
 
 - (void)dealloc
 {
-    for (NSString *keyPath in self.reclusterOnChangeProperties) {
+    if(_doClusteringTimer) {
+        [_doClusteringTimer invalidate];
+        _doClusteringTimer = nil;
+    }
+    for (NSString *keyPath in _reclusterOnChangeProperties) {
         [self removeObserver:self forKeyPath:keyPath];
     }
 }
 
 #pragma mark - MKMapView
 
-- (void)addAnnotation:(id < MKAnnotation >)annotation{
+- (void)addAnnotation:(id < MKAnnotation >)annotation {
     [_allAnnotations addObject:annotation];
-    self.neeedsClustering = YES;
     [self doClustering];
 }
 
-- (void)addAnnotations:(NSArray *)annotations{
+- (void)addAnnotations:(NSArray *)annotations {
     [_allAnnotations addObjectsFromArray:annotations];
-    self.neeedsClustering = YES;
     [self doClustering];
 }
 
-- (void)removeAnnotation:(id < MKAnnotation >)annotation{
+- (void)removeAnnotation:(id < MKAnnotation >)annotation {
     [_allAnnotations removeObject:annotation];
-    self.neeedsClustering = YES;
     [self doClustering];
 }
 
@@ -98,7 +102,6 @@
     for (id<MKAnnotation> annotation in annotations) {
         [_allAnnotations removeObject:annotation];
     }
-    self.neeedsClustering = YES;
     [self doClustering];
 }
 
@@ -118,33 +121,43 @@
 
 //
 // Observe properties, that will need reclustering on change
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
-                        change:(NSDictionary *)change context:(void *)context;
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context;
 {
-    if ([self.reclusterOnChangeProperties containsObject:keyPath]) {
+    if ([_reclusterOnChangeProperties containsObject:keyPath]) {
         if (![[change objectForKey:NSKeyValueChangeNewKey]
-              isEqual:[change objectForKey:NSKeyValueChangeOldKey]]) {
-            self.neeedsClustering = YES;
+              isEqual:[change objectForKey:NSKeyValueChangeOldKey]])
+        {
+            [self doClustering];
         }
     }
 }
 
 #pragma mark - Clustering
 
-- (void)doClustering;
+- (void)doClustering
 {
-    // only recluster if, annotations did change, map was zoomed or,
-    // map was panned significantly
-    if(!self.neeedsClustering && !MKMapRectIsNull(self.lastRefreshedMapRect) &&
-       ![self mapWasZoomed] && ![self mapWasPannedSignificantly]){
-        // no update needed
-        return;
+    if(!_doClusteringTimer) {
+        _doClusteringTimer = [NSTimer scheduledTimerWithTimeInterval:0.0
+                                                              target:self
+                                                            selector:@selector(doClusteringNow)
+                                                            userInfo:nil
+                                                             repeats:NO];
     }
+}
+
+- (void)doClusteringNow
+{
+    [_doClusteringTimer invalidate];
+    _doClusteringTimer = nil;
     
     NSMutableArray *annotationsToCluster = nil;
+    MKCoordinateRegion self_region = self.region;
     
     // Filter invisible (eg. out of visible map rect) annotations, if wanted
-    if (self.clusterInvisibleViews) {
+    if(self.clusterInvisibleViews) {
         annotationsToCluster = [[_allAnnotations allObjects] mutableCopy];
     } else {
         annotationsToCluster = [[self filterAnnotationsForVisibleMap:[_allAnnotations allObjects]] mutableCopy];
@@ -155,10 +168,13 @@
     
     // Cluster annotations, when enabled and map is above the minimum zoom
     NSArray *clusteredAnnotations;
-    if (_clusteringEnabled && (self.region.span.longitudeDelta > _minLongitudeDeltaToCluster))
+    if (_clusteringEnabled && (self_region.span.longitudeDelta > _minLongitudeDeltaToCluster))
     {
         //calculate cluster radius
-        CLLocationDistance clusterRadius = self.region.span.longitudeDelta * _clusterSize;
+        //CLLocationDistance clusterRadius = self_region.span.longitudeDelta * _clusterSize;
+        CLLocationCoordinate2D mecca = self_region.center;
+        mecca.longitude += self_region.span.longitudeDelta;
+        CLLocationDistance clusterRadius = CLLocationCoordinateDistance(self_region.center, mecca) * _clusterSize;
         
         // clustering
         if (self.clusteringMethod == OCClusteringMethodBubble) {
@@ -166,9 +182,9 @@
                                                                    clusterRadius:clusterRadius
                                                                          grouped:self.clusterByGroupTag];
         } else {
-            clusteredAnnotations =[OCAlgorithms gridClusteringWithAnnotations:annotationsToCluster
-                                                                  clusterRect:MKCoordinateSpanMake(clusterRadius, clusterRadius)
-                                                                      grouped:self.clusterByGroupTag];
+            clusteredAnnotations = [OCAlgorithms gridClusteringWithAnnotations:annotationsToCluster
+                                                                   clusterRect:MKCoordinateSpanMake(clusterRadius, clusterRadius)
+                                                                       grouped:self.clusterByGroupTag];
         }
     }
     // pass through without when not
@@ -208,21 +224,20 @@
     [super addAnnotations:annotationsToDisplay];
     
     // update last rects & needs clustering
-    self.lastRefreshedMapRect = self.visibleMapRect;
-    self.lastRefreshedMapRegion = self.region;
-    self.neeedsClustering = NO;
+    _lastRefreshedMapRect = self.visibleMapRect;
+    _lastRefreshedMapRegion = self.region;
 }
 
 #pragma mark map rect changes tracking
 
-- (BOOL)mapWasZoomed;
+- (BOOL)mapWasZoomed
 {
-    return (fabs(self.lastRefreshedMapRect.size.width - self.visibleMapRect.size.width) > 0.1f);
+    return (fabs(_lastRefreshedMapRect.size.width - self.visibleMapRect.size.width) > 0.1f);
 }
 
-- (BOOL)mapWasPannedSignificantly;
+- (BOOL)mapWasPannedSignificantly
 {
-    CGPoint lastPoint = [self convertCoordinate:self.lastRefreshedMapRegion.center toPointToView:self];
+    CGPoint lastPoint = [self convertCoordinate:_lastRefreshedMapRegion.center toPointToView:self];
     CGPoint currentPoint = [self convertCoordinate:self.region.center toPointToView:self];
     
     return ((fabs(lastPoint.x - currentPoint.x) > self.frame.size.width/3.0) ||
@@ -231,18 +246,16 @@
 
 #pragma mark - Helpers
 
-- (NSArray *)filterAnnotationsForVisibleMap:(NSArray *)annotationsToFilter{
-    // return array
+- (NSArray *)filterAnnotationsForVisibleMap:(NSArray *)annotationsToFilter
+{
     NSMutableArray *filteredAnnotations = [[NSMutableArray alloc] initWithCapacity:[annotationsToFilter count]];
     
-    // border calculation
-    CLLocationDistance a = self.region.span.latitudeDelta / 2.0;
-    CLLocationDistance b = self.region.span.longitudeDelta / 2.0;
-    CLLocationDistance radius = sqrt(pow(a,2.0) + pow(b,2.0));
+    MKCoordinateRegion self_region = self.region;
     
-    for (id<MKAnnotation> annotation in annotationsToFilter) {
+    for (id<MKAnnotation> annotation in annotationsToFilter)
+    {
         // if annotation is not inside the coordinates, kick it
-        if ((CLLocationCoordinateDistance([annotation coordinate], self.centerCoordinate) <= radius)) {
+        if(MKCoordinateRegionContainsPoint(self_region, [annotation coordinate])) {
             [filteredAnnotations addObject:annotation];
         }
     }
