@@ -7,6 +7,18 @@
 
 #import "OCAnnotation.h"
 
+/// Compares two objects using -isEqual:. For the border case where both objects
+/// are nil, it returns YES too (whereas [nil isEqual:nil] == NO and this leads
+/// to incorrect comparison behaviour...)
+static BOOL eql(id a, id b)
+{
+    if(a == b) {
+        return YES;
+    } else {
+        return [a isEqual:b];
+    }
+}
+
 static CLLocationDegrees const OCMinimumInvalidDegree = 400.0;
 
 @interface OCAnnotation ()
@@ -16,6 +28,8 @@ static CLLocationDegrees const OCMinimumInvalidDegree = 400.0;
 @property (nonatomic, assign) CLLocationCoordinate2D maxCoordinate;
 
 @end
+
+
 
 @implementation OCAnnotation
 
@@ -113,12 +127,26 @@ static CLLocationDegrees const OCMinimumInvalidDegree = 400.0;
         return NO;
     }
     
-    return (self.coordinate.latitude == annotation.coordinate.latitude &&
-            self.coordinate.longitude == annotation.coordinate.longitude &&
-            [self.title isEqualToString:annotation.title] &&
-            [self.subtitle isEqualToString:annotation.subtitle] &&
-            [self.groupTag isEqualToString:annotation.groupTag] &&
-            [self.annotationsInCluster isEqual:annotation.annotationsInCluster]);
+    if(self.coordinate.latitude == annotation.coordinate.latitude &&
+       self.coordinate.longitude == annotation.coordinate.longitude &&
+       eql(self.title, annotation.title) &&
+       eql(self.subtitle, annotation.subtitle) &&
+       eql(self.groupTag, annotation.groupTag))
+    {
+        // I compare in two steps so the set computations don't have to be done so often.
+        NSSet *a_annotationsInCluster = [[NSSet alloc] initWithArray:self.annotationsInCluster];
+        NSSet *b_annotationsInCluster = [[NSSet alloc] initWithArray:annotation.annotationsInCluster];
+        if([a_annotationsInCluster isEqual:b_annotationsInCluster]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (NSUInteger)hash
+{
+    return self.title.hash*97 + self.subtitle.hash*13 + (NSUInteger)(self.coordinate.latitude*999);
 }
 
 @end
