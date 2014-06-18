@@ -171,10 +171,7 @@
     if (_clusteringEnabled && (self_region.span.longitudeDelta > _minLongitudeDeltaToCluster))
     {
         //calculate cluster radius
-        //CLLocationDistance clusterRadius = self_region.span.longitudeDelta * _clusterSize;
-        CLLocationCoordinate2D mecca = self_region.center;
-        mecca.longitude += self_region.span.longitudeDelta;
-        CLLocationDistance clusterRadius = CLLocationCoordinateDistance(self_region.center, mecca) * _clusterSize;
+        CLLocationDistance clusterRadius = self_region.span.longitudeDelta * _clusterSize;
         
         // clustering
         if (self.clusteringMethod == OCClusteringMethodBubble) {

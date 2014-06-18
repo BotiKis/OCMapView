@@ -10,6 +10,13 @@
 #import "OCDistance.h"
 #import "OCGrouping.h"
 
+static double euclidDistanceSquared(CLLocationCoordinate2D a, CLLocationCoordinate2D b)
+{
+    double latDelta = a.latitude-b.latitude;
+    double lonDelta = a.longitude-b.longitude;
+    return latDelta*latDelta + lonDelta*lonDelta;
+}
+
 @implementation OCAlgorithms
 
 // Bubble clustering with iteration
@@ -19,6 +26,8 @@
 {
     NSMutableArray *clusteredAnnotations = [[NSMutableArray alloc] init];
     
+    double radiusSquared = radius*radius;
+    
 	// Clustering
 	for (id <MKAnnotation> annotation in annotationsToCluster)
     {
@@ -27,7 +36,7 @@
         CLLocationCoordinate2D annotationCoordinate = [annotation coordinate];
         for (OCAnnotation *clusterAnnotation in clusteredAnnotations) {
             // If the annotation is in range of the cluster, add it
-            if ((CLLocationCoordinateDistance(annotationCoordinate, [clusterAnnotation coordinate]) <= radius)) {
+            if(euclidDistanceSquared(annotationCoordinate, [clusterAnnotation coordinate]) <= radiusSquared) {
                 // check group
                 if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
                     if (![clusterAnnotation.groupTag isEqualToString:((id <OCGrouping>)annotation).groupTag])
@@ -79,11 +88,11 @@
         // calculate grid coordinates of the annotation
         NSInteger row = ([annotation coordinate].longitude+180.0)/tileRect.longitudeDelta;
         NSInteger column = ([annotation coordinate].latitude+90.0)/tileRect.latitudeDelta;
-        NSString *key = [NSString stringWithFormat:@"%d%d", (int)row, (int)column];
+        NSString *key = [NSString stringWithFormat:@"%d:%d", (int)row, (int)column];
         
         // add group tag to key
         if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
-            key = [NSString stringWithFormat: @"%@%@", key, [(id<OCGrouping>)annotation groupTag]];
+            key = [NSString stringWithFormat: @"%@:%@", key, [(id<OCGrouping>)annotation groupTag]];
         }
         
         // get the cluster for the calculated coordinates
