@@ -24,9 +24,10 @@
     {
 		// Find fitting existing cluster
 		BOOL foundCluster = NO;
+        CLLocationCoordinate2D annotationCoordinate = [annotation coordinate];
         for (OCAnnotation *clusterAnnotation in clusteredAnnotations) {
             // If the annotation is in range of the cluster, add it
-            if ((CLLocationCoordinateDistance([annotation coordinate], [clusterAnnotation coordinate]) <= radius)) {
+            if ((CLLocationCoordinateDistance(annotationCoordinate, [clusterAnnotation coordinate]) <= radius)) {
                 // check group
                 if (grouped && [annotation conformsToProtocol:@protocol(OCGrouping)]) {
                     if (![clusterAnnotation.groupTag isEqualToString:((id <OCGrouping>)annotation).groupTag])
