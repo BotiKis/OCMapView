@@ -48,7 +48,8 @@ static double modulo(double pt, double modul)
 static BOOL rangeContainsValueModulo(double pt, double range, double value, double modul)
 {
     double halfRange = range * 0.5;
-    pt = modulo(pt, modul);
+    pt = modulo(fabs(pt), modul);
+    value = fabs(value);
     double start = modulo(pt-halfRange, modul);
     double end = modulo(pt+halfRange, modul);
     if(start <= end) {
