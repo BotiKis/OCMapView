@@ -47,6 +47,7 @@
     _clusteringMethod = OCClusteringMethodBubble;
     _clusterSize = 0.2;
     _minLongitudeDeltaToCluster = 0.0;
+    _minLatitudeDeltaToCluster = 0.0;
     _minimumAnnotationCountPerCluster = 0;
     _clusteringEnabled = YES;
     _clusterByGroupTag = NO;
@@ -59,6 +60,7 @@
                                      @"clusterSize",
                                      @"clusterByGroupTag",
                                      @"minLongitudeDeltaToCluster",
+                                     @"minLatitudeDeltaToCluster",
                                      @"minimumAnnotationCountPerCluster",
                                      @"clusterInvisibleViews",
                                      @"annotationsToIgnore"];
@@ -168,7 +170,7 @@
     
     // Cluster annotations, when enabled and map is above the minimum zoom
     NSArray *clusteredAnnotations;
-    if (_clusteringEnabled && (self_region.span.longitudeDelta > _minLongitudeDeltaToCluster))
+    if (_clusteringEnabled && (self_region.span.longitudeDelta > _minLongitudeDeltaToCluster) && (self_region.span.latitudeDelta > _minLatitudeDeltaToCluster) )
     {
         //calculate cluster radius
         CLLocationDistance clusterRadius = self_region.span.longitudeDelta * _clusterSize;

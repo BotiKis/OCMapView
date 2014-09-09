@@ -6,6 +6,7 @@
 //
 
 #import <MapKit/MapKit.h>
+#import <AvailabilityMacros.h>
 
 #import "OCDistance.h"
 #import "OCAnnotation.h"
@@ -52,10 +53,16 @@ default: 0.2*/
 @property(nonatomic, assign) BOOL clusterByGroupTag;
 
 //
-/// Defines the "zoom" from where the map should start clustering.
+/// Defines the "zoom" from where the map should start clustering, referenced by Longitude.
 /** If the map is zoomed below this value it won't cluster.
  default: 0.0 (no min. zoom)*/
-@property(nonatomic, assign) CLLocationDegrees minLongitudeDeltaToCluster;
+@property(nonatomic, assign) CLLocationDegrees minLongitudeDeltaToCluster DEPRECATED_MSG_ATTRIBUTE("Use minLatitudeDeltaToCluster instead.");
+
+//
+/// Defines the "zoom" from where the map should start clustering, referenced by Latitude.
+/** If the map is zoomed below this value it won't cluster.
+ default: 0.0 (no min. zoom)*/
+@property(nonatomic, assign) CLLocationDegrees minLatitudeDeltaToCluster;
 
 //
 /// Defines how many annotations are needed to build a cluster
