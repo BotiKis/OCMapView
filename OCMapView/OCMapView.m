@@ -241,6 +241,24 @@
             (fabs(lastPoint.y - currentPoint.y) > self.frame.size.height/3.0));
 }
 
+#pragma mark - Update Annotation
+
+- (void)updateViewsForAnnotations:(NSArray *)annotations {
+    NSArray *selectedAnnotations = self.selectedAnnotations;
+    
+    // to ensure that the view gets properly updated
+    [self removeAnnotations:annotations];
+    [self doClusteringNow];
+    [self addAnnotations:annotations];
+    
+    if (selectedAnnotations.count) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Reselect after one run-loop
+            [self selectAnnotation:selectedAnnotations.firstObject animated:YES];
+        });
+    }
+}
+
 #pragma mark - Helpers
 
 - (NSArray *)filterAnnotationsForVisibleMap:(NSArray *)annotationsToFilter

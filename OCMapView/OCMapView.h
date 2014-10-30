@@ -72,6 +72,11 @@ default: 0.2*/
 /// algorithm and adds the clustered annotations to the map.
 - (void)doClustering;
 
+/**
+ *  Updates the views for the given annotations.
+ *
+ *  @param annotations The annotations to update.
+ */
+- (void)updateViewsForAnnotations:(NSArray *)annotations;
+
 @end
-
-
