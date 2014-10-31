@@ -75,6 +75,9 @@ default: 0.2*/
 /**
  *  Updates the views for the given annotations.
  *
+ *  @note The annotations will be added to the map even if they have
+ *  not been added to it before.
+ *
  *  @param annotations The annotations to update.
  */
 - (void)updateViewsForAnnotations:(NSArray *)annotations;
