@@ -95,12 +95,14 @@
 
 - (void)removeAnnotation:(id < MKAnnotation >)annotation {
     [_allAnnotations removeObject:annotation];
+    [_annotationsToIgnore removeObject:annotation];
     [self doClustering];
 }
 
 - (void)removeAnnotations:(NSArray *)annotations{
     for (id<MKAnnotation> annotation in annotations) {
         [_allAnnotations removeObject:annotation];
+        [_annotationsToIgnore removeObject:annotation];
     }
     [self doClustering];
 }
